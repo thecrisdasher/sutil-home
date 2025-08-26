@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://aliviovital.com/sitemap.xml
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /api/
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /services
+Allow: /team
+Allow: /benefits
+Allow: /testimonials
+Allow: /contact
+
+# Crawl-delay (optional)
+Crawl-delay: 1
