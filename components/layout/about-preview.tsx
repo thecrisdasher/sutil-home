@@ -318,7 +318,7 @@ export function AboutPreview() {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-serene/10 to-transparent z-10" />
                 <Image
-                  src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                  src="/images/logo-empresa-salud-solo-vividos-web.png"
                   alt="Cuidado personalizado en el hogar"
                   width={200}
                   height={200}

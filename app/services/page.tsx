@@ -114,7 +114,7 @@ const mainServices: MainService[] = [
       "Apoyo emocional",
       "Actividades recreativas"
     ],
-    image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "/images/cuidado-personal.png",
     color: "from-beige-500 to-blue-light",
     accent: "bg-beige-500/10"
   }
@@ -1000,7 +1000,7 @@ export default function ServicesPage() {
                 transition={{ duration: 0.6 }}
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="/images/casa-encali-cuidados.png"
                   alt="Beneficios del cuidado domiciliario"
                   width={600}
                   height={500}

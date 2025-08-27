@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image"; 
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Heart, Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
@@ -72,8 +73,14 @@ export function Footer() {
               className="lg:col-span-1"
             >
               <div className="flex items-center space-x-2 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-beige-500 to-blue-light rounded-xl flex items-center justify-center">
-                  <Heart className="w-7 h-7 text-white" />
+                <div className="w-12 h-12 bg-transparent from-beige-500 to-blue-light rounded-xl flex items-center justify-center">
+                  <Image
+                    src="/images/logo-empresa-salud-solo-vividos-web.png"   // 👈 reemplaza con la ruta de tu logo (ej: /images/logo.png)
+                    alt="Alivio Vital Logo"
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">Alivio Vital</h3>
@@ -187,11 +194,21 @@ export function Footer() {
           viewport={{ once: true }}
           className="border-t border-white/10 py-8"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
             <p className="text-gray-400 text-sm text-center md:text-left">
               © {new Date().getFullYear()} Alivio Vital Home Care. Todos los derechos reservados.
             </p>
-            <div className="flex space-x-6 text-sm">
+            <p className="text-gray-400 text-sm text-center">
+              Desarrollado por{" "}
+              <a
+                href="https://portafolio-mejorllamaacris.vercel.app/"
+                rel="noopener noreferrer"
+                className="text-beige-300 hover:text-beige-200 underline decoration-beige-300/60 hover:decoration-beige-200"
+              >
+                Mejor Llama A Cris
+              </a>
+            </p>
+            <div className="flex justify-center md:justify-end space-x-6 text-sm">
               <Link href="#" className="text-gray-400 hover:text-beige-300 transition-colors duration-200">
                 Política de Privacidad
               </Link>
