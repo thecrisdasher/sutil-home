@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+
 
 const navigation = [
   { name: "Inicio", href: "/" },
@@ -36,11 +38,10 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent ${
-        isScrolled
-          ? "bg-transparent backdrop-blur-m shadow-lg"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? "bg-white/30 backdrop-blur-lg shadow-lg"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -50,9 +51,13 @@ export function Navbar() {
             className="flex items-center space-x-2"
           >
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-serene to-beige-500 rounded-xl flex items-center justify-center">
-                <Heart className="w-6 h-6 text-white" />
-              </div>
+              <Image
+                src="/images/logo-empresa-salud-solo-vividos-web.png"  // 📌 pon tu logo en /public/logo.png
+                alt="Alivio Vital Logo"
+                width={60}
+                height={60}
+                className="rounded-lg"
+              />
               <div className="hidden sm:block">
                 <h1 className="text-xl font-bold text-blue-serene">
                   Alivio Vital
@@ -73,11 +78,10 @@ export function Navbar() {
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                      isActive
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
                         ? "bg-blue-serene text-white shadow-md"
                         : "text-neutral-dark hover:bg-beige-200 hover:text-blue-serene"
-                    }`}
+                      }`}
                   >
                     {item.name}
                   </motion.div>
@@ -134,11 +138,10 @@ export function Navbar() {
                       <Link
                         href={item.href}
                         onClick={() => setIsOpen(false)}
-                        className={`block px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${
-                          isActive
+                        className={`block px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${isActive
                             ? "bg-blue-serene text-white shadow-md"
                             : "text-neutral-dark hover:bg-beige-200 hover:text-blue-serene"
-                        }`}
+                          }`}
                       >
                         {item.name}
                       </Link>

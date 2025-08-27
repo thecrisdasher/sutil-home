@@ -67,7 +67,7 @@ const config: Config = {
         },
         blue: {
           light: "#A8C5DB",
-          serene: "#6C8BAF",
+          serene: "#4CAF50",
         },
         neutral: {
           light: "#E8E8E8",
