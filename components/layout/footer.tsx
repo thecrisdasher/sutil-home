@@ -203,7 +203,7 @@ export function Footer() {
               <a
                 href="https://portafolio-mejorllamaacris.vercel.app/"
                 rel="noopener noreferrer"
-                className="text-beige-300 hover:text-beige-200 underline decoration-beige-300/60 hover:decoration-beige-200"
+                className="text-beige-300 hover:text-beige-200 decoration-beige-300/60 hover:decoration-beige-200"
               >
                 Mejor Llama A Cris!
               </a>
