@@ -205,7 +205,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-beige-300 hover:text-beige-200 underline decoration-beige-300/60 hover:decoration-beige-200"
               >
-                Mejor Llama A Cris
+                Mejor Llama A Cris!
               </a>
             </p>
             <div className="flex justify-center md:justify-end space-x-6 text-sm">
