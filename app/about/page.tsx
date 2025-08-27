@@ -112,7 +112,7 @@ export default function AboutPage() {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="/images/home-care-about-real.png"
                   alt="Equipo de profesionales de Alivio Vital Home Care"
                   width={600}
                   height={500}
@@ -302,7 +302,7 @@ export default function AboutPage() {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="/images/grupo-enfermeros.png"
                   alt="Cuidado profesional en el hogar"
                   width={600}
                   height={500}

@@ -94,8 +94,10 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        sans: ["Inter", "Poppins", "Nunito Sans", "sans-serif"],
+        sans: ["var(--font-plus-jakarta)", "sans-serif"], // para textos
+        serif: ["var(--font-dm-serif)", "serif"],        // para títulos
       },
+
     },
   },
   plugins: [require("tailwindcss-animate")],

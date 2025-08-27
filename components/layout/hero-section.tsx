@@ -83,7 +83,7 @@ export function HeroSection() {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-dark mb-6 leading-tight"
             >
               Cuidamos con{" "}
-              <span className="text-gradient">cariño</span>,{" "}
+              <span className="text-gradient">empatía</span>,{" "}
               <span className="text-gradient">profesionalismo</span>{" "}
               y <span className="text-gradient">respeto</span>
             </motion.h1>

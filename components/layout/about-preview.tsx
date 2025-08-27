@@ -1,18 +1,36 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle, Award, Users, Heart } from "lucide-react";
+import { CheckCircle, Award, Users, Heart, Sparkles, Shield, Clock, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const features = [
-  "Personal altamente capacitado y certificado",
-  "Atención personalizada las 24 horas",
-  "Equipos médicos de última tecnología",
-  "Seguimiento continuo del estado de salud",
-  "Coordinación con médicos tratantes",
-  "Planes de cuidado individualizados"
+  {
+    text: "Personal altamente capacitado y certificado",
+    icon: Shield
+  },
+  {
+    text: "Atención personalizada las 24 horas",
+    icon: Clock
+  },
+  {
+    text: "Equipos médicos de última tecnología",
+    icon: Sparkles
+  },
+  {
+    text: "Seguimiento continuo del estado de salud",
+    icon: Heart
+  },
+  {
+    text: "Coordinación con médicos tratantes",
+    icon: Users
+  },
+  {
+    text: "Planes de cuidado individualizados",
+    icon: Star
+  }
 ];
 
 const stats = [
@@ -20,79 +38,189 @@ const stats = [
     icon: Users,
     number: "500+",
     label: "Familias Atendidas",
-    color: "from-blue-serene to-blue-light"
+    color: "from-blue-serene via-blue-light to-cyan-400",
+    description: "Confiaron en nosotros"
   },
   {
     icon: Award,
     number: "15+",
     label: "Años de Experiencia",
-    color: "from-beige-500 to-beige-600"
+    color: "from-amber-400 via-beige-500 to-orange-400",
+    description: "En el sector salud"
   },
   {
     icon: Heart,
     number: "98%",
     label: "Satisfacción del Cliente",
-    color: "from-blue-light to-beige-400"
+    color: "from-rose-400 via-pink-400 to-red-400",
+    description: "Nos recomiendan"
   }
 ];
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.6, -0.05, 0.01, 0.99]
+    }
+  }
+};
+
 export function AboutPreview() {
   return (
-    <section className="py-20 gradient-bg">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 overflow-hidden">
+      {/* Subtle animated background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/70 via-white to-beige-50/70">
+        <motion.div
+          animate={{
+            scale: [1, 1.05, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-r from-blue-serene/8 to-beige-400/8 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.08, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3,
+          }}
+          className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-beige-500/8 to-blue-light/8 rounded-full blur-3xl"
+        />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
+          {/* Enhanced Content */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
           >
+            {/* Subtle badge with gentle animation */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-blue-serene mb-6"
+              variants={itemVariants}
+              className="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-white/90 to-blue-50/80 backdrop-blur-sm rounded-full border border-blue-serene/15 shadow-sm mb-6 hover:shadow-md transition-shadow duration-300"
             >
-              <Heart className="w-4 h-4 mr-2" />
-              Sobre Nosotros
+              <motion.div
+                animate={{
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <Heart className="w-4 h-4 mr-2 text-blue-serene" />
+              </motion.div>
+              <span className="text-sm font-medium bg-gradient-to-r from-blue-serene to-beige-600 bg-clip-text text-transparent">
+                Sobre Nosotros
+              </span>
             </motion.div>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-dark mb-6">
-              Comprometidos con tu <span className="text-gradient">bienestar</span> y <span className="text-gradient">dignidad</span>
-            </h2>
+            {/* Enhanced title with subtle effects */}
+            <motion.h2 
+              variants={itemVariants}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-6 leading-tight"
+            >
+              Comprometidos con tu{" "}
+              <span className="relative inline-block">
+                <span className="bg-gradient-to-r from-blue-serene via-blue-light to-cyan-500 bg-clip-text text-transparent">
+                  bienestar
+                </span>
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-blue-serene to-transparent rounded-full opacity-60"
+                />
+              </span>{" "}
+              y{" "}
+              <span className="relative inline-block">
+                <span className="bg-gradient-to-r from-green-400 via-emerald-500 to-purple-600 bg-clip-text text-transparent">
+                  dignidad
+                </span>
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 1, delay: 0.7 }}
+                  className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-beige-500 to-transparent rounded-full opacity-60"
+                />
+              </span>
+            </motion.h2>
 
-            <p className="text-lg text-neutral-dark/80 mb-8 leading-relaxed">
+            {/* Description */}
+            <motion.p 
+              variants={itemVariants}
+              className="text-lg text-neutral-dark/80 mb-8 leading-relaxed"
+            >
               En Alivio Vital Home Care, entendemos que cada persona merece recibir 
               atención médica de calidad en la comodidad y calidez de su hogar. 
               Nuestro equipo de profesionales está dedicado a brindar cuidados 
               excepcionales con el más alto nivel de compasión y respeto.
-            </p>
+            </motion.p>
 
-            {/* Features List */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 * index }}
-                  viewport={{ once: true }}
-                  className="flex items-center space-x-3"
-                >
-                  <CheckCircle className="w-5 h-5 text-blue-serene flex-shrink-0" />
-                  <span className="text-neutral-dark/80 text-sm">{feature}</span>
-                </motion.div>
-              ))}
-            </div>
+            {/* Features List with subtle improvements */}
+            <motion.div 
+              variants={containerVariants}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8"
+            >
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <motion.div
+                    key={feature.text}
+                    variants={itemVariants}
+                    whileHover={{ 
+                      scale: 1.01,
+                      x: 4,
+                      transition: { duration: 0.2 }
+                    }}
+                    className="group flex items-start space-x-3 p-3 rounded-xl bg-white/40 backdrop-blur-sm border border-blue-serene/8 hover:border-blue-serene/20 hover:shadow-sm transition-all duration-300"
+                  >
+                    <motion.div
+                      whileHover={{ rotate: 15 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-serene to-blue-light rounded-lg flex items-center justify-center shadow-sm"
+                    >
+                      <Icon className="w-4 h-4 text-white" />
+                    </motion.div>
+                    <span className="text-neutral-dark/90 text-sm group-hover:text-neutral-dark transition-colors duration-300">
+                      {feature.text}
+                    </span>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
 
-            {/* Stats */}
+            {/* Stats with refined animations */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
+              variants={containerVariants}
               className="grid grid-cols-3 gap-6 mb-8"
             >
               {stats.map((stat, index) => {
@@ -100,38 +228,56 @@ export function AboutPreview() {
                 return (
                   <motion.div
                     key={stat.label}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.1 * index }}
-                    viewport={{ once: true }}
-                    className="text-center"
+                    variants={itemVariants}
+                    whileHover={{ 
+                      scale: 1.02,
+                      y: -2,
+                      transition: { duration: 0.2 }
+                    }}
+                    className="text-center group cursor-pointer"
                   >
-                    <div className={`w-12 h-12 bg-gradient-to-br ${stat.color} rounded-xl flex items-center justify-center mx-auto mb-2`}>
-                      <Icon className="w-6 h-6 text-white" />
+                    <motion.div 
+                      className={`w-14 h-14 bg-gradient-to-br ${stat.color} rounded-xl flex items-center justify-center mx-auto mb-3 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
+                      whileHover={{ rotate: [0, -5, 5, 0] }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      <Icon className="w-6 h-6 text-white drop-shadow-sm" />
+                    </motion.div>
+                    <div className="text-2xl font-bold bg-gradient-to-r from-neutral-dark to-neutral-dark/80 bg-clip-text text-transparent">
+                      {stat.number}
                     </div>
-                    <div className="text-2xl font-bold text-neutral-dark">{stat.number}</div>
-                    <div className="text-sm text-neutral-dark/70">{stat.label}</div>
+                    <div className="text-sm font-medium text-neutral-dark/80 mb-1">
+                      {stat.label}
+                    </div>
+                    <div className="text-xs text-neutral-dark/60">
+                      {stat.description}
+                    </div>
                   </motion.div>
                 );
               })}
             </motion.div>
 
-            {/* CTA */}
+            {/* CTA Button with subtle enhancement */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
+              variants={itemVariants}
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
             >
               <Link href="/about">
-                <Button className="btn-primary">
-                  Conoce más sobre nosotros
+                <Button className="group relative px-6 py-3 bg-gradient-to-r from-blue-serene to-blue-light hover:from-blue-600 hover:to-blue-serene text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                  <span className="relative z-10">Conoce más sobre nosotros</span>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.8 }}
+                  />
                 </Button>
               </Link>
             </motion.div>
           </motion.div>
 
-          {/* Images */}
+          {/* Images Section with refined effects */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -140,30 +286,37 @@ export function AboutPreview() {
             className="relative"
           >
             <div className="relative">
-              {/* Main image */}
+              {/* Main image with subtle enhancement */}
               <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                className="relative z-10 rounded-3xl overflow-hidden shadow-2xl"
+                whileHover={{ 
+                  scale: 1.01,
+                  transition: { duration: 0.3 }
+                }}
+                className="relative z-10 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300"
               >
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent z-10" />
                 <Image
-                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="/images/home-care-about.png"
                   alt="Equipo médico profesional de Alivio Vital Home Care"
                   width={600}
                   height={400}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover transform hover:scale-102 transition-transform duration-500"
                 />
               </motion.div>
 
-              {/* Secondary image */}
+              {/* Secondary image with gentle animation */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-                className="absolute -bottom-8 -left-8 w-48 h-48 rounded-2xl overflow-hidden shadow-xl z-20"
+                whileHover={{ 
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                className="absolute -bottom-8 -left-8 w-48 h-48 rounded-2xl overflow-hidden shadow-xl z-20 border-3 border-white"
               >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-serene/10 to-transparent z-10" />
                 <Image
                   src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
                   alt="Cuidado personalizado en el hogar"
@@ -173,24 +326,52 @@ export function AboutPreview() {
                 />
               </motion.div>
 
-              {/* Floating elements */}
+              {/* Refined floating elements */}
               <motion.div
                 animate={{
-                  y: [0, -10, 0],
-                  rotate: [0, 5, 0],
+                  y: [0, -8, 0],
+                  rotate: [0, 45, 0],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-beige-400 to-amber-400 rounded-2xl opacity-30 -z-10 shadow-lg"
+              />
+              
+              <motion.div
+                animate={{
+                  y: [0, 12, 0],
+                  rotate: [0, -45, 0],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.5,
+                }}
+                className="absolute bottom-4 right-4 w-16 h-16 bg-gradient-to-br from-blue-serene to-blue-light rounded-xl opacity-25 -z-10 shadow-lg"
+              />
+
+              {/* Subtle decorative dots */}
+              <motion.div
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.4, 0.7, 0.4],
                 }}
                 transition={{
                   duration: 4,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-beige-400 to-blue-light rounded-2xl opacity-30 -z-10"
+                className="absolute top-1/3 -left-6 w-3 h-3 bg-blue-serene/40 rounded-full"
               />
-              
+
               <motion.div
                 animate={{
-                  y: [0, 15, 0],
-                  rotate: [0, -5, 0],
+                  scale: [1, 1.3, 1],
+                  opacity: [0.3, 0.6, 0.3],
                 }}
                 transition={{
                   duration: 5,
@@ -198,7 +379,7 @@ export function AboutPreview() {
                   ease: "easeInOut",
                   delay: 1,
                 }}
-                className="absolute bottom-4 right-4 w-16 h-16 bg-gradient-to-br from-blue-serene to-beige-500 rounded-xl opacity-20 -z-10"
+                className="absolute top-1/2 -right-8 w-2 h-2 bg-beige-500/50 rounded-full"
               />
             </div>
           </motion.div>

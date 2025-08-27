@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
+import { DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
 
-const inter = Inter({ 
+const dmSerif = DM_Serif_Display({ 
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: "400", // elegante y gruesa por defecto
+  variable: "--font-dm-serif",
   display: "swap",
 });
 
-const poppins = Poppins({ 
+const plusJakarta = Plus_Jakarta_Sans({ 
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
+  weight: ["500", "600", "700", "800"], // pesos fuertes
+  variable: "--font-plus-jakarta",
   display: "swap",
 });
 
@@ -106,7 +107,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="es" className={`${dmSerif.variable} ${plusJakarta.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />

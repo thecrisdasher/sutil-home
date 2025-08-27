@@ -161,7 +161,7 @@ export function CTASection() {
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="/images/home-care-ready.png"
                 alt="Enfermera profesional brindando cuidado personalizado"
                 width={600}
                 height={500}

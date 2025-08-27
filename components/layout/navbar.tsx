@@ -39,8 +39,8 @@ export function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-white/30 backdrop-blur-lg shadow-lg"
-          : "bg-transparent"
+        ? "bg-white/30 backdrop-blur-lg shadow-lg"
+        : "bg-transparent"
         }`}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,10 +59,10 @@ export function Navbar() {
                 className="rounded-lg"
               />
               <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-blue-serene">
+                <h1 className="text-2xl font-extrabold text-blue-serene font-[var(--font-dm-serif)]">
                   Alivio Vital
                 </h1>
-                <p className="text-xs text-neutral-dark -mt-1">
+                <p className="text-sm text-neutral-dark -mt-1 font-[var(--font-plus-jakarta)] font-semibold tracking-wide">
                   Home Care
                 </p>
               </div>
@@ -79,8 +79,8 @@ export function Navbar() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
-                        ? "bg-blue-serene text-white shadow-md"
-                        : "text-neutral-dark hover:bg-beige-200 hover:text-blue-serene"
+                      ? "bg-blue-serene text-white shadow-md"
+                      : "text-neutral-dark hover:bg-beige-200 hover:text-blue-serene"
                       }`}
                   >
                     {item.name}
@@ -139,8 +139,8 @@ export function Navbar() {
                         href={item.href}
                         onClick={() => setIsOpen(false)}
                         className={`block px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${isActive
-                            ? "bg-blue-serene text-white shadow-md"
-                            : "text-neutral-dark hover:bg-beige-200 hover:text-blue-serene"
+                          ? "bg-blue-serene text-white shadow-md"
+                          : "text-neutral-dark hover:bg-beige-200 hover:text-blue-serene"
                           }`}
                       >
                         {item.name}
