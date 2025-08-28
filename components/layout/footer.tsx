@@ -40,19 +40,19 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Teléfono",
-    value: "+57 (300) 123-4567",
+    value: "+57 (310) 6123883",
     href: "tel:+573001234567",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "info@aliviovital.com",
-    href: "mailto:info@aliviovital.com",
+    value: "aliviovitalhc@gmail.com",
+    href: "mailto:aliviovitalhc@gmail.com",
   },
   {
     icon: MapPin,
     label: "Ubicación",
-    value: "Bogotá, Colombia",
+    value: "Cal, Colombia",
     href: "#",
   },
 ];

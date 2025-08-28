@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import { Heart, Shield, Users, Clock, Home, Stethoscope } from "lucide-react";
+import { Heart, Shield, Users, Clock, Home, Stethoscope, Sparkles, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const services = [
@@ -10,100 +10,294 @@ const services = [
     icon: Heart,
     title: "Cuidado Integral",
     description: "Atención médica completa y personalizada en la comodidad del hogar.",
-    color: "from-blue-serene to-blue-light"
+    color: "from-rose-400 via-pink-500 to-red-500",
+    shadowColor: "shadow-rose-500/25",
+    highlight: "Integral"
   },
   {
     icon: Users,
     title: "Acompañamiento Emocional",
     description: "Apoyo psicológico y emocional para pacientes y familias.",
-    color: "from-beige-500 to-beige-600"
+    color: "from-amber-400 via-orange-500 to-yellow-500",
+    shadowColor: "shadow-amber-500/25",
+    highlight: "Emocional"
   },
   {
     icon: Stethoscope,
-    title: "Cuidado Posoperatorio",
+    title: "Cuidado Postoperatorio",
     description: "Seguimiento especializado después de procedimientos médicos.",
-    color: "from-blue-light to-beige-400"
+    color: "from-emerald-400 via-teal-500 to-cyan-500",
+    shadowColor: "shadow-emerald-500/25",
+    highlight: "Posoperatorio"
   },
   {
     icon: Shield,
     title: "Enfermería Profesional",
     description: "Personal altamente capacitado y certificado en cuidados de salud.",
-    color: "from-blue-serene to-beige-500"
+    color: "from-blue-500 via-indigo-500 to-purple-500",
+    shadowColor: "shadow-blue-500/25",
+    highlight: "Profesional"
   },
   {
     icon: Clock,
     title: "Disponibilidad 24/7",
     description: "Servicio continuo para emergencias y cuidados especiales.",
-    color: "from-beige-600 to-blue-serene"
+    color: "from-violet-400 via-purple-500 to-fuchsia-500",
+    shadowColor: "shadow-violet-500/25",
+    highlight: "24/7"
   },
   {
     icon: Home,
     title: "Masajes Terapéuticos",
     description: "Terapias de relajación y rehabilitación en casa.",
-    color: "from-blue-light to-blue-serene"
+    color: "from-teal-400 via-cyan-500 to-blue-500",
+    shadowColor: "shadow-teal-500/25",
+    highlight: "Terapéuticos"
   }
 ];
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const cardVariants: Variants = {
+  hidden: { 
+    opacity: 0, 
+    y: 30,
+    scale: 0.95
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
 export function ServicesPreview() {
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+    <section className="relative py-24 overflow-hidden">
+      {/* Enhanced Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+        <motion.div
+          animate={{
+            scale: [1, 1.05, 1],
+            rotate: [0, 90, 180],
+            opacity: [0.3, 0.4, 0.3],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute top-10 right-10 w-96 h-96 bg-gradient-to-r from-blue-serene/5 to-beige-400/5 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            rotate: [180, 90, 0],
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-r from-beige-500/5 to-blue-light/5 rounded-full blur-3xl"
+        />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Enhanced Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
+          {/* Enhanced Badge */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="inline-flex items-center px-4 py-2 bg-beige-100 rounded-full text-sm font-medium text-blue-serene mb-4"
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-white/90 to-beige-50/90 backdrop-blur-sm rounded-full border border-blue-serene/20 shadow-lg mb-8"
           >
-            <Heart className="w-4 h-4 mr-2" />
-            Nuestros Servicios
+            <motion.div
+              animate={{
+                rotate: [0, 360],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <Heart className="w-5 h-5 mr-3 text-blue-serene" />
+            </motion.div>
+            <span className="text-sm font-semibold bg-gradient-to-r from-blue-serene to-beige-600 bg-clip-text text-transparent">
+              Nuestros Servicios
+            </span>
+            <motion.div
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 2.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <Sparkles className="w-4 h-4 ml-2 text-amber-500" />
+            </motion.div>
           </motion.div>
-          <h2 className="text-3xl md:text-4xl font-bold text-neutral-dark mb-4">
-            Servicios que <span className="text-gradient">transforman vidas</span>
-          </h2>
-          <p className="text-lg text-neutral-dark/70 max-w-2xl mx-auto">
+
+          {/* Simplified Title */}
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+          >
+            <span className="text-neutral-dark">Servicios que </span>
+            <span className="bg-gradient-to-r from-blue-serene via-cyan-500 to-teal-500 bg-clip-text text-transparent relative">
+              transforman
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-blue-serene to-cyan-500 rounded-full"
+              />
+            </span>
+            <span className="text-neutral-dark"> </span>
+            <span className="bg-gradient-to-r from-rose-500 via-pink-500 to-red-500 bg-clip-text text-transparent relative">
+              vidas
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 1 }}
+                className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-rose-500 to-pink-500 rounded-full"
+              />
+            </span>
+          </motion.h2>
+
+          {/* Enhanced Description */}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-xl text-neutral-dark/80 max-w-3xl mx-auto leading-relaxed"
+          >
             Ofrecemos una amplia gama de servicios de salud domiciliaria diseñados 
-            para brindar el mejor cuidado en la comodidad de tu hogar.
-          </p>
+            para brindar el{" "}
+            <span className="bg-gradient-to-r from-blue-serene to-teal-500 bg-clip-text text-transparent font-semibold">
+              mejor cuidado
+            </span>{" "}
+            en la comodidad de tu hogar.
+          </motion.p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {/* Enhanced Services Grid */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+        >
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-beige-200"
+                variants={cardVariants}
+                whileHover={{ 
+                  y: -4,
+                  scale: 1.01,
+                  transition: { duration: 0.2 }
+                }}
+                className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-100 overflow-hidden"
               >
-                <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-neutral-dark mb-3 group-hover:text-blue-serene transition-colors duration-300">
-                  {service.title}
+                {/* Card Background Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-slate-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Simple floating particle */}
+                <motion.div
+                  animate={{
+                    y: [-2, 2, -2],
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: index * 0.3,
+                  }}
+                  className="absolute top-4 right-4 w-2 h-2 bg-gradient-to-r from-blue-serene to-cyan-400 rounded-full"
+                />
+                
+                {/* Enhanced Icon */}
+                <motion.div 
+                  className={`relative w-20 h-20 bg-gradient-to-br ${service.color} rounded-3xl flex items-center justify-center mb-8 ${service.shadowColor} shadow-lg group-hover:shadow-xl transition-all duration-300`}
+                  whileHover={{ 
+                    rotate: 5,
+                    scale: 1.05
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Icon className="w-10 h-10 text-white drop-shadow-lg" />
+                  
+                  {/* Icon glow effect */}
+                  <div className="absolute inset-0 bg-white/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.div>
+
+                {/* Enhanced Title */}
+                <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-serene transition-colors duration-300">
+                  {service.title.includes(service.highlight) ? (
+                    <>
+                      <span className="text-neutral-dark">
+                        {service.title.split(service.highlight)[0]}
+                      </span>
+                      <span className={`bg-gradient-to-r ${service.color} bg-clip-text text-transparent`}>
+                        {service.highlight}
+                      </span>
+                      <span className="text-neutral-dark">
+                        {service.title.split(service.highlight)[1]}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="text-neutral-dark">{service.title}</span>
+                  )}
                 </h3>
-                <p className="text-neutral-dark/70 leading-relaxed">
+
+                {/* Enhanced Description */}
+                <p className="text-neutral-dark/70 leading-relaxed relative z-10 group-hover:text-slate-600 transition-colors duration-300">
                   {service.description}
                 </p>
+
+                {/* Simplified hover border effect */}
+                <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-slate-200 transition-colors duration-300" />
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
-        {/* CTA */}
+        {/* Enhanced CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -112,9 +306,31 @@ export function ServicesPreview() {
           className="text-center"
         >
           <Link href="/services">
-            <Button className="btn-primary text-lg px-8 py-4">
-              Ver todos los servicios
-            </Button>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Button className="group relative px-10 py-5 text-lg font-semibold bg-gradient-to-r from-blue-serene via-cyan-500 to-teal-500 hover:from-blue-600 hover:via-cyan-600 hover:to-teal-600 text-white rounded-2xl shadow-2xl hover:shadow-blue-serene/30 transition-all duration-300 overflow-hidden">
+                <span className="relative z-10 flex items-center">
+                  Ver todos los servicios
+                  <motion.div
+                    animate={{ x: [0, 3, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Star className="w-5 h-5 ml-2" />
+                  </motion.div>
+                </span>
+                
+                {/* Simplified button shimmer effect */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "100%" }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                />
+              </Button>
+            </motion.div>
           </Link>
         </motion.div>
       </div>

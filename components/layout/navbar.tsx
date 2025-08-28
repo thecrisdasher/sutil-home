@@ -13,7 +13,7 @@ const navigation = [
   { name: "Inicio", href: "/" },
   { name: "Sobre Nosotros", href: "/about" },
   { name: "Servicios", href: "/services" },
-  { name: "Nuestro Equipo", href: "/team" },
+  { name: "Trabaja con nosotros", href: "/team" },
   { name: "Beneficios", href: "/benefits" },
   { name: "Testimonios", href: "/testimonials" },
   { name: "Contacto", href: "/contact" },

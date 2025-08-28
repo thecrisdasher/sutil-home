@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 const features = [
   {
     icon: Heart,
-    title: "Cuidado con Cariño",
+    title: "Cuidado con Empatía",
     description: "Atención personalizada y humana"
   },
   {
@@ -69,9 +69,19 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-blue-serene mb-6 shadow-lg"
+              whileHover={{ 
+                scale: 1.05,
+                y: -2,
+                boxShadow: "0 20px 40px rgba(59, 130, 246, 0.15)"
+              }}
+              className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-blue-serene mb-6 shadow-lg cursor-pointer transition-all duration-300"
             >
-              <Heart className="w-4 h-4 mr-2" />
+              <motion.div
+                whileHover={{ rotate: [0, -10, 10, 0] }}
+                transition={{ duration: 0.5 }}
+              >
+                <Heart className="w-4 h-4 mr-2" />
+              </motion.div>
               Cuidado Domiciliario Profesional
             </motion.div>
 
@@ -82,10 +92,55 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-dark mb-6 leading-tight"
             >
-              Cuidamos con{" "}
-              <span className="text-gradient">empatía</span>,{" "}
-              <span className="text-gradient">profesionalismo</span>{" "}
-              y <span className="text-gradient">respeto</span>
+              Servicio especializado de{" "}
+              <motion.span 
+                className="text-gradient cursor-pointer inline-block"
+                whileHover={{ 
+                  scale: 1.1,
+                  y: -5,
+                  textShadow: "0 0 20px rgba(59, 130, 246, 0.3)"
+                }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 300, 
+                  damping: 20 
+                }}
+              >
+                enfermeras
+              </motion.span>
+              ,{" "}
+              <motion.span 
+                className="text-gradient cursor-pointer inline-block"
+                whileHover={{ 
+                  scale: 1.1,
+                  y: -5,
+                  textShadow: "0 0 20px rgba(59, 130, 246, 0.3)"
+                }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 300, 
+                  damping: 20 
+                }}
+              >
+                fisioterapeutas
+              </motion.span>
+              {" "}y{" "}
+              <motion.span 
+                className="text-gradient cursor-pointer inline-block"
+                whileHover={{ 
+                  scale: 1.1,
+                  y: -5,
+                  textShadow: "0 0 20px rgba(59, 130, 246, 0.3)"
+                }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 300, 
+                  damping: 20 
+                }}
+              >
+                auxiliares
+              </motion.span>
+              {" "}a domicilio{" "}
             </motion.h1>
 
             {/* Description */}
@@ -115,11 +170,20 @@ export function HeroSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
-                    className="flex items-center space-x-3 p-3 bg-white/60 backdrop-blur-sm rounded-xl"
+                    whileHover={{ 
+                      scale: 1.05,
+                      y: -3,
+                      boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)"
+                    }}
+                    className="flex items-center space-x-3 p-3 bg-white/60 backdrop-blur-sm rounded-xl cursor-pointer transition-all duration-300"
                   >
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-serene to-beige-500 rounded-lg flex items-center justify-center">
+                    <motion.div 
+                      className="w-10 h-10 bg-gradient-to-br from-blue-serene to-beige-500 rounded-lg flex items-center justify-center"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
                       <Icon className="w-5 h-5 text-white" />
-                    </div>
+                    </motion.div>
                     <div>
                       <h3 className="font-semibold text-neutral-dark text-sm">
                         {feature.title}
@@ -166,7 +230,7 @@ export function HeroSection() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
-                className="relative z-10 rounded-3xl overflow-hidden shadow-2xl"
+                className="relative z-10 rounded-3xl overflow-hidden shadow-2xl -mt-60"
               >
                 <Image
                   src="/images/cuidados-ancianos.png"
