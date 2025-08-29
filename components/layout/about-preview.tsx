@@ -38,21 +38,21 @@ const stats = [
     icon: Users,
     number: "500+",
     label: "Familias Atendidas",
-    color: "from-blue-serene via-blue-light to-cyan-400",
+    color: "from-blue-serene via-blue-light to-beige-500",
     description: "Confiaron en nosotros"
   },
   {
     icon: Award,
     number: "15+",
     label: "Años de Experiencia",
-    color: "from-amber-400 via-beige-500 to-orange-400",
+    color: "from-blue-serene via-beige-500 to-blue-light",
     description: "En el sector salud"
   },
   {
     icon: Heart,
     number: "98%",
     label: "Satisfacción del Cliente",
-    color: "from-rose-400 via-pink-400 to-red-400",
+    color: "from-blue-serene via-blue-light to-beige-400",
     description: "Nos recomiendan"
   }
 ];
@@ -150,7 +150,7 @@ export function AboutPreview() {
             >
               Comprometidos con tu{" "}
               <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-blue-serene via-blue-light to-cyan-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-serene via-blue-light to-beige-500 bg-clip-text text-transparent">
                   bienestar
                 </span>
                 <motion.div
@@ -162,7 +162,7 @@ export function AboutPreview() {
               </span>{" "}
               y{" "}
               <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-green-400 via-emerald-500 to-purple-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-serene via-blue-light to-beige-500 bg-clip-text text-transparent">
                   dignidad
                 </span>
                 <motion.div
@@ -337,7 +337,7 @@ export function AboutPreview() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-beige-400 to-amber-400 rounded-2xl opacity-30 -z-10 shadow-lg"
+                className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-beige-400 to-blue-light rounded-2xl opacity-30 -z-10 shadow-lg"
               />
               
               <motion.div

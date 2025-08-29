@@ -12,7 +12,7 @@ interface WhatsAppButtonProps {
 
 export function WhatsAppButton({ 
   customMessage,
-  phoneNumber = "573001234567" // Número de WhatsApp (incluir código de país sin +)
+  phoneNumber = "573106123883" // Número de WhatsApp (incluir código de país sin +)
 }: WhatsAppButtonProps) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);

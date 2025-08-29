@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 import { 
   Star, 
@@ -11,15 +11,52 @@ import {
   ChevronLeft, 
   ChevronRight,
   Phone,
-  MessageCircle
+  MessageCircle,
+  Shield,
+  Clock,
+  Sparkles,
+  CheckCircle,
+  MapPin,
+  Calendar
 } from "lucide-react";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
-// Metadata se maneja dinámicamente para Client Components
+// Type definitions
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  delay: number;
+  duration: number;
+  size: number;
+}
 
-const testimonials = [
+interface Testimonial {
+  id: number;
+  name: string;
+  relation: string;
+  location: string;
+  rating: number;
+  text: string;
+  image: string;
+  service: string;
+  duration: string;
+}
+
+interface VideoTestimonial {
+  id: number;
+  name: string;
+  service: string;
+  thumbnail: string;
+  duration: string;
+}
+
+interface Stat {
+  number: string;
+  label: string;
+}
+
+const testimonials: Testimonial[] = [
   {
     id: 1,
     name: "María González",
@@ -88,14 +125,14 @@ const testimonials = [
   }
 ];
 
-const stats = [
+const stats: Stat[] = [
   { number: "500+", label: "Familias Atendidas" },
   { number: "98%", label: "Satisfacción" },
   { number: "4.9/5", label: "Calificación Promedio" },
   { number: "95%", label: "Recomendaciones" }
 ];
 
-const videoTestimonials = [
+const videoTestimonials: VideoTestimonial[] = [
   {
     id: 1,
     name: "Familia Morales",
@@ -119,426 +156,1421 @@ const videoTestimonials = [
   }
 ];
 
-export default function TestimonialsPage() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+// Enhanced floating particles
+const FloatingParticles = () => {
+  const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
-    document.title = "Testimonios - Alivio Vital Home Care";
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Lee las experiencias reales de nuestras familias. Testimonios auténticos sobre nuestros servicios de cuidado domiciliario profesional.');
-    }
+    const newParticles: Particle[] = Array.from({ length: 25 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      delay: Math.random() * 3,
+      duration: 4 + Math.random() * 6,
+      size: 1.5 + Math.random() * 3
+    }));
+    setParticles(newParticles);
   }, []);
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute rounded-full bg-gradient-to-r from-blue-serene/15 to-beige-400/15"
+          style={{
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            width: particle.size,
+            height: particle.size,
+          }}
+          animate={{
+            y: [0, -30, 0],
+            x: [0, 15, -15, 0],
+            opacity: [0, 0.8, 0],
+            scale: [1, 2, 1],
+          }}
+          transition={{
+            duration: particle.duration,
+            delay: particle.delay,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
+// Enhanced stat card component
+const StatCard = ({ stat, index }: { stat: Stat; index: number }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
+      whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+      transition={{ 
+        duration: 0.8, 
+        delay: index * 0.15,
+        type: "spring",
+        stiffness: 100
+      }}
+      viewport={{ once: true }}
+      whileHover={{ 
+        scale: 1.05, 
+        y: -8,
+        rotateY: 5,
+        transition: { duration: 0.3 }
+      }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="relative group cursor-pointer"
+    >
+      <div className="text-center p-8 bg-gradient-to-br from-white via-beige-50/50 to-white rounded-3xl border border-beige-200/50 shadow-lg relative overflow-hidden backdrop-blur-sm">
+        {/* Animated background gradient */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-blue-serene/5 to-beige-400/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        />
+        
+        {/* Number with enhanced animation */}
+        <motion.div 
+          className="text-4xl md:text-5xl font-bold text-gradient mb-3 relative z-10"
+          animate={isHovered ? { 
+            scale: [1, 1.1, 1],
+            rotate: [0, 3, -3, 0] 
+          } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          {stat.number}
+          <motion.div
+            className="absolute -top-2 -right-2 w-3 h-3 bg-beige-400/60 rounded-full"
+            animate={{
+              scale: [1, 1.5, 1],
+              opacity: [0.6, 1, 0.6],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: index * 0.3
+            }}
+          />
+        </motion.div>
+        
+        {/* Label */}
+        <motion.div 
+          className="text-neutral-dark/70 font-medium relative z-10 group-hover:text-neutral-dark transition-colors duration-300"
+          initial={{ opacity: 0.7 }}
+          whileHover={{ opacity: 1 }}
+        >
+          {stat.label}
+        </motion.div>
+        
+        {/* Decorative corner */}
+        <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-beige-400/20 to-transparent rounded-bl-2xl rounded-tr-3xl" />
+        
+        {/* Shine effect */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-3xl"
+          animate={isHovered ? { x: [-100, 300] } : {}}
+          transition={{ duration: 0.8 }}
+        />
+      </div>
+    </motion.div>
+  );
+};
+
+// Enhanced testimonial card component
+const TestimonialCard = ({ testimonial, index }: { testimonial: Testimonial; index: number }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50, rotateX: -10 }}
+      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      transition={{ 
+        duration: 0.8, 
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 80
+      }}
+      viewport={{ once: true }}
+      whileHover={{ 
+        y: -10, 
+        scale: 1.02,
+        rotateY: 2,
+        transition: { duration: 0.3 }
+      }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="relative group cursor-pointer"
+    >
+      <div className="bg-gradient-to-br from-white via-beige-50/30 to-white p-8 rounded-3xl border border-beige-200/50 hover:border-blue-serene/30 shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden h-full">
+        {/* Background effect */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-blue-serene/3 to-beige-400/3 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        />
+        
+        {/* Header with avatar and rating */}
+        <div className="flex items-center space-x-4 mb-6 relative z-10">
+          <motion.div
+            className="relative"
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            transition={{ duration: 0.3 }}
+          >
+            <img
+              src={testimonial.image}
+              alt={testimonial.name}
+              className="w-16 h-16 rounded-2xl object-cover border-3 border-beige-200 group-hover:border-blue-serene/50 transition-colors duration-300"
+            />
+            <motion.div
+              className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-br from-blue-serene to-beige-400 rounded-full flex items-center justify-center"
+              animate={isHovered ? { 
+                scale: [1, 1.2, 1],
+                rotate: [0, 180, 360] 
+              } : {}}
+              transition={{ duration: 0.8 }}
+            >
+              <Quote className="w-3 h-3 text-white" />
+            </motion.div>
+          </motion.div>
+          
+          <div className="flex-1">
+            <div className="font-bold text-xl text-neutral-dark group-hover:text-blue-serene transition-colors duration-300">
+              {testimonial.name}
+            </div>
+            <div className="text-sm text-neutral-dark/60 mb-2">
+              {testimonial.relation}
+            </div>
+            <div className="flex items-center space-x-1">
+              {[...Array(testimonial.rating)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 0.5 + i * 0.1,
+                    type: "spring",
+                    stiffness: 200
+                  }}
+                >
+                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        {/* Quote */}
+        <motion.blockquote 
+          className="text-neutral-dark/80 italic mb-6 line-clamp-4 leading-relaxed relative z-10"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          "{testimonial.text.substring(0, 180)}..."
+        </motion.blockquote>
+        
+        {/* Footer */}
+        <div className="flex items-center justify-between text-sm relative z-10">
+          <motion.div
+            className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-blue-serene/10 to-beige-400/10 rounded-full text-blue-serene font-medium border border-blue-serene/20"
+            whileHover={{ scale: 1.05, y: -2 }}
+          >
+            <Sparkles className="w-3 h-3 mr-1" />
+            {testimonial.service}
+          </motion.div>
+          <div className="flex items-center text-neutral-dark/60">
+            <MapPin className="w-3 h-3 mr-1" />
+            {testimonial.location}
+          </div>
+        </div>
+        
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-beige-400/10 to-transparent rounded-bl-3xl rounded-tr-3xl" />
+        
+        {/* Shine effect */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent rounded-3xl"
+          animate={isHovered ? { x: [-100, 400] } : {}}
+          transition={{ duration: 1 }}
+        />
+      </div>
+    </motion.div>
+  );
+};
+
+// Enhanced video testimonial component
+const VideoTestimonialCard = ({ video, index }: { video: VideoTestimonial; index: number }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ 
+        duration: 0.8, 
+        delay: index * 0.15,
+        type: "spring",
+        stiffness: 100
+      }}
+      viewport={{ once: true }}
+      whileHover={{ 
+        y: -8, 
+        scale: 1.03,
+        transition: { duration: 0.3 }
+      }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      className="relative group cursor-pointer"
+    >
+      <div className="relative rounded-3xl overflow-hidden shadow-xl group">
+        <img
+          src={video.thumbnail}
+          alt={video.name}
+          className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
+        />
+        
+        {/* Overlay */}
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/50 transition-all duration-500"
+        />
+        
+        {/* Play button */}
+        <motion.div 
+          className="absolute inset-0 flex items-center justify-center"
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div 
+            className="w-20 h-20 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl"
+            animate={isHovered ? {
+              boxShadow: [
+                "0 10px 30px rgba(0,0,0,0.2)",
+                "0 20px 60px rgba(59, 130, 246, 0.3)",
+                "0 10px 30px rgba(0,0,0,0.2)"
+              ]
+            } : {}}
+            transition={{ duration: 1, repeat: isHovered ? Infinity : 0 }}
+          >
+            <div className="w-0 h-0 border-l-[16px] border-l-blue-serene border-y-[12px] border-y-transparent ml-1" />
+          </motion.div>
+        </motion.div>
+        
+        {/* Duration badge */}
+        <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
+          {video.duration}
+        </div>
+        
+        {/* Content overlay */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 p-6 text-white"
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <h3 className="text-xl font-bold mb-1">{video.name}</h3>
+          <p className="text-white/80 text-sm">{video.service}</p>
+        </motion.div>
+        
+        {/* Decorative corner */}
+        <motion.div
+          className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-beige-400/20 to-transparent rounded-br-2xl"
+          animate={isHovered ? { 
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.4, 0.2]
+          } : {}}
+          transition={{ duration: 2, repeat: Infinity }}
+        />
+      </div>
+    </motion.div>
+  );
+};
+
+export default function TestimonialsPage() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Auto-advance testimonials
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  // Enhanced animation variants
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 50, rotateX: -15 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      transition: {
+        duration: 1,
+        type: "spring" as const,
+        stiffness: 80
+      }
+    }
+  };
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
+    <div className="min-h-screen overflow-hidden">
+      {/* Enhanced Hero Section */}
       <section className="py-20 bg-gradient-to-br from-beige-50 via-white to-blue-light/10 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-blue-serene/10 to-beige-400/10 rounded-full -translate-x-32 -translate-y-32"></div>
-        <div className="absolute bottom-0 right-0 w-48 h-48 bg-gradient-to-tl from-beige-500/10 to-blue-light/10 rounded-full translate-x-24 translate-y-24"></div>
+        <FloatingParticles />
+        
+        {/* Enhanced geometric animations */}
+        <motion.div 
+          className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-blue-serene/8 to-beige-400/8 rounded-full"
+          animate={{
+            scale: [1, 1.3, 1],
+            rotate: [0, 90, 180, 270, 360],
+            x: [-160, -120, -160],
+            y: [-160, -200, -160],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        
+        <motion.div 
+          className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-beige-500/8 to-blue-light/8 rounded-full"
+          animate={{
+            scale: [1, 0.7, 1],
+            rotate: [0, -90, -180, -270, -360],
+            x: [128, 160, 128],
+            y: [128, 80, 128],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        
+        {/* Additional floating elements */}
+        {Array.from({ length: 5 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className={`absolute w-2 h-2 bg-${i % 2 === 0 ? 'blue-serene' : 'beige-400'}/30 rounded-full`}
+            style={{
+              top: `${20 + Math.random() * 60}%`,
+              left: `${10 + Math.random() * 80}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.3, 1, 0.3],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto space-y-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-center max-w-5xl mx-auto space-y-10"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-serene/10 to-beige-400/10 rounded-full text-sm font-medium text-blue-serene border border-blue-serene/20">
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -5 }}
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-serene/10 to-beige-400/10 rounded-full text-sm font-medium text-blue-serene border border-blue-serene/20 backdrop-blur-sm relative overflow-hidden group cursor-pointer"
+            >
               <Heart className="w-4 h-4 mr-2" />
               Testimonios Reales
-            </div>
+              <motion.div
+                className=" "
+                initial={{ x: "-100%" }}
+                whileHover={{ x: "100%" }}
+                transition={{ duration: 0.8 }}
+              />
+            </motion.div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-dark leading-tight">
-              Historias que <span className="text-gradient">inspiran confianza</span>
-            </h1>
+            <motion.h1 
+              variants={itemVariants}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-dark leading-tight"
+            >
+              Historias que{" "}
+              <motion.span 
+                className="text-gradient relative inline-block"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                inspiran confianza
+                <motion.div
+                  className="absolute -bottom-3 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-serene to-beige-400 rounded-full"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 2, delay: 1 }}
+                />
+              </motion.span>
+            </motion.h1>
             
-            <p className="text-xl text-neutral-dark/70 leading-relaxed max-w-3xl mx-auto">
+            <motion.p 
+              variants={itemVariants}
+              className="text-xl text-neutral-dark/70 leading-relaxed max-w-4xl mx-auto"
+            >
               Conoce las experiencias reales de las familias que han confiado en 
               Alivio Vital para el cuidado de sus seres queridos.
-            </p>
+            </motion.p>
             
-            <div className="flex items-center justify-center space-x-2">
+            <motion.div 
+              variants={itemVariants}
+              className="flex items-center justify-center space-x-3"
+            >
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+                <motion.div
+                  key={i}
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: 1.5 + i * 0.1,
+                    type: "spring",
+                    stiffness: 200
+                  }}
+                  whileHover={{ 
+                    scale: 1.3, 
+                    rotate: 360,
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  <Star className="w-7 h-7 text-yellow-400 fill-current" />
+                </motion.div>
               ))}
-              <span className="ml-2 text-lg font-semibold text-neutral-dark">4.9/5</span>
-              <span className="text-neutral-dark/60">• 500+ reseñas</span>
-            </div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 2 }}
+                className="ml-4 flex items-center space-x-4 text-lg font-semibold text-neutral-dark"
+              >
+                <span>4.9/5</span>
+                <div className="w-1 h-6 bg-gradient-to-b from-blue-serene to-beige-400 rounded-full" />
+                <span className="text-neutral-dark/60">500+ reseñas</span>
+              </motion.div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Enhanced Stats Section */}
+      <section className="py-20 bg-white relative overflow-hidden">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-3">
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e5d5b7' fill-opacity='0.05'%3E%3Ccircle cx='20' cy='20' r='1'/%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+            animate={{
+              backgroundPosition: ["0% 0%", "100% 100%"],
+            }}
+            transition={{
+              duration: 30,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-neutral-dark mb-4">
+              Números que <span className="text-gradient">hablan por sí solos</span>
+            </h2>
+            <motion.div
+              className="w-24 h-1 bg-gradient-to-r from-blue-serene to-beige-400 mx-auto rounded-full"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1.2, delay: 0.3 }}
+            />
+          </motion.div>
+          
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center p-6 bg-gradient-to-br from-beige-50 to-white rounded-2xl border border-beige-200"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-neutral-dark/70 font-medium">
-                  {stat.label}
-                </div>
-              </motion.div>
+              <StatCard key={index} stat={stat} index={index} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Testimonial Carousel */}
-      <section className="py-20 bg-gradient-to-br from-beige-50 to-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Enhanced Featured Testimonial Carousel */}
+      <section className="py-24 bg-gradient-to-br from-beige-50 via-white to-blue-light/5 relative overflow-hidden">
+        {/* Enhanced background elements */}
+        <motion.div
+          className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-serene/3 to-beige-400/3 rounded-full"
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-dark mb-4">
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-neutral-dark mb-6"
+              whileInView={{ scale: [0.9, 1] }}
+              transition={{ duration: 0.6 }}
+            >
               Testimonios <span className="text-gradient">destacados</span>
-            </h2>
-            <p className="text-lg text-neutral-dark/70 max-w-2xl mx-auto">
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-neutral-dark/70 max-w-3xl mx-auto"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               Experiencias reales de familias que han transformado sus vidas 
-              con nuestros servicios de cuidado domiciliario.
-            </p>
+              con nuestros servicios de cuidado domiciliario profesional.
+            </motion.p>
+            
+            <motion.div
+              className="w-32 h-1.5 bg-gradient-to-r from-blue-serene to-beige-400 mx-auto mt-8 rounded-full"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1.5, delay: 0.4 }}
+            />
           </motion.div>
           
-          <div className="relative max-w-4xl mx-auto">
+          <div className="relative max-w-6xl mx-auto">
             <motion.div
               key={currentTestimonial}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.5 }}
-              className="bg-white rounded-3xl shadow-2xl p-8 md:p-12"
+              initial={{ opacity: 0, x: 100, rotateY: 15 }}
+              animate={{ opacity: 1, x: 0, rotateY: 0 }}
+              exit={{ opacity: 0, x: -100, rotateY: -15 }}
+              transition={{ duration: 0.7, type: "spring", stiffness: 80 }}
+              className="bg-gradient-to-br from-white via-beige-50/30 to-white rounded-3xl shadow-2xl p-8 md:p-16 relative overflow-hidden border border-beige-200/50"
             >
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="flex-shrink-0">
-                  <div className="relative">
-                    <Image
+              {/* Background decorative effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-blue-serene/2 to-beige-400/2 rounded-3xl"
+                animate={{
+                  opacity: [0.02, 0.05, 0.02],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              
+              <div className="flex flex-col lg:flex-row items-center gap-12 relative z-10">
+                <motion.div 
+                  className="flex-shrink-0"
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <div className="relative group">
+                    <motion.img
                       src={testimonials[currentTestimonial].image}
                       alt={testimonials[currentTestimonial].name}
-                      width={120}
-                      height={120}
-                      className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-beige-200"
+                      className="w-32 h-32 md:w-40 md:h-40 rounded-3xl object-cover border-4 border-beige-200 group-hover:border-blue-serene/50 transition-all duration-500 shadow-xl"
+                      whileHover={{ scale: 1.05, rotate: 2 }}
+                      transition={{ duration: 0.3 }}
                     />
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-blue-serene to-beige-500 rounded-full flex items-center justify-center">
-                      <Quote className="w-4 h-4 text-white" />
-                    </div>
+                    <motion.div 
+                      className="absolute -top-3 -right-3 w-12 h-12 bg-gradient-to-br from-blue-serene to-beige-400 rounded-2xl flex items-center justify-center shadow-lg"
+                      animate={{
+                        rotate: [0, 10, -10, 0],
+                        scale: [1, 1.1, 1],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <Quote className="w-6 h-6 text-white" />
+                    </motion.div>
+                    
+                    {/* Floating decoration */}
+                    <motion.div
+                      className="absolute -bottom-2 -left-2 w-6 h-6 bg-beige-400/60 rounded-full"
+                      animate={{
+                        y: [0, -8, 0],
+                        opacity: [0.6, 1, 0.6],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
                   </div>
-                </div>
+                </motion.div>
                 
-                <div className="flex-1 text-center md:text-left space-y-6">
-                  <div className="flex items-center justify-center md:justify-start space-x-1">
+                <div className="flex-1 text-center lg:text-left space-y-8">
+                  <motion.div 
+                    className="flex items-center justify-center lg:justify-start space-x-2"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                  >
                     {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                      <motion.div
+                        key={i}
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ 
+                          duration: 0.5, 
+                          delay: 0.4 + i * 0.1,
+                          type: "spring",
+                          stiffness: 200
+                        }}
+                        whileHover={{ scale: 1.3, rotate: 360 }}
+                      >
+                        <Star className="w-6 h-6 text-yellow-400 fill-current" />
+                      </motion.div>
                     ))}
-                  </div>
+                  </motion.div>
                   
-                  <blockquote className="text-lg md:text-xl text-neutral-dark/80 italic leading-relaxed">
+                  <motion.blockquote 
+                    className="text-xl md:text-2xl text-neutral-dark/85 italic leading-relaxed font-light"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                  >
                     "{testimonials[currentTestimonial].text}"
-                  </blockquote>
+                  </motion.blockquote>
                   
-                  <div className="space-y-2">
-                    <div className="font-bold text-xl text-neutral-dark">
+                  <motion.div 
+                    className="space-y-4"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                  >
+                    <div className="font-bold text-2xl text-neutral-dark">
                       {testimonials[currentTestimonial].name}
                     </div>
-                    <div className="text-neutral-dark/60">
+                    <div className="text-lg text-neutral-dark/60">
                       {testimonials[currentTestimonial].relation} • {testimonials[currentTestimonial].location}
                     </div>
-                    <div className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-blue-serene/10 to-beige-400/10 rounded-full text-sm font-medium text-blue-serene">
-                      {testimonials[currentTestimonial].service} • {testimonials[currentTestimonial].duration}
+                    
+                    <div className="flex flex-wrap items-center gap-3 justify-center lg:justify-start">
+                      <motion.div
+                        className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-serene/10 to-beige-400/10 rounded-full text-sm font-medium text-blue-serene border border-blue-serene/20"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                      >
+                        <Sparkles className="w-4 h-4 mr-2" />
+                        {testimonials[currentTestimonial].service}
+                      </motion.div>
+                      
+                      <motion.div
+                        className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-beige-400/10 to-blue-serene/10 rounded-full text-sm font-medium text-beige-600 border border-beige-400/20"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                      >
+                        <Calendar className="w-4 h-4 mr-2" />
+                        {testimonials[currentTestimonial].duration}
+                      </motion.div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
+              
+              {/* Decorative corner elements */}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-beige-400/10 to-transparent rounded-bl-3xl rounded-tr-3xl" />
+              <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-blue-serene/10 to-transparent rounded-tr-3xl rounded-bl-3xl" />
             </motion.div>
             
-            {/* Navigation */}
-            <div className="flex items-center justify-center mt-8 space-x-4">
-              <button
+            {/* Enhanced Navigation */}
+            <div className="flex items-center justify-center mt-12 space-x-6">
+              <motion.button
                 onClick={prevTestimonial}
-                className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-beige-50 transition-colors"
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-14 h-14 bg-white rounded-2xl shadow-xl flex items-center justify-center hover:shadow-2xl transition-all duration-300 group relative overflow-hidden"
               >
-                <ChevronLeft className="w-6 h-6 text-neutral-dark" />
-              </button>
+                <ChevronLeft className="w-6 h-6 text-neutral-dark group-hover:text-blue-serene transition-colors z-10 relative" />
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-blue-serene/5 to-beige-400/5 rounded-2xl"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "0%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.button>
               
-              <div className="flex space-x-2">
+              <div className="flex space-x-3">
                 {testimonials.map((_, index) => (
-                  <button
+                  <motion.button
                     key={index}
-                    onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${
+                    onClick={() => {
+                      setCurrentTestimonial(index);
+                      setIsAutoPlaying(false);
+                      setTimeout(() => setIsAutoPlaying(true), 10000);
+                    }}
+                    whileHover={{ scale: 1.3 }}
+                    whileTap={{ scale: 0.9 }}
+                    className={`relative overflow-hidden rounded-full transition-all duration-300 ${
                       index === currentTestimonial
-                        ? 'bg-blue-serene'
-                        : 'bg-neutral-dark/20 hover:bg-neutral-dark/40'
+                        ? 'w-12 h-4 bg-gradient-to-r from-blue-serene to-beige-400'
+                        : 'w-4 h-4 bg-neutral-dark/20 hover:bg-neutral-dark/40'
                     }`}
-                  />
+                  >
+                    {index === currentTestimonial && (
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-beige-400 to-blue-serene rounded-full"
+                        initial={{ x: "-100%" }}
+                        animate={{ x: "0%" }}
+                        transition={{ duration: 5, ease: "linear" }}
+                      />
+                    )}
+                  </motion.button>
                 ))}
               </div>
               
-              <button
+              <motion.button
                 onClick={nextTestimonial}
-                className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-beige-50 transition-colors"
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-14 h-14 bg-white rounded-2xl shadow-xl flex items-center justify-center hover:shadow-2xl transition-all duration-300 group relative overflow-hidden"
               >
-                <ChevronRight className="w-6 h-6 text-neutral-dark" />
-              </button>
+                <ChevronRight className="w-6 h-6 text-neutral-dark group-hover:text-blue-serene transition-colors z-10 relative" />
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-blue-serene/5 to-beige-400/5 rounded-2xl"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "0%" }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* All Testimonials Grid */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-dark mb-4">
-              Más <span className="text-gradient">testimonios</span>
-            </h2>
-            <p className="text-lg text-neutral-dark/70 max-w-2xl mx-auto">
-              Cada historia es única, pero todas comparten algo en común: 
-              la confianza en nuestro cuidado profesional.
-            </p>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.slice(0, 6).map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-br from-beige-50 to-white p-6 rounded-2xl border border-beige-200 hover:shadow-lg transition-all duration-300"
-              >
-                <div className="flex items-center space-x-4 mb-4">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    width={60}
-                    height={60}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div className="flex-1">
-                    <div className="font-semibold text-neutral-dark">{testimonial.name}</div>
-                    <div className="text-sm text-neutral-dark/60">{testimonial.relation}</div>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                </div>
-                
-                <blockquote className="text-neutral-dark/80 italic mb-4 line-clamp-4">
-                  "{testimonial.text.substring(0, 150)}..."
-                </blockquote>
-                
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-blue-serene font-medium">{testimonial.service}</span>
-                  <span className="text-neutral-dark/60">{testimonial.location}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+      {/* Enhanced All Testimonials Grid */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-10 w-32 h-32 border-2 border-blue-serene rounded-full animate-pulse"></div>
+          <div className="absolute top-60 right-20 w-24 h-24 border-2 border-beige-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-40 left-1/4 w-20 h-20 border-2 border-blue-light rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
-      </section>
 
-      {/* Video Testimonials */}
-      <section className="py-20 bg-gradient-to-br from-blue-light/5 to-beige-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-dark mb-4">
-              Testimonios en <span className="text-gradient">video</span>
-            </h2>
-            <p className="text-lg text-neutral-dark/70 max-w-2xl mx-auto">
-              Escucha directamente de nuestras familias sobre su experiencia 
-              con Alivio Vital Home Care.
-            </p>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {videoTestimonials.map((video, index) => (
-              <motion.div
-                key={video.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="relative group cursor-pointer"
-              >
-                <div className="relative rounded-2xl overflow-hidden shadow-lg">
-                  <Image
-                    src={video.thumbnail}
-                    alt={video.name}
-                    width={400}
-                    height={300}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-300"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <div className="w-0 h-0 border-l-[12px] border-l-blue-serene border-y-[8px] border-y-transparent ml-1"></div>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-sm">
-                    {video.duration}
-                  </div>
-                </div>
-                <div className="mt-4 space-y-2">
-                  <h3 className="font-semibold text-neutral-dark">{video.name}</h3>
-                  <p className="text-sm text-neutral-dark/60">{video.service}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Indicators */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-neutral-dark mb-6"
+              whileInView={{ scale: [0.9, 1] }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="space-y-8"
             >
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-neutral-dark mb-4">
-                  Confianza que <span className="text-gradient">nos respalda</span>
-                </h2>
-                <p className="text-lg text-neutral-dark/70">
-                  Nuestros testimonios reflejan años de dedicación, profesionalismo 
-                  y compromiso con la excelencia en el cuidado domiciliario.
-                </p>
-              </div>
-              
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-serene to-beige-500 rounded-xl flex items-center justify-center">
-                    <Users className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-neutral-dark">500+ Familias Atendidas</div>
-                    <div className="text-neutral-dark/60">En toda la República Mexicana</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-serene to-beige-500 rounded-xl flex items-center justify-center">
-                    <Award className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-neutral-dark">Certificaciones Profesionales</div>
-                    <div className="text-neutral-dark/60">Personal altamente calificado</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-serene to-beige-500 rounded-xl flex items-center justify-center">
-                    <Star className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-neutral-dark">98% de Satisfacción</div>
-                    <div className="text-neutral-dark/60">Calificación promedio de 4.9/5</div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              Más <span className="text-gradient">testimonios</span>
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-neutral-dark/70 max-w-3xl mx-auto"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Cada historia es única, pero todas comparten algo en común: 
+              la confianza en nuestro cuidado profesional y dedicado.
+            </motion.p>
             
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              className="w-32 h-1.5 bg-gradient-to-r from-blue-serene to-beige-400 mx-auto mt-8 rounded-full"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1.5, delay: 0.4 }}
+            />
+          </motion.div>
+          
+          <motion.div 
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {testimonials.slice(0, 6).map((testimonial, index) => (
+              <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Enhanced Video Testimonials */}
+      <section className="py-24 bg-gradient-to-br from-blue-light/3 via-beige-50/50 to-white relative overflow-hidden">
+        {/* Enhanced background animation */}
+        <motion.div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e5d5b7' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+          animate={{
+            backgroundPosition: ["0% 0%", "100% 100%"],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-neutral-dark mb-6"
+              whileInView={{ scale: [0.9, 1] }}
+              transition={{ duration: 0.6 }}
+            >
+              Testimonios en <span className="text-gradient">video</span>
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-neutral-dark/70 max-w-3xl mx-auto"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Escucha directamente de nuestras familias sobre su experiencia 
+              transformadora con Alivio Vital Home Care.
+            </motion.p>
+            
+            <motion.div
+              className="w-32 h-1.5 bg-gradient-to-r from-blue-serene to-beige-400 mx-auto mt-8 rounded-full"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 1.5, delay: 0.4 }}
+            />
+          </motion.div>
+          
+          <motion.div 
+            className="grid md:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {videoTestimonials.map((video, index) => (
+              <VideoTestimonialCard key={video.id} video={video} index={index} />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Enhanced Trust Indicators */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Background effects */}
+        <motion.div
+          className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-serene/2 to-beige-400/2 rounded-full"
+          animate={{
+            scale: [1, 1.3, 1],
+            rotate: [0, 90, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        
+        <motion.div
+          className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-beige-500/2 to-blue-light/2 rounded-full"
+          animate={{
+            scale: [1, 0.7, 1],
+            rotate: [0, -90, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -100, rotateY: -15 }}
+              whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+              transition={{ duration: 1.2, type: "spring", stiffness: 60 }}
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <Image
+              <motion.div 
+                className="relative rounded-3xl overflow-hidden shadow-2xl group"
+                whileHover={{ 
+                  scale: 1.03, 
+                  rotateY: 8,
+                  transition: { duration: 0.6 }
+                }}
+              >
+                <img
                   src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                  alt="Familia feliz con cuidado domiciliario"
-                  width={600}
-                  height={500}
-                  className="w-full h-auto object-cover"
+                  alt="Beneficios del cuidado domiciliario"
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-serene/20 via-transparent to-transparent"></div>
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-t from-blue-serene/30 via-transparent to-transparent group-hover:from-blue-serene/20 transition-all duration-500"
+                />
+                
+                {/* Enhanced overlay stats */}
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500"
+                  initial={{ scale: 0.8 }}
+                  whileHover={{ scale: 1 }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                >
+                  <div className="text-white text-center bg-black/20 backdrop-blur-sm rounded-3xl p-8">
+                    <motion.div
+                      className="text-5xl font-bold mb-3"
+                      animate={{ 
+                        scale: [1, 1.1, 1],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                      }}
+                    >
+                      24/7
+                    </motion.div>
+                    <div className="text-xl">Disponibilidad</div>
+                    <div className="text-sm opacity-80 mt-2">Siempre contigo</div>
+                  </div>
+                </motion.div>
+              </motion.div>
+              
+              {/* Enhanced floating decorations */}
+              <motion.div 
+                className="absolute -top-8 -right-8 w-40 h-40 bg-gradient-to-br from-beige-400/80 to-beige-500/80 rounded-3xl rotate-12 opacity-80 shadow-lg"
+                animate={{
+                  rotate: [12, 25, 12],
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              
+              <motion.div 
+                className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-br from-blue-light/80 to-blue-serene/80 rounded-3xl -rotate-12 opacity-80 shadow-lg"
+                animate={{
+                  rotate: [-12, -25, -12],
+                  scale: [1, 0.9, 1],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              />
+              
+              {/* Enhanced pulsing elements */}
+              <motion.div
+                className="absolute top-1/3 left-8 w-4 h-4 bg-beige-400/80 rounded-full shadow-lg"
+                animate={{
+                  scale: [1, 2, 1],
+                  opacity: [0.8, 1, 0.8],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              
+              <motion.div
+                className="absolute bottom-1/3 right-12 w-3 h-3 bg-blue-serene/80 rounded-full shadow-lg"
+                animate={{
+                  scale: [1, 2.5, 1],
+                  opacity: [0.6, 1, 0.6],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              />
+              
+              <motion.div
+                className="absolute top-2/3 left-1/4 w-2 h-2 bg-beige-500/80 rounded-full shadow-lg"
+                animate={{
+                  scale: [1, 3, 1],
+                  opacity: [0.5, 1, 0.5],
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+              />
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2, delay: 0.3, type: "spring", stiffness: 60 }}
+              viewport={{ once: true }}
+              className="space-y-12"
+            >
+              <div>
+                <motion.h2 
+                  className="text-3xl md:text-4xl font-bold text-neutral-dark mb-6"
+                  whileInView={{ scale: [0.9, 1] }}
+                  transition={{ duration: 0.6 }}
+                >
+                  Confianza que <span className="text-gradient">nos respalda</span>
+                </motion.h2>
+                <motion.p 
+                  className="text-lg text-neutral-dark/70"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  Nuestros testimonios reflejan años de dedicación, profesionalismo 
+                  y compromiso inquebrantable con la excelencia en el cuidado domiciliario.
+                </motion.p>
               </div>
               
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-beige-400 to-beige-500 rounded-2xl rotate-12 opacity-80"></div>
-              <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-br from-blue-light to-blue-serene rounded-xl -rotate-12 opacity-80"></div>
+              <div className="space-y-8">
+                {[
+                  {
+                    icon: Users,
+                    title: "500+ Familias Atendidas",
+                    subtitle: "En toda la República Mexicana",
+                    color: "from-blue-serene to-blue-light"
+                  },
+                  {
+                    icon: Award,
+                    title: "Certificaciones Profesionales",
+                    subtitle: "Personal altamente calificado",
+                    color: "from-beige-400 to-beige-500"
+                  },
+                  {
+                    icon: Star,
+                    title: "98% de Satisfacción",
+                    subtitle: "Calificación promedio de 4.9/5",
+                    color: "from-blue-serene to-beige-400"
+                  }
+                ].map((item, index) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -50, scale: 0.9 }}
+                      whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                      transition={{ 
+                        duration: 0.8, 
+                        delay: index * 0.2,
+                        type: "spring",
+                        stiffness: 100
+                      }}
+                      viewport={{ once: true }}
+                      whileHover={{ 
+                        x: 12, 
+                        scale: 1.02,
+                        transition: { duration: 0.3 }
+                      }}
+                      className="flex items-center space-x-6 p-6 bg-gradient-to-r from-white via-beige-50/30 to-white rounded-3xl border border-beige-200/50 shadow-lg hover:shadow-xl transition-all duration-500 group relative overflow-hidden"
+                    >
+                      <motion.div 
+                        className={`w-16 h-16 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 relative overflow-hidden`}
+                        whileHover={{ 
+                          scale: 1.1, 
+                          rotate: 5,
+                          transition: { duration: 0.3 }
+                        }}
+                      >
+                        <Icon className="w-8 h-8 text-white relative z-10" />
+                        <motion.div
+                          className="absolute inset-0 bg-white/20 rounded-2xl"
+                          animate={{
+                            scale: [1, 1.5, 1],
+                            opacity: [0, 0.5, 0]
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: index * 0.5
+                          }}
+                        />
+                      </motion.div>
+                      <div className="flex-1">
+                        <div className="font-bold text-xl text-neutral-dark group-hover:text-blue-serene transition-colors duration-300">
+                          {item.title}
+                        </div>
+                        <div className="text-neutral-dark/60 mt-1">{item.subtitle}</div>
+                      </div>
+                      
+                      {/* Hover effect background */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-blue-serene/3 to-beige-400/3 rounded-3xl"
+                        initial={{ x: "-100%" }}
+                        whileHover={{ x: "0%" }}
+                        transition={{ duration: 0.5 }}
+                      />
+                      
+                      {/* Shine effect */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-3xl"
+                        animate={{ x: [-100, 400] }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "linear",
+                          delay: index * 1.5
+                        }}
+                      />
+                    </motion.div>
+                  );
+                })}
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-blue-serene to-beige-500 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Enhanced CTA */}
+      <section className="py-24 bg-gradient-to-br from-blue-serene to-beige-500 text-white relative overflow-hidden">
+        {/* Enhanced background effects */}
+        <motion.div
+          className="absolute inset-0"
+          animate={{
+            background: [
+              "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 50%)",
+              "radial-gradient(circle at 80% 70%, rgba(255,255,255,0.15) 0%, transparent 50%)",
+              "radial-gradient(circle at 40% 80%, rgba(255,255,255,0.15) 0%, transparent 50%)",
+              "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 50%)",
+            ]
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        {/* Enhanced floating elements */}
+        <motion.div
+          className="absolute top-16 left-16 w-24 h-24 border-2 border-white/20 rounded-3xl"
+          animate={{
+            rotate: [0, 360],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        
+        <motion.div
+          className="absolute bottom-16 right-16 w-20 h-20 border-2 border-white/20 rounded-2xl"
+          animate={{
+            rotate: [360, 0],
+            scale: [1, 0.7, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        
+        {/* Multiple floating particles */}
+        {Array.from({ length: 8 }).map((_, i) => (
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            key={i}
+            className="absolute w-2 h-2 bg-white/30 rounded-full"
+            style={{
+              top: `${10 + Math.random() * 80}%`,
+              left: `${5 + Math.random() * 90}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.3, 1, 0.3],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 1, type: "spring", stiffness: 60 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto space-y-8"
+            className="max-w-5xl mx-auto space-y-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              ¿Listo para ser parte de nuestras historias de éxito?
-            </h2>
-            <p className="text-xl opacity-90">
+            <motion.h2 
+              className="text-3xl md:text-5xl font-bold leading-tight"
+              whileInView={{ scale: [0.9, 1] }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              ¿Listo para ser parte de nuestras 
+              <br />
+              <span className="text-beige-100">historias de éxito?</span>
+            </motion.h2>
+            
+            <motion.p 
+              className="text-xl md:text-2xl opacity-90 leading-relaxed"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 0.9 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               Únete a las cientos de familias que han confiado en nosotros. 
-              Contáctanos hoy para una consulta gratuita.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
-                <Button className="bg-white text-blue-serene hover:bg-white/90 px-8 py-3">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Consulta Gratuita
-                </Button>
-              </Link>
-              <a 
-                href="https://wa.me/1234567890?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20los%20servicios%20de%20Alivio%20Vital%20después%20de%20leer%20los%20testimonios."
-                target="_blank"
-                rel="noopener noreferrer"
+              Contáctanos hoy para una consulta gratuita personalizada.
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-6 justify-center"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <motion.div
+                whileHover={{ 
+                  scale: 1.05, 
+                  y: -5,
+                  boxShadow: "0 25px 50px rgba(0,0,0,0.25)"
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="relative group"
               >
-                <Button className="border-2 border-white text-white hover:bg-white hover:text-blue-serene px-8 py-3">
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  WhatsApp
+                <Button className="bg-white text-blue-serene hover:bg-beige-50 px-10 py-4 text-lg font-semibold relative overflow-hidden shadow-2xl rounded-2xl">
+                  <Phone className="w-5 h-5 mr-3 relative z-10" />
+                  <span className="relative z-10">Consulta Gratuita</span>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-beige-100 to-blue-50 rounded-2xl"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "0%" }}
+                    transition={{ duration: 0.4 }}
+                  />
                 </Button>
-              </a>
-            </div>
+              </motion.div>
+              
+              <motion.div
+                whileHover={{ 
+                  scale: 1.05, 
+                  y: -5,
+                  boxShadow: "0 25px 50px rgba(0,0,0,0.25)"
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="relative group"
+              >
+                <Button className="border-2 border-white text-white hover:bg-white hover:text-blue-serene px-10 py-4 text-lg font-semibold relative overflow-hidden shadow-2xl rounded-2xl backdrop-blur-sm">
+                  <MessageCircle className="w-5 h-5 mr-3 relative z-10" />
+                  <span className="relative z-10">WhatsApp</span>
+                  <motion.div
+                    className="absolute inset-0 bg-white rounded-2xl"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "0%" }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </Button>
+              </motion.div>
+            </motion.div>
+            
+            {/* Enhanced trust indicators */}
+            <motion.div
+              className="flex flex-wrap items-center justify-center gap-8 mt-16 text-white/80"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              {[
+                { icon: Shield, text: "Certificado" },
+                { icon: Clock, text: "24/7" },
+                { icon: Users, text: "+500 Familias" },
+                { icon: Star, text: "4.9★ Rating" }
+              ].map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    className="flex items-center space-x-3 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
+                    whileHover={{ 
+                      scale: 1.05, 
+                      backgroundColor: "rgba(255,255,255,0.15)",
+                      transition: { duration: 0.3 }
+                    }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="text-sm font-medium">{item.text}</span>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </motion.div>
         </div>
       </section>

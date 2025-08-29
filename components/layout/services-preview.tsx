@@ -9,49 +9,49 @@ const services = [
   {
     icon: Heart,
     title: "Cuidado Integral",
-    description: "Atención médica completa y personalizada en la comodidad del hogar.",
-    color: "from-rose-400 via-pink-500 to-red-500",
-    shadowColor: "shadow-rose-500/25",
+    description: "Atención personalizada completa y en la comodidad del hogar.",
+    color: "from-blue-serene via-blue-light to-beige-500",
+    shadowColor: "shadow-blue-serene/25",
     highlight: "Integral"
   },
   {
     icon: Users,
     title: "Acompañamiento Emocional",
     description: "Apoyo psicológico y emocional para pacientes y familias.",
-    color: "from-amber-400 via-orange-500 to-yellow-500",
-    shadowColor: "shadow-amber-500/25",
+    color: "from-beige-400 via-beige-500 to-blue-light",
+    shadowColor: "shadow-beige-500/25",
     highlight: "Emocional"
   },
   {
     icon: Stethoscope,
     title: "Cuidado Postoperatorio",
     description: "Seguimiento especializado después de procedimientos médicos.",
-    color: "from-emerald-400 via-teal-500 to-cyan-500",
-    shadowColor: "shadow-emerald-500/25",
-    highlight: "Posoperatorio"
+    color: "from-blue-light via-blue-serene to-beige-400",
+    shadowColor: "shadow-blue-serene/25",
+    highlight: "Postoperatorio"
   },
   {
     icon: Shield,
     title: "Enfermería Profesional",
     description: "Personal altamente capacitado y certificado en cuidados de salud.",
-    color: "from-blue-500 via-indigo-500 to-purple-500",
-    shadowColor: "shadow-blue-500/25",
+    color: "from-blue-serene via-blue-light to-beige-400",
+    shadowColor: "shadow-blue-serene/25",
     highlight: "Profesional"
   },
   {
     icon: Clock,
     title: "Disponibilidad 24/7",
     description: "Servicio continuo para emergencias y cuidados especiales.",
-    color: "from-violet-400 via-purple-500 to-fuchsia-500",
-    shadowColor: "shadow-violet-500/25",
+    color: "from-beige-500 via-beige-600 to-blue-light",
+    shadowColor: "shadow-beige-500/25",
     highlight: "24/7"
   },
   {
     icon: Home,
     title: "Masajes Terapéuticos",
     description: "Terapias de relajación y rehabilitación en casa.",
-    color: "from-teal-400 via-cyan-500 to-blue-500",
-    shadowColor: "shadow-teal-500/25",
+    color: "from-blue-light via-blue-serene to-beige-500",
+    shadowColor: "shadow-blue-serene/25",
     highlight: "Terapéuticos"
   }
 ];
@@ -174,23 +174,23 @@ export function ServicesPreview() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
           >
             <span className="text-neutral-dark">Servicios que </span>
-            <span className="bg-gradient-to-r from-blue-serene via-cyan-500 to-teal-500 bg-clip-text text-transparent relative">
+            <span className="bg-gradient-to-r from-blue-serene via-blue-light to-beige-500 bg-clip-text text-transparent relative">
               transforman
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
-                className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-blue-serene to-cyan-500 rounded-full"
+                className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-blue-serene to-blue-light rounded-full"
               />
             </span>
             <span className="text-neutral-dark"> </span>
-            <span className="bg-gradient-to-r from-rose-500 via-pink-500 to-red-500 bg-clip-text text-transparent relative">
+            <span className="bg-gradient-to-r from-beige-400 via-beige-500 to-blue-light bg-clip-text text-transparent relative">
               vidas
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 1 }}
-                className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-rose-500 to-pink-500 rounded-full"
+                className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-beige-400 to-blue-light rounded-full"
               />
             </span>
           </motion.h2>
@@ -205,7 +205,7 @@ export function ServicesPreview() {
           >
             Ofrecemos una amplia gama de servicios de salud domiciliaria diseñados 
             para brindar el{" "}
-            <span className="bg-gradient-to-r from-blue-serene to-teal-500 bg-clip-text text-transparent font-semibold">
+            <span className="bg-gradient-to-r from-blue-serene to-blue-light bg-clip-text text-transparent font-semibold">
               mejor cuidado
             </span>{" "}
             en la comodidad de tu hogar.
@@ -248,7 +248,7 @@ export function ServicesPreview() {
                     ease: "easeInOut",
                     delay: index * 0.3,
                   }}
-                  className="absolute top-4 right-4 w-2 h-2 bg-gradient-to-r from-blue-serene to-cyan-400 rounded-full"
+                  className="absolute top-4 right-4 w-2 h-2 bg-gradient-to-r from-blue-serene to-blue-light rounded-full"
                 />
                 
                 {/* Enhanced Icon */}
@@ -311,7 +311,7 @@ export function ServicesPreview() {
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.2 }}
             >
-              <Button className="group relative px-10 py-5 text-lg font-semibold bg-gradient-to-r from-blue-serene via-cyan-500 to-teal-500 hover:from-blue-600 hover:via-cyan-600 hover:to-teal-600 text-white rounded-2xl shadow-2xl hover:shadow-blue-serene/30 transition-all duration-300 overflow-hidden">
+              <Button className="group relative px-10 py-5 text-lg font-semibold bg-gradient-to-r from-blue-serene via-blue-light to-beige-500 hover:opacity-95 text-white rounded-2xl shadow-2xl hover:shadow-blue-serene/30 transition-all duration-300 overflow-hidden">
                 <span className="relative z-10 flex items-center">
                   Ver todos los servicios
                   <motion.div

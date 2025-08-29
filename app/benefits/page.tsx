@@ -1016,11 +1016,7 @@ export default function BenefitsPage() {
             <div className="overflow-x-auto relative z-10">
               <table className="w-full">
                 <thead className="bg-gradient-to-r from-blue-serene to-beige-500 text-white relative overflow-hidden">
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent"
-                    animate={{ x: [-100, 400] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                  />
+                  {/* Eliminado overlay inválido dentro de thead para evitar desajuste de hidratación */}
                   <tr className="relative z-10">
                     <th className="px-6 py-6 text-left font-bold text-lg">Aspecto</th>
                     <th className="px-6 py-6 text-center font-bold text-lg">Cuidado en Casa</th>
@@ -1030,53 +1026,40 @@ export default function BenefitsPage() {
                 </thead>
                 <tbody>
                   {comparisons.map((comparison, index) => (
-                    <motion.tr 
-                      key={index} 
-                      className={index % 2 === 0 ? 'bg-beige-50/50' : 'bg-white'}
-                      initial={{ opacity: 0, x: -50 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      whileHover={{ backgroundColor: 'rgba(130, 180, 212, 0.05)' }}
-                    >
-                      <td className="px-6 py-5 font-semibold text-neutral-dark relative">
-                        <motion.div
-                          className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-serene to-beige-400 rounded-r-full"
-                          initial={{ scaleY: 0 }}
-                          whileInView={{ scaleY: 1 }}
-                          transition={{ duration: 0.8, delay: index * 0.1 }}
-                        />
-                        {comparison.category}
-                      </td>
-                      <td className="px-6 py-5 text-center">
-                        <motion.span 
-                          className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-100 to-green-50 text-green-800 rounded-full text-sm font-bold shadow-sm"
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          {comparison.homecare}
-                        </motion.span>
-                      </td>
-                      <td className="px-6 py-5 text-center">
-                        <motion.span 
-                          className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-100 to-red-50 text-red-800 rounded-full text-sm font-bold shadow-sm"
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          {comparison.hospital}
-                        </motion.span>
-                      </td>
-                      <td className="px-6 py-5 text-center">
-                        <motion.span 
-                          className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-100 to-yellow-50 text-yellow-800 rounded-full text-sm font-bold shadow-sm"
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          {comparison.nursing}
-                        </motion.span>
-                      </td>
-                    </motion.tr>
-                  ))}
-                </tbody>
+                     <tr
+                       key={index}
+                       className={`${index % 2 === 0 ? 'bg-beige-50/50' : 'bg-white'} transition-colors duration-200 hover:bg-blue-serene/5`}
+                     >
+                       <td className="px-6 py-5 font-semibold text-neutral-dark relative">
+                         <div
+                           className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-serene to-beige-400 rounded-r-full"
+                         />
+                         {comparison.category}
+                       </td>
+                       <td className="px-6 py-5 text-center">
+                         <span 
+                           className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-100 to-green-50 text-green-800 rounded-full text-sm font-bold shadow-sm"
+                         >
+                           {comparison.homecare}
+                         </span>
+                       </td>
+                       <td className="px-6 py-5 text-center">
+                         <span 
+                           className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-100 to-red-50 text-red-800 rounded-full text-sm font-bold shadow-sm"
+                         >
+                           {comparison.hospital}
+                         </span>
+                       </td>
+                       <td className="px-6 py-5 text-center">
+                         <span 
+                           className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-100 to-yellow-50 text-yellow-800 rounded-full text-sm font-bold shadow-sm"
+                         >
+                           {comparison.nursing}
+                         </span>
+                       </td>
+                     </tr>
+                   ))}
+                 </tbody>
               </table>
             </div>
             
@@ -1394,8 +1377,6 @@ export default function BenefitsPage() {
                   className="relative group"
                 >
                   <Button className="bg-white text-blue-serene hover:bg-white/90 px-10 py-4 text-lg font-semibold relative overflow-hidden">
-                  <Button className="bg-white text-blue-serene hover:bg-white/90 px-10 py-4 text-lg font-semibold relative overflow-hidden">
-                    <Phone className="w-5 h-5 mr-2 relative z-10" />
                     <span className="relative z-10">Consulta Gratuita</span>
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-beige-100 to-blue-50"
@@ -1403,7 +1384,6 @@ export default function BenefitsPage() {
                       whileHover={{ x: "0%" }}
                       transition={{ duration: 0.3 }}
                     />
-                  </Button>
                   </Button>
                 </motion.div>
               </Link>
