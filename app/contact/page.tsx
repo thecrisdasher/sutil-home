@@ -73,9 +73,9 @@ const contactInfo: ContactInfo[] = [
   {
     icon: Mail,
     title: "Email",
-    value: "info@aliviovital.com",
+    value: "aliviovitalhc@gmail.com",
     description: "Respuesta en 24 horas",
-    action: "mailto:info@aliviovital.com",
+    action: "mailto:aliviovitalhc@gmail.com",
     color: "from-blue-light to-beige-400"
   },
   {
@@ -117,7 +117,7 @@ const faqs: FAQ[] = [
     answer: "Sí, ofrecemos servicios las 24 horas del día, los 7 días de la semana. Tenemos personal disponible para emergencias y cuidados continuos según las necesidades del paciente."
   },
   {
-    question: "¿En qué ciudades brindan servicio?",
+    question: "¿En qué barrios brindan servicio?",
     answer: "Tenemos cobertura en los principales barrios de Cali. Contáctanos para confirmar disponibilidad en tu área específica."
   },
   {
