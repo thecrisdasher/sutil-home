@@ -66,7 +66,6 @@ const mainServices: MainService[] = [
       "Administración de medicamentos",
       "Control de signos vitales",
       "Curaciones y vendajes",
-      "Inyecciones y sueros",
       "Monitoreo de condiciones crónicas"
     ],
     image: "/images/cuidado-enfermero.png",
@@ -595,7 +594,7 @@ export default function ServicesPage() {
                 </motion.div>
               </Link>
               <a 
-                href="https://wa.me/1234567890?text=Hola,%20me%20interesa%20recibir%20información%20sobre%20los%20servicios%20de%20Alivio%20Vital%20Home%20Care."
+                href="https://wa.me/573106123883?text=Hola,%20me%20interesa%20recibir%20información%20sobre%20los%20servicios%20de%20Alivio%20Vital%20Home%20Care."
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -1286,7 +1285,7 @@ export default function ServicesPage() {
               </Link>
               
               <a 
-                href="https://wa.me/1234567890?text=Hola,%20me%20interesa%20recibir%20información%20sobre%20los%20servicios%20de%20Alivio%20Vital%20Home%20Care."
+                href="https://wa.me/573106123883?text=Hola,%20me%20interesa%20recibir%20información%20sobre%20los%20servicios%20de%20Alivio%20Vital%20Home%20Care."
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -1329,7 +1328,7 @@ export default function ServicesPage() {
               </div>
               <div className="flex items-center space-x-2">
                 <Users className="w-5 h-5" />
-                <span className="text-sm opacity-80">+500 Familias</span>
+                <span className="text-sm opacity-80">+50 Familias</span>
               </div>
             </motion.div>
           </motion.div>

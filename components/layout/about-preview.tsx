@@ -43,7 +43,7 @@ const stats = [
   },
   {
     icon: Award,
-    number: "15+",
+    number: "5+",
     label: "Años de Experiencia",
     color: "from-blue-serene via-beige-500 to-blue-light",
     description: "En el sector salud"

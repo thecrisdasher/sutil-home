@@ -1590,7 +1590,7 @@ export default function ContactPage() {
               {[
                 { icon: Shield, text: "Certificado", delay: 0 },
                 { icon: Clock, text: "24/7", delay: 0.2 },
-                { icon: Users, text: "+500 Familias", delay: 0.4 },
+                { icon: Users, text: "+50 Familias", delay: 0.4 },
                 { icon: Heart, text: "Cuidado Profesional", delay: 0.6 }
               ].map((item, index) => {
                 const Icon = item.icon;

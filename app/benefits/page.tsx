@@ -1389,7 +1389,7 @@ export default function BenefitsPage() {
               </Link>
               
               <a 
-                href="https://wa.me/1234567890?text=Hola,%20me%20interesa%20conocer%20los%20beneficios%20del%20cuidado%20domiciliario%20de%20Alivio%20Vital."
+                href="https://wa.me/573106123883?text=Hola,%20me%20interesa%20conocer%20los%20beneficios%20del%20cuidado%20domiciliario%20de%20Alivio%20Vital."
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -1444,7 +1444,7 @@ export default function BenefitsPage() {
                 transition={{ duration: 0.2 }}
               >
                 <Users className="w-5 h-5" />
-                <span className="text-sm opacity-80">+500 Familias</span>
+                <span className="text-sm opacity-80">+50 Familias</span>
               </motion.div>
             </motion.div>
           </motion.div>

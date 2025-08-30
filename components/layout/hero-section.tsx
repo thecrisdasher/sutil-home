@@ -255,7 +255,7 @@ export function HeroSection() {
                     <Heart className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-neutral-dark text-sm sm:text-base">+500</h4>
+                    <h4 className="font-bold text-neutral-dark text-sm sm:text-base">+50</h4>
                     <p className="text-xs sm:text-sm text-neutral-dark/70">
                       Familias atendidas
                     </p>

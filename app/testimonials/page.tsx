@@ -1548,7 +1548,7 @@ export default function TestimonialsPage() {
               {[
                 { icon: Shield, text: "Certificado" },
                 { icon: Clock, text: "24/7" },
-                { icon: Users, text: "+500 Familias" },
+                { icon: Users, text: "+50 Familias" },
                 { icon: Star, text: "4.9★ Rating" }
               ].map((item, index) => {
                 const Icon = item.icon;

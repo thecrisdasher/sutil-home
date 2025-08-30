@@ -676,7 +676,7 @@ export default function EnhancedCareersPage() {
   }, []);
 
   const whatsappUrl = useMemo(() => 
-    "https://wa.me/1234567890?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20las%20oportunidades%20de%20trabajo%20en%20Alivio%20Vital%20Home%20Care.",
+    "https://wa.me/573106123883?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20las%20oportunidades%20de%20trabajo%20en%20Alivio%20Vital%20Home%20Care.",
     []
   );
 
