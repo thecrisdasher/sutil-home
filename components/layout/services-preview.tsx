@@ -124,7 +124,7 @@ export function ServicesPreview() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
           {/* Enhanced Badge */}
           <motion.div
@@ -171,7 +171,7 @@ export function ServicesPreview() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight"
           >
             <span className="text-neutral-dark">Servicios que </span>
             <span className="bg-gradient-to-r from-blue-serene via-blue-light to-beige-500 bg-clip-text text-transparent relative">
@@ -201,7 +201,7 @@ export function ServicesPreview() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
-            className="text-xl text-neutral-dark/80 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-neutral-dark/80 max-w-3xl mx-auto leading-relaxed"
           >
             Ofrecemos una amplia gama de servicios de salud domiciliaria diseñados 
             para brindar el{" "}
@@ -218,7 +218,7 @@ export function ServicesPreview() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16"
         >
           {services.map((service, index) => {
             const Icon = service.icon;
@@ -231,7 +231,7 @@ export function ServicesPreview() {
                   scale: 1.01,
                   transition: { duration: 0.2 }
                 }}
-                className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-100 overflow-hidden"
+                className="group relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-100 overflow-hidden"
               >
                 {/* Card Background Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-slate-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

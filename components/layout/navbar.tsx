@@ -58,11 +58,11 @@ export function Navbar() {
                 height={60}
                 className="rounded-lg"
               />
-              <div className="hidden sm:block">
-                <h1 className="text-2xl font-extrabold text-blue-serene font-[var(--font-dm-serif)]">
+              <div className="block">
+                <h1 className="text-lg sm:text-2xl font-extrabold text-blue-serene font-[var(--font-dm-serif)]">
                   Alivio Vital
                 </h1>
-                <p className="text-sm text-neutral-dark -mt-1 font-[var(--font-plus-jakarta)] font-semibold tracking-wide">
+                <p className="text-xs sm:text-sm text-neutral-dark -mt-1 font-[var(--font-plus-jakarta)] font-semibold tracking-wide">
                   Home Care
                 </p>
               </div>
@@ -70,7 +70,7 @@ export function Navbar() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -78,7 +78,7 @@ export function Navbar() {
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
+                    className={`px-2 xl:px-4 py-2 rounded-lg text-xs xl:text-sm font-medium transition-all duration-200 ${isActive
                       ? "bg-blue-serene text-white shadow-md"
                       : "text-neutral-dark hover:bg-beige-200 hover:text-blue-serene"
                       }`}
@@ -91,16 +91,17 @@ export function Navbar() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:block">
+          <div className="hidden md:block">
             <Link href="/contact">
-              <Button className="btn-primary">
-                Contáctanos
+              <Button className="btn-primary text-xs md:text-sm lg:text-base px-3 md:px-4 lg:px-6">
+                <span className="hidden lg:inline">Contáctanos</span>
+                <span className="lg:hidden">Contacto</span>
               </Button>
             </Link>
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden">
+          <div className="md:hidden">
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
@@ -123,7 +124,7 @@ export function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden bg-white/95 backdrop-blur-md rounded-2xl mt-2 shadow-xl"
+              className="md:hidden overflow-hidden bg-white/95 backdrop-blur-md rounded-2xl mt-2 shadow-xl"
             >
               <div className="px-4 py-6 space-y-2">
                 {navigation.map((item, index) => {
