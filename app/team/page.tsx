@@ -136,7 +136,7 @@ const ENHANCED_VALUES: Value[] = [
   {
     icon: TrendingUp,
     title: "Crecimiento Acelerado",
-    description: "Oportunidades únicas de desarrollo profesional con capacitación continua y certificaciones internacionales.",
+    description: "Oportunidades únicas de desarrollo profesional con capacitación continua.",
     color: "from-beige-400 to-beige-500",
     features: ["Capacitación internacional", "Mentorías personalizadas", "Promociones internas"]
   },
@@ -1682,8 +1682,8 @@ export default function EnhancedCareersPage() {
               {[
                 { icon: Shield, text: "Empresa Certificada", delay: 0 },
                 { icon: Clock, text: "Respuesta 24-48h", delay: 0.2 },
-                { icon: Users, text: "+500 Familias Atendidas", delay: 0.4 },
-                { icon: Award, text: "Reconocimiento Nacional", delay: 0.6 }
+                { icon: Users, text: "+50 Familias Atendidas", delay: 0.4 },
+                { icon: Award, text: "Reconocimiento Local", delay: 0.6 }
               ].map((item, itemIndex) => {
                 const ItemIcon = item.icon;
                 return (

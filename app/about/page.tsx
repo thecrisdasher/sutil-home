@@ -84,7 +84,7 @@ const values: Value[] = [
 
 const achievements: Achievement[] = [
   { 
-    number: "500+", 
+    number: "50+", 
     label: "Familias Atendidas",
     icon: Users,
     color: "from-blue-serene to-blue-light"

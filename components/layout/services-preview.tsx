@@ -86,7 +86,7 @@ const cardVariants: Variants = {
 
 export function ServicesPreview() {
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-16 sm:py-20 md:py-24 overflow-hidden">
       {/* Enhanced Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
         <motion.div
@@ -132,7 +132,7 @@ export function ServicesPreview() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-white/90 to-beige-50/90 backdrop-blur-sm rounded-full border border-blue-serene/20 shadow-lg mb-8"
+            className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-white/90 to-beige-50/90 backdrop-blur-sm rounded-full border border-blue-serene/20 shadow-lg mb-6 sm:mb-8"
           >
             <motion.div
               animate={{
@@ -145,9 +145,9 @@ export function ServicesPreview() {
                 ease: "easeInOut",
               }}
             >
-              <Heart className="w-5 h-5 mr-3 text-blue-serene" />
+              <Heart className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 text-blue-serene" />
             </motion.div>
-            <span className="text-sm font-semibold bg-gradient-to-r from-blue-serene to-beige-600 bg-clip-text text-transparent">
+            <span className="text-xs sm:text-sm font-semibold bg-gradient-to-r from-blue-serene to-beige-600 bg-clip-text text-transparent">
               Nuestros Servicios
             </span>
             <motion.div
@@ -161,7 +161,7 @@ export function ServicesPreview() {
                 ease: "easeInOut",
               }}
             >
-              <Sparkles className="w-4 h-4 ml-2 text-amber-500" />
+              <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2 text-amber-500" />
             </motion.div>
           </motion.div>
 
@@ -171,7 +171,7 @@ export function ServicesPreview() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+            className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight"
           >
             <span className="text-neutral-dark">Servicios que </span>
             <span className="bg-gradient-to-r from-blue-serene via-blue-light to-beige-500 bg-clip-text text-transparent relative">
@@ -201,7 +201,7 @@ export function ServicesPreview() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
-            className="text-xl text-neutral-dark/80 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-neutral-dark/80 max-w-3xl mx-auto leading-relaxed px-2"
           >
             Ofrecemos una amplia gama de servicios de salud domiciliaria diseñados 
             para brindar el{" "}
@@ -218,7 +218,7 @@ export function ServicesPreview() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16"
         >
           {services.map((service, index) => {
             const Icon = service.icon;
@@ -231,7 +231,7 @@ export function ServicesPreview() {
                   scale: 1.01,
                   transition: { duration: 0.2 }
                 }}
-                className="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-100 overflow-hidden"
+                className="group relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-100 overflow-hidden"
               >
                 {/* Card Background Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-slate-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -253,21 +253,21 @@ export function ServicesPreview() {
                 
                 {/* Enhanced Icon */}
                 <motion.div 
-                  className={`relative w-20 h-20 bg-gradient-to-br ${service.color} rounded-3xl flex items-center justify-center mb-8 ${service.shadowColor} shadow-lg group-hover:shadow-xl transition-all duration-300`}
+                  className={`relative w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${service.color} rounded-2xl sm:rounded-3xl flex items-center justify-center mb-6 sm:mb-8 ${service.shadowColor} shadow-lg group-hover:shadow-xl transition-all duration-300`}
                   whileHover={{ 
                     rotate: 5,
                     scale: 1.05
                   }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Icon className="w-10 h-10 text-white drop-shadow-lg" />
+                  <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-white drop-shadow-lg" />
                   
                   {/* Icon glow effect */}
                   <div className="absolute inset-0 bg-white/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </motion.div>
 
                 {/* Enhanced Title */}
-                <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-serene transition-colors duration-300">
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 group-hover:text-blue-serene transition-colors duration-300">
                   {service.title.includes(service.highlight) ? (
                     <>
                       <span className="text-neutral-dark">
@@ -286,7 +286,7 @@ export function ServicesPreview() {
                 </h3>
 
                 {/* Enhanced Description */}
-                <p className="text-neutral-dark/70 leading-relaxed relative z-10 group-hover:text-slate-600 transition-colors duration-300">
+                <p className="text-sm sm:text-base text-neutral-dark/70 leading-relaxed relative z-10 group-hover:text-slate-600 transition-colors duration-300">
                   {service.description}
                 </p>
 
@@ -311,14 +311,14 @@ export function ServicesPreview() {
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.2 }}
             >
-              <Button className="group relative px-10 py-5 text-lg font-semibold bg-gradient-to-r from-blue-serene via-blue-light to-beige-500 hover:opacity-95 text-white rounded-2xl shadow-2xl hover:shadow-blue-serene/30 transition-all duration-300 overflow-hidden">
+              <Button className="group relative px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg font-semibold bg-gradient-to-r from-blue-serene via-blue-light to-beige-500 hover:opacity-95 text-white rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl hover:shadow-blue-serene/30 transition-all duration-300 overflow-hidden">
                 <span className="relative z-10 flex items-center">
-                  Ver todos los servicios
+                  <span className="text-sm sm:text-base md:text-lg">Ver todos los servicios</span>
                   <motion.div
                     animate={{ x: [0, 3, 0] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   >
-                    <Star className="w-5 h-5 ml-2" />
+                    <Star className="w-4 h-4 sm:w-5 sm:h-5 ml-1 sm:ml-2" />
                   </motion.div>
                 </span>
                 

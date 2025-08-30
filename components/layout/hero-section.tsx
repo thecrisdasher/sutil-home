@@ -56,7 +56,7 @@ export function HeroSection() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -82,7 +82,7 @@ export function HeroSection() {
               >
                 <Heart className="w-4 h-4 mr-2" />
               </motion.div>
-              Cuidado Domiciliario Profesional
+              Cuidado Domiciliario En Cali.
             </motion.div>
 
             {/* Main heading */}
@@ -90,7 +90,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-dark mb-6 leading-tight"
+              className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-dark mb-4 sm:mb-6 leading-tight"
             >
               Servicio especializado de{" "}
               <motion.span 
@@ -140,7 +140,7 @@ export function HeroSection() {
               >
                 auxiliares
               </motion.span>
-              {" "}a domicilio{" "}
+              {" "}a domicilio en Cali{" "}
             </motion.h1>
 
             {/* Description */}
@@ -148,7 +148,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-lg text-neutral-dark/80 mb-8 leading-relaxed max-w-2xl"
+              className="text-base sm:text-lg text-neutral-dark/80 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0"
             >
               Brindamos servicios de salud domiciliaria de la más alta calidad, 
               con un equipo de profesionales comprometidos con el bienestar 
@@ -160,7 +160,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"
+              className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8"
             >
               {features.map((feature, index) => {
                 const Icon = feature.icon;
@@ -175,14 +175,14 @@ export function HeroSection() {
                       y: -3,
                       boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)"
                     }}
-                    className="flex items-center space-x-3 p-3 bg-white/60 backdrop-blur-sm rounded-xl cursor-pointer transition-all duration-300"
+                    className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-white/60 backdrop-blur-sm rounded-xl cursor-pointer transition-all duration-300"
                   >
                     <motion.div 
-                      className="w-10 h-10 bg-gradient-to-br from-blue-serene to-beige-500 rounded-lg flex items-center justify-center"
+                      className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-serene to-beige-500 rounded-lg flex items-center justify-center"
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
                     >
-                      <Icon className="w-5 h-5 text-white" />
+                      <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     </motion.div>
                     <div>
                       <h3 className="font-semibold text-neutral-dark text-sm">
@@ -202,17 +202,17 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
               <Link href="/services">
-                <Button className="btn-primary group">
-                  Conoce nuestros servicios
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                <Button className="btn-primary group w-full xs:w-auto">
+                  <span className="text-sm sm:text-base">Conoce nuestros servicios</span>
+                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" className="border-2 border-blue-serene text-blue-serene hover:bg-blue-serene hover:text-white">
-                  Contáctanos
+                <Button variant="outline" className="border-2 border-blue-serene text-blue-serene hover:bg-blue-serene hover:text-white w-full xs:w-auto">
+                  <span className="text-sm sm:text-base">Contáctanos</span>
                 </Button>
               </Link>
             </motion.div>
@@ -230,7 +230,7 @@ export function HeroSection() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
-                className="relative z-10 rounded-3xl overflow-hidden shadow-2xl -mt-60"
+                className="relative z-10 rounded-3xl overflow-hidden shadow-2xl -mt-20 sm:-mt-40 md:-mt-60"
               >
                 <Image
                   src="/images/cuidados-ancianos.png"
@@ -248,15 +248,15 @@ export function HeroSection() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1 }}
                 whileHover={{ y: -5 }}
-                className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl max-w-xs"
+                className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 bg-white rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-xl max-w-[180px] sm:max-w-xs"
               >
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-serene to-beige-500 rounded-xl flex items-center justify-center">
-                    <Heart className="w-6 h-6 text-white" />
+                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-serene to-beige-500 rounded-lg sm:rounded-xl flex items-center justify-center">
+                    <Heart className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-neutral-dark">+500</h4>
-                    <p className="text-sm text-neutral-dark/70">
+                    <h4 className="font-bold text-neutral-dark text-sm sm:text-base">+500</h4>
+                    <p className="text-xs sm:text-sm text-neutral-dark/70">
                       Familias atendidas
                     </p>
                   </div>

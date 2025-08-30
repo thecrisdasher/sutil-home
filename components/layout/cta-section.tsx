@@ -137,7 +137,7 @@ export function CTASection() {
               className="flex items-center space-x-6 pt-4 border-t border-beige-200"
             >
               <div className="text-center">
-                <p className="text-2xl font-bold text-blue-serene">500+</p>
+                <p className="text-2xl font-bold text-blue-serene">50+</p>
                 <p className="text-sm text-neutral-dark/60">Familias atendidas</p>
               </div>
               <div className="text-center">

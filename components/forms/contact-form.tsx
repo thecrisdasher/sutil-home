@@ -74,9 +74,9 @@ export function ContactForm({ className }: ContactFormProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className={className}
+      className={`${className} px-4 sm:px-6 md:px-0`}
     >
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
         {/* Nombre */}
         <div className="space-y-2">
           <Label htmlFor="name">Nombre completo *</Label>
@@ -222,7 +222,7 @@ export function ContactForm({ className }: ContactFormProps) {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full h-12 text-lg"
+          className="w-full h-10 sm:h-12 text-base sm:text-lg"
           size="lg"
         >
           {isSubmitting ? (
@@ -240,7 +240,7 @@ export function ContactForm({ className }: ContactFormProps) {
         </Button>
 
         {/* Información adicional */}
-        <div className="text-sm text-gray-600 space-y-2">
+        <div className="text-xs sm:text-sm text-gray-600 space-y-1 sm:space-y-2">
           <p className="flex items-center gap-2">
             <CheckCircle className="h-4 w-4 text-green-500" />
             Respuesta en menos de 2 horas

@@ -73,7 +73,7 @@ export function WhatsAppButton({
         stiffness: 260,
         damping: 20 
       }}
-      className="fixed bottom-6 right-6 z-50"
+      className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50"
     >
       {/* Tooltip mejorado */}
       <motion.div
@@ -84,20 +84,20 @@ export function WhatsAppButton({
           scale: showTooltip ? 1 : 0.8 
         }}
         transition={{ duration: 0.3 }}
-        className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 px-4 py-3 bg-white text-gray-800 text-sm rounded-lg whitespace-nowrap shadow-xl border border-gray-200 max-w-xs"
+        className="absolute bottom-full sm:bottom-auto sm:right-full mb-3 sm:mb-0 sm:mr-3 sm:top-1/2 sm:transform sm:-translate-y-1/2 px-3 sm:px-4 py-2 sm:py-3 bg-white text-gray-800 text-xs sm:text-sm rounded-lg shadow-xl border border-gray-200 max-w-[200px] sm:max-w-xs right-0"
         style={{ pointerEvents: showTooltip ? 'auto' : 'none' }}
       >
-        <div className="flex items-center justify-between gap-2">
-          <span className="font-medium">¿Necesitas ayuda?</span>
+        <div className="flex items-center justify-between gap-1 sm:gap-2">
+          <span className="font-medium text-xs sm:text-sm">¿Necesitas ayuda?</span>
           <button
             onClick={() => setShowTooltip(false)}
             className="text-gray-400 hover:text-gray-600 transition-colors"
             aria-label="Cerrar tooltip"
           >
-            <X className="w-4 h-4" />
+            <X className="w-3 h-3 sm:w-4 sm:h-4" />
           </button>
         </div>
-        <p className="text-xs text-gray-600 mt-1">
+        <p className="text-xs text-gray-600 mt-1 text-[10px] sm:text-xs">
           Escríbenos por WhatsApp para atención inmediata
         </p>
         <div className="absolute top-1/2 -right-2 transform -translate-y-1/2 w-4 h-4 bg-white border-r border-b border-gray-200 rotate-45"></div>
@@ -115,7 +115,7 @@ export function WhatsAppButton({
           transition: { duration: 0.5 }
         }}
         whileTap={{ scale: 0.95 }}
-        className="group relative flex items-center justify-center w-16 h-16 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#25D366]/30"
+        className="group relative flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#25D366]/30"
         aria-label="Contactar por WhatsApp"
       >
         {/* Pulse animation */}
@@ -133,7 +133,7 @@ export function WhatsAppButton({
         />
         
         {/* Icon */}
-        <MessageCircle className="w-8 h-8 relative z-10" />
+        <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8 relative z-10" />
         
         {/* Hover tooltip */}
         <motion.div

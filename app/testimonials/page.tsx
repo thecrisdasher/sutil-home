@@ -126,7 +126,7 @@ const testimonials: Testimonial[] = [
 ];
 
 const stats: Stat[] = [
-  { number: "500+", label: "Familias Atendidas" },
+  { number: "50+", label: "Familias Atendidas" },
   { number: "98%", label: "Satisfacción" },
   { number: "4.9/5", label: "Calificación Promedio" },
   { number: "95%", label: "Recomendaciones" }
@@ -684,7 +684,7 @@ export default function TestimonialsPage() {
               >
                 <span>4.9/5</span>
                 <div className="w-1 h-6 bg-gradient-to-b from-blue-serene to-beige-400 rounded-full" />
-                <span className="text-neutral-dark/60">500+ reseñas</span>
+                <span className="text-neutral-dark/60">50+ reseñas</span>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -1296,7 +1296,7 @@ export default function TestimonialsPage() {
                 {[
                   {
                     icon: Users,
-                    title: "500+ Familias Atendidas",
+                    title: "50+ Familias Atendidas",
                     subtitle: "En toda la República Mexicana",
                     color: "from-blue-serene to-blue-light"
                   },

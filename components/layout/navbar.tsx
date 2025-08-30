@@ -54,15 +54,15 @@ export function Navbar() {
               <Image
                 src="/images/logo-empresa-salud-solo-vividos-web.png"  // 📌 pon tu logo en /public/logo.png
                 alt="Alivio Vital Logo"
-                width={60}
-                height={60}
+                width={50}
+                height={50}
                 className="rounded-lg"
               />
-              <div className="hidden sm:block">
-                <h1 className="text-2xl font-extrabold text-blue-serene font-[var(--font-dm-serif)]">
+              <div className="block">
+                <h1 className="text-lg sm:text-xl md:text-2xl font-extrabold text-blue-serene font-[var(--font-dm-serif)] truncate max-w-[120px] sm:max-w-full">
                   Alivio Vital
                 </h1>
-                <p className="text-sm text-neutral-dark -mt-1 font-[var(--font-plus-jakarta)] font-semibold tracking-wide">
+                <p className="text-xs sm:text-sm text-neutral-dark -mt-1 font-[var(--font-plus-jakarta)] font-semibold tracking-wide">
                   Home Care
                 </p>
               </div>
@@ -123,9 +123,9 @@ export function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden bg-white/95 backdrop-blur-md rounded-2xl mt-2 shadow-xl"
+              className="lg:hidden overflow-hidden bg-white/95 backdrop-blur-md rounded-2xl mt-2 shadow-xl fixed left-4 right-4 z-50"
             >
-              <div className="px-4 py-6 space-y-2">
+              <div className="px-4 py-4 space-y-1 max-h-[80vh] overflow-y-auto">
                 {navigation.map((item, index) => {
                   const isActive = pathname === item.href;
                   return (
@@ -133,12 +133,12 @@ export function Navbar() {
                       key={item.name}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
+                      transition={{ delay: index * 0.05 }}
                     >
                       <Link
                         href={item.href}
                         onClick={() => setIsOpen(false)}
-                        className={`block px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 ${isActive
+                        className={`flex items-center px-4 py-2.5 rounded-xl text-base font-medium transition-all duration-200 ${isActive
                           ? "bg-blue-serene text-white shadow-md"
                           : "text-neutral-dark hover:bg-beige-200 hover:text-blue-serene"
                           }`}
@@ -151,11 +151,11 @@ export function Navbar() {
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navigation.length * 0.1 }}
-                  className="pt-4"
+                  transition={{ delay: navigation.length * 0.05 }}
+                  className="pt-3"
                 >
                   <Link href="/contact" onClick={() => setIsOpen(false)}>
-                    <Button className="w-full btn-primary">
+                    <Button className="w-full btn-primary text-sm py-2.5">
                       Contáctanos
                     </Button>
                   </Link>

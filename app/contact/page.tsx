@@ -57,17 +57,17 @@ const contactInfo: ContactInfo[] = [
   {
     icon: Phone,
     title: "Teléfono Principal",
-    value: "+52 55 1234 5678",
+    value: "+57 310 6123883",
     description: "Disponible 24/7 para emergencias",
-    action: "tel:+525512345678",
+    action: "tel:+573106123883",
     color: "from-blue-serene to-blue-light"
   },
   {
     icon: MessageCircle,
     title: "WhatsApp",
-    value: "+52 55 1234 5678",
+    value: "+57 310 6123883",
     description: "Respuesta inmediata",
-    action: "https://wa.me/525512345678?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20los%20servicios%20de%20Alivio%20Vital.",
+    action: "https://wa.me/573106123883?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20los%20servicios%20de%20Alivio%20Vital.",
     color: "from-beige-400 to-beige-500"
   },
   {
@@ -82,7 +82,7 @@ const contactInfo: ContactInfo[] = [
     icon: MapPin,
     title: "Oficina Principal",
     value: "Ciudad de Cali",
-    description: "Cobertura nacional",
+    description: "Cobertura Local",
     action: "#ubicacion",
     color: "from-beige-500 to-blue-serene"
   }
@@ -268,8 +268,8 @@ const ContactForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-6">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+      <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -285,7 +285,7 @@ const ContactForm = () => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 rounded-xl border border-beige-200 focus:border-blue-serene focus:ring-4 focus:ring-blue-serene/10 transition-all duration-300"
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-beige-200 focus:border-blue-serene focus:ring-4 focus:ring-blue-serene/10 transition-all duration-300"
             placeholder="Tu nombre completo"
           />
         </motion.div>
@@ -305,8 +305,8 @@ const ContactForm = () => {
             value={formData.phone}
             onChange={handleChange}
             required
-            className="w-full px-4 py-3 rounded-xl border border-beige-200 focus:border-blue-serene focus:ring-4 focus:ring-blue-serene/10 transition-all duration-300"
-            placeholder="+52 55 1234 5678"
+            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-beige-200 focus:border-blue-serene focus:ring-4 focus:ring-blue-serene/10 transition-all duration-300"
+            placeholder="+57 304 232 2211"
           />
         </motion.div>
       </div>
@@ -325,7 +325,7 @@ const ContactForm = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-xl border border-beige-200 focus:border-blue-serene focus:ring-4 focus:ring-blue-serene/10 transition-all duration-300"
+          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-beige-200 focus:border-blue-serene focus:ring-4 focus:ring-blue-serene/10 transition-all duration-300"
           placeholder="tu@email.com"
         />
       </motion.div>
@@ -343,7 +343,7 @@ const ContactForm = () => {
           name="service"
           value={formData.service}
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-xl border border-beige-200 focus:border-blue-serene focus:ring-4 focus:ring-blue-serene/10 transition-all duration-300"
+          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-beige-200 focus:border-blue-serene focus:ring-4 focus:ring-blue-serene/10 transition-all duration-300"
         >
           <option value="">Selecciona un servicio</option>
           <option value="enfermeria">Cuidado de Enfermería</option>
@@ -368,7 +368,7 @@ const ContactForm = () => {
           value={formData.message}
           onChange={handleChange}
           rows={4}
-          className="w-full px-4 py-3 rounded-xl border border-beige-200 focus:border-blue-serene focus:ring-4 focus:ring-blue-serene/10 transition-all duration-300 resize-none"
+          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-beige-200 focus:border-blue-serene focus:ring-4 focus:ring-blue-serene/10 transition-all duration-300 resize-none"
           placeholder="Cuéntanos sobre tus necesidades específicas..."
         />
       </motion.div>
@@ -381,7 +381,7 @@ const ContactForm = () => {
         transition={{ duration: 0.6, delay: 0.5 }}
         whileHover={{ scale: 1.02, y: -2 }}
         whileTap={{ scale: 0.98 }}
-        className="w-full bg-gradient-to-r from-blue-serene to-beige-400 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 disabled:opacity-50 relative overflow-hidden group"
+        className="w-full bg-gradient-to-r from-blue-serene to-beige-400 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold hover:shadow-lg transition-all duration-300 disabled:opacity-50 relative overflow-hidden group"
       >
         <span className="relative z-10 flex items-center justify-center">
           {isSubmitting ? (
@@ -671,7 +671,7 @@ export default function ContactPage() {
           </motion.div>
           
           <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -688,7 +688,7 @@ export default function ContactPage() {
                   onHoverStart={() => setIsHovered(true)}
                   onHoverEnd={() => setIsHovered(false)}
                   whileHover={{ y: -10, scale: 1.02 }}
-                  className="bg-gradient-to-br from-beige-50 to-white p-8 rounded-3xl shadow-xl border border-beige-200 hover:shadow-2xl transition-all duration-500 text-center space-y-6 group cursor-pointer relative overflow-hidden"
+                  className="bg-gradient-to-br from-beige-50 to-white p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl shadow-xl border border-beige-200 hover:shadow-2xl transition-all duration-500 text-center space-y-4 sm:space-y-6 group cursor-pointer relative overflow-hidden"
                 >
                   {/* Background gradient animation */}
                   <motion.div
@@ -696,13 +696,13 @@ export default function ContactPage() {
                   />
                   
                   <motion.div 
-                    className={`w-20 h-20 bg-gradient-to-br ${contact.color} rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-all duration-500 relative overflow-hidden shadow-lg`}
+                    className={`w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-gradient-to-br ${contact.color} rounded-2xl sm:rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-all duration-500 relative overflow-hidden shadow-lg`}
                     whileHover={{ 
                       rotate: 5,
                       boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
                     }}
                   >
-                    <Icon className="w-10 h-10 text-white relative z-10" />
+                    <Icon className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-white relative z-10" />
                     <motion.div
                       className="absolute inset-0 bg-white/20"
                       animate={isHovered ? { 
@@ -718,11 +718,11 @@ export default function ContactPage() {
                   </motion.div>
                   
                   <div className="relative z-10">
-                    <h3 className="text-xl font-bold text-neutral-dark mb-3 group-hover:text-blue-serene transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl font-bold text-neutral-dark mb-2 sm:mb-3 group-hover:text-blue-serene transition-colors duration-300">
                       {contact.title}
                     </h3>
-                    <div className="text-lg font-semibold text-blue-serene mb-2">{contact.value}</div>
-                    <div className="text-sm text-neutral-dark/60 mb-4">{contact.description}</div>
+                    <div className="text-base sm:text-lg font-semibold text-blue-serene mb-1 sm:mb-2">{contact.value}</div>
+                    <div className="text-xs sm:text-sm text-neutral-dark/60 mb-2 sm:mb-4">{contact.description}</div>
                     
                     <motion.a 
                       href={contact.action}
@@ -1105,7 +1105,7 @@ export default function ContactPage() {
               
               <div className="relative z-10">
                 <motion.h3 
-                  className="text-2xl font-bold text-neutral-dark mb-6"
+                  className="text-xl sm:text-2xl font-bold text-neutral-dark mb-4 sm:mb-6"
                   whileInView={{ scale: [0.9, 1] }}
                   transition={{ duration: 0.6 }}
                 >
@@ -1113,7 +1113,7 @@ export default function ContactPage() {
                 </motion.h3>
                 
                 <motion.div 
-                  className="text-4xl font-bold text-red-600 mb-6"
+                  className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-600 mb-4 sm:mb-6"
                   animate={{
                     scale: [1, 1.05, 1],
                   }}
@@ -1123,22 +1123,22 @@ export default function ContactPage() {
                     ease: "easeInOut"
                   }}
                 >
-                  +52 55 1234 5678
+                  +57 310 6123883
                 </motion.div>
                 
-                <p className="text-neutral-dark/70 mb-8 leading-relaxed">
+                <p className="text-neutral-dark/70 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
                   Para situaciones que requieren atención médica inmediata. 
                   Nuestro equipo de emergencias responde en menos de 30 minutos.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <motion.a 
-                    href="tel:+525512345678"
+                    href="tel:+573106123883"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     className="relative overflow-hidden group"
                   >
-                    <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl font-semibold relative z-10 shadow-lg">
+                    <button className="bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold relative z-10 shadow-lg">
                       <Phone className="w-5 h-5 mr-2 inline" />
                       Llamar Emergencia
                     </button>
@@ -1151,14 +1151,14 @@ export default function ContactPage() {
                   </motion.a>
                   
                   <motion.a 
-                    href="https://wa.me/525512345678?text=EMERGENCIA:%20Necesito%20atención%20médica%20inmediata%20en%20domicilio."
+                    href="https://wa.me/+573106123883?text=EMERGENCIA:%20Necesito%20atención%20médica%20inmediata%20en%20domicilio."
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     className="relative overflow-hidden group"
                   >
-                    <button className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-8 py-4 rounded-xl font-semibold relative z-10 shadow-lg">
+                    <button className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold relative z-10 shadow-lg">
                       <MessageCircle className="w-5 h-5 mr-2 inline" />
                       WhatsApp Emergencia
                     </button>
@@ -1249,7 +1249,7 @@ export default function ContactPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.01, y: -2 }}
-                className="bg-gradient-to-br from-beige-50 to-white p-8 rounded-3xl border border-beige-200 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden group"
+                className="bg-gradient-to-br from-beige-50 to-white p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl md:rounded-3xl border border-beige-200 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden group"
                 onClick={() => setExpandedFAQ(expandedFAQ === index ? null : index)}
               >
                 {/* Background decoration */}
@@ -1263,13 +1263,13 @@ export default function ContactPage() {
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <h3 className="text-lg font-bold text-neutral-dark pr-4 group-hover:text-blue-serene transition-colors duration-300">
+                    <h3 className="text-base sm:text-lg font-bold text-neutral-dark pr-4 group-hover:text-blue-serene transition-colors duration-300">
                       {faq.question}
                     </h3>
                     <motion.div
                       animate={{ rotate: expandedFAQ === index ? 45 : 0 }}
                       transition={{ duration: 0.3 }}
-                      className="w-8 h-8 bg-gradient-to-br from-blue-serene to-beige-400 rounded-full flex items-center justify-center flex-shrink-0"
+                      className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-gradient-to-br from-blue-serene to-beige-400 rounded-full flex items-center justify-center flex-shrink-0"
                     >
                       <motion.div
                         className="w-4 h-0.5 bg-white rounded-full"
@@ -1530,7 +1530,7 @@ export default function ContactPage() {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <motion.a 
-                href="tel:+525512345678"
+                href="tel:+573106123883"
                 whileHover={{ 
                   scale: 1.05, 
                   y: -3,
@@ -1554,7 +1554,7 @@ export default function ContactPage() {
               </motion.a>
               
               <motion.a 
-                href="https://wa.me/525512345678?text=Hola,%20me%20interesa%20una%20consulta%20gratuita%20sobre%20los%20servicios%20de%20Alivio%20Vital."
+                href="https://wa.me/573106123883?text=Hola,%20me%20interesa%20una%20consulta%20gratuita%20sobre%20los%20servicios%20de%20Alivio%20Vital."
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ 
