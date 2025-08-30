@@ -56,13 +56,13 @@ export function HeroSection() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center min-h-[70vh] sm:min-h-[80vh]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="space-y-6 sm:space-y-8 text-center lg:text-left"
+            className="text-center lg:text-left"
           >
             {/* Badge */}
             <motion.div
@@ -82,7 +82,7 @@ export function HeroSection() {
               >
                 <Heart className="w-4 h-4 mr-2" />
               </motion.div>
-              Cuidado Domiciliario En Cali.
+              Cuidado Domiciliario Profesional
             </motion.div>
 
             {/* Main heading */}
@@ -90,7 +90,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-neutral-dark mb-6 leading-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-dark mb-6 leading-tight"
             >
               Servicio especializado de{" "}
               <motion.span 
@@ -148,7 +148,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-base sm:text-lg md:text-xl text-neutral-dark/80 mb-8 leading-relaxed max-w-2xl"
+              className="text-lg text-neutral-dark/80 mb-8 leading-relaxed max-w-2xl"
             >
               Brindamos servicios de salud domiciliaria de la más alta calidad, 
               con un equipo de profesionales comprometidos con el bienestar 
@@ -160,7 +160,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"
             >
               {features.map((feature, index) => {
                 const Icon = feature.icon;
@@ -202,7 +202,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <Link href="/services">
                 <Button className="btn-primary group">
@@ -223,14 +223,14 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="relative mt-8 lg:mt-0"
+            className="relative"
           >
-            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl mx-auto">
+            <div className="relative">
               {/* Main image container */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
-                className="relative z-10 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
+                className="relative z-10 rounded-3xl overflow-hidden shadow-2xl -mt-60"
               >
                 <Image
                   src="/images/cuidados-ancianos.png"
@@ -248,7 +248,7 @@ export function HeroSection() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.6, delay: 1 }}
                 whileHover={{ y: -5 }}
-                className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl max-w-xs"
+                className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl max-w-xs"
               >
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-serene to-beige-500 rounded-xl flex items-center justify-center">
@@ -273,7 +273,7 @@ export function HeroSection() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-beige-400 to-blue-light rounded-xl sm:rounded-2xl opacity-20 -z-10"
+                className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-beige-400 to-blue-light rounded-2xl opacity-20 -z-10"
               />
             </div>
           </motion.div>

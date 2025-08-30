@@ -113,7 +113,7 @@ export function AboutPreview() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Enhanced Content */}
           <motion.div
             variants={containerVariants}
@@ -146,7 +146,7 @@ export function AboutPreview() {
             {/* Enhanced title with subtle effects */}
             <motion.h2 
               variants={itemVariants}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-6 leading-tight"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-6 leading-tight"
             >
               Comprometidos con tu{" "}
               <span className="relative inline-block">
@@ -177,7 +177,7 @@ export function AboutPreview() {
             {/* Description */}
             <motion.p 
               variants={itemVariants}
-              className="text-base sm:text-lg text-neutral-dark/80 mb-8 leading-relaxed"
+              className="text-lg text-neutral-dark/80 mb-8 leading-relaxed"
             >
               En Alivio Vital Home Care, entendemos que cada persona merece recibir 
               atención médica de calidad en la comodidad y calidez de su hogar. 
@@ -188,7 +188,7 @@ export function AboutPreview() {
             {/* Features List with subtle improvements */}
             <motion.div 
               variants={containerVariants}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8"
             >
               {features.map((feature, index) => {
                 const Icon = feature.icon;
@@ -221,7 +221,7 @@ export function AboutPreview() {
             {/* Stats with refined animations */}
             <motion.div
               variants={containerVariants}
-              className="grid grid-cols-3 gap-4 sm:gap-6 mb-8"
+              className="grid grid-cols-3 gap-6 mb-8"
             >
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
@@ -283,7 +283,7 @@ export function AboutPreview() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="relative mt-8 lg:mt-0"
+            className="relative"
           >
             <div className="relative">
               {/* Main image with subtle enhancement */}
