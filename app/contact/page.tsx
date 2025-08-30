@@ -81,7 +81,7 @@ const contactInfo: ContactInfo[] = [
   {
     icon: MapPin,
     title: "Oficina Principal",
-    value: "Ciudad de México",
+    value: "Ciudad de Cali",
     description: "Cobertura nacional",
     action: "#ubicacion",
     color: "from-beige-500 to-blue-serene"
@@ -89,18 +89,18 @@ const contactInfo: ContactInfo[] = [
 ];
 
 const serviceAreas = [
-  "Ciudad de México",
-  "Guadalajara", 
-  "Monterrey",
-  "Puebla",
-  "Tijuana",
-  "León",
-  "Juárez",
-  "Zapopan",
-  "Mérida",
-  "San Luis Potosí",
-  "Aguascalientes",
-  "Hermosillo"
+  "San Antonio",
+  "Granada",
+  "El Peñón",
+  "Ciudad Jardín",
+  "Pance",
+  "Tequendama",
+  "La Flora",
+  "Santa Mónica",
+  "Versalles",
+  "San Fernando",
+  "Capri",
+  "El Ingenio"
 ];
 
 const faqs: FAQ[] = [
@@ -118,7 +118,7 @@ const faqs: FAQ[] = [
   },
   {
     question: "¿En qué ciudades brindan servicio?",
-    answer: "Tenemos cobertura en las principales ciudades de México. Contáctanos para confirmar disponibilidad en tu área específica."
+    answer: "Tenemos cobertura en los principales barrios de Cali. Contáctanos para confirmar disponibilidad en tu área específica."
   },
   {
     question: "¿Cuánto tiempo toma iniciar el servicio?",
@@ -1362,8 +1362,8 @@ export default function ContactPage() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Brindamos nuestros servicios en las principales ciudades de México. 
-              ¿No ves tu ciudad? Contáctanos para confirmar disponibilidad.
+              Brindamos nuestros servicios en los principales barrios de Cali. 
+              ¿No ves tu barrio? Contáctanos para confirmar disponibilidad.
             </motion.p>
           </motion.div>
           

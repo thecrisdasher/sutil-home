@@ -88,7 +88,7 @@ export function Footer() {
                 </div>
               </div>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                Cuidamos con cariño, profesionalismo y respeto. Brindamos servicios de salud domiciliaria de la más alta calidad.
+                Cuidamos con empatía, profesionalismo y respeto. Brindamos servicios de salud domiciliaria de la más alta calidad.
               </p>
               <div className="flex space-x-4">
                 {navigation.social.map((item) => {
