@@ -49,7 +49,7 @@ export function HeroSection() {
           transition={{
             duration: 25,
             repeat: Infinity,
-            ease: "linear",
+            ease: "linear", 
           }}
           className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-beige-400/20 to-blue-serene/20 rounded-full blur-3xl"
         />
@@ -82,7 +82,7 @@ export function HeroSection() {
               >
                 <Heart className="w-4 h-4 mr-2" />
               </motion.div>
-              Cuidado Domiciliario En Cali.
+              Cuidado Domiciliario En Cali y Alrededores.
             </motion.div>
 
             {/* Main heading */}
@@ -108,7 +108,7 @@ export function HeroSection() {
               >
                 enfermeras
               </motion.span>
-              ,{" "}
+              {" "}y{" "}
               <motion.span 
                 className="text-gradient cursor-pointer inline-block"
                 whileHover={{ 
@@ -124,7 +124,6 @@ export function HeroSection() {
               >
                 fisioterapeutas
               </motion.span>
-              {" "}y{" "}
               <motion.span 
                 className="text-gradient cursor-pointer inline-block"
                 whileHover={{ 
@@ -138,9 +137,8 @@ export function HeroSection() {
                   damping: 20 
                 }}
               >
-                auxiliares
               </motion.span>
-              {" "}a domicilio en Cali{" "}
+              {" "}a domicilio en el área metropolitana de Cali{" "}
             </motion.h1>
 
             {/* Description */}

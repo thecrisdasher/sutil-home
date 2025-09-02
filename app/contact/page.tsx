@@ -96,7 +96,7 @@ const serviceAreas = [
   "Pance",
   "Tequendama",
   "La Flora",
-  "Santa Mónica",
+  "Santa Teresita",
   "Versalles",
   "San Fernando",
   "Capri",
