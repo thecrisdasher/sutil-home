@@ -645,7 +645,7 @@ export default function EnhancedCareersPage() {
 
   // Enhanced metadata and intersection observer
   useEffect(() => {
-    document.title = "Trabaja con Nosotros - Alivio Vital Home Care";
+    document.title = "Trabaja con Nosotros - Lazos De Cuidado Home Care";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Únete a nuestro equipo de profesionales en cuidado domiciliario. Oportunidades de carrera en enfermería, fisioterapia, cuidados y más.');
@@ -968,7 +968,7 @@ export default function EnhancedCareersPage() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Descubre los valores y beneficios que hacen de Alivio Vital 
+              Descubre los valores y beneficios que hacen de Lazos De Cuidado 
               el lugar ideal para desarrollar tu carrera en el cuidado de la salud.
             </motion.p>
             

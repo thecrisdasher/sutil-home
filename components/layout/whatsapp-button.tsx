@@ -24,7 +24,7 @@ export function WhatsAppButton({
     
     switch (pathname) {
       case "/":
-        return "Hola, me interesa recibir información sobre los servicios de Alivio Vital Home Care.";
+        return "Hola, me interesa recibir información sobre los servicios de Lazos De Cuidado Home Care.";
       case "/services":
         return "Hola, me gustaría conocer más detalles sobre sus servicios de enfermería domiciliaria.";
       case "/contact":

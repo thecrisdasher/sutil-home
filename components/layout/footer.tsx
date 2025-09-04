@@ -76,14 +76,14 @@ export function Footer() {
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-transparent from-beige-500 to-blue-light rounded-xl flex items-center justify-center">
                   <Image
                     src="/images/logo-empresa-salud-solo-vividos-web.png"   // 👈 reemplaza con la ruta de tu logo (ej: /images/logo.png)
-                    alt="Alivio Vital Logo"
+                    alt="Lazos De Cuidado Logo"
                     width={40}
                     height={40}
                     className="object-contain"
                   />
                 </div>
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold">Alivio Vital</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold">Lazos De Cuidado</h3>
                   <p className="text-blue-light text-xs sm:text-sm">Home Care</p>
                 </div>
               </div>
@@ -196,7 +196,7 @@ export function Footer() {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">
             <p className="text-gray-400 text-sm text-center md:text-left">
-              © {new Date().getFullYear()} Alivio Vital Home Care. Todos los derechos reservados.
+              © {new Date().getFullYear()} Lazos De Cuidado Home Care. Todos los derechos reservados.
             </p>
             <p className="text-gray-400 text-sm text-center">
               Desarrollado por{" "}

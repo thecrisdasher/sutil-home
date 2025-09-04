@@ -52,7 +52,7 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Colores personalizados para Alivio Vital
+        // Colores personalizados para Lazos De Cuidado
         beige: {
           50: "#FDFCFA",
           100: "#F8F5F0",

@@ -21,8 +21,8 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Alivio Vital Home Care - Enfermería Domiciliaria Profesional",
-    template: "%s | Alivio Vital Home Care"
+    default: "Lazos De Cuidado Home Care - Enfermería Domiciliaria Profesional",
+    template: "%s | Lazos De Cuidado Home Care"
   },
   description: "Servicios profesionales de enfermería y cuidados domiciliarios. Atención médica especializada en la comodidad de tu hogar con personal certificado 24/7.",
   keywords: [
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     "monitoreo de salud",
     "curaciones domiciliarias"
   ],
-  authors: [{ name: "Alivio Vital Home Care", url: "https://aliviovital.com" }],
-  creator: "Alivio Vital Home Care",
-  publisher: "Alivio Vital Home Care",
+  authors: [{ name: "Lazos De Cuidado Home Care", url: "https://lazosdecuidado.com" }],
+  creator: "Lazos De Cuidado Home Care",
+  publisher: "Lazos De Cuidado Home Care",
   formatDetection: {
     email: false,
     address: false,
@@ -72,22 +72,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_ES',
     url: 'https://aliviovital.com',
-    title: 'Alivio Vital Home Care - Enfermería Domiciliaria Profesional',
+    title: 'Lazos De Cuidado Home Care - Enfermería Domiciliaria Profesional',
     description: 'Servicios profesionales de enfermería y cuidados domiciliarios. Atención médica especializada en la comodidad de tu hogar con personal certificado 24/7.',
-    siteName: 'Alivio Vital Home Care',
+    siteName: 'Lazos De Cuidado Home Care',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Alivio Vital Home Care - Enfermería Domiciliaria Profesional',
+        alt: 'Lazos De Cuidado Home Care - Enfermería Domiciliaria Profesional',
         type: 'image/jpeg',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Alivio Vital Home Care - Enfermería Domiciliaria Profesional',
+    title: 'Lazos De Cuidado Home Care - Enfermería Domiciliaria Profesional',
     description: 'Servicios profesionales de enfermería y cuidados domiciliarios. Atención médica especializada en la comodidad de tu hogar.',
     images: ['/og-image.jpg'],
     creator: '@aliviovital',
@@ -117,7 +117,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#3B82F6" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Alivio Vital" />
+        <meta name="apple-mobile-web-app-title" content="Lazos De Cuidado" />
       </head>
       <body className="min-h-screen bg-beige-100 antialiased">
         <div className="flex flex-col min-h-screen">

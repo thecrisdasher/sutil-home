@@ -82,7 +82,7 @@ const itemVariants: Variants = {
 
 export function AboutPreview() {
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
       {/* Subtle animated background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/70 via-white to-beige-50/70">
         <motion.div
@@ -112,8 +112,8 @@ export function AboutPreview() {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="container mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Enhanced Content */}
           <motion.div
             variants={containerVariants}
@@ -179,7 +179,7 @@ export function AboutPreview() {
               variants={itemVariants}
               className="text-lg text-neutral-dark/80 mb-8 leading-relaxed"
             >
-              En Alivio Vital Home Care, entendemos que cada persona merece recibir 
+              En Lazos De Cuidado Home Care, entendemos que cada persona merece recibir 
               atención médica de calidad en la comodidad y calidez de su hogar. 
               Nuestro equipo de profesionales está dedicado a brindar cuidados 
               excepcionales con el más alto nivel de compasión y respeto.
@@ -297,7 +297,7 @@ export function AboutPreview() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent z-10" />
                 <Image
                   src="/images/home-care-about.png"
-                  alt="Equipo médico profesional de Alivio Vital Home Care"
+                  alt="Equipo médico profesional de Lazos De Cuidado Home Care"
                   width={600}
                   height={400}
                   className="w-full h-auto object-cover transform hover:scale-102 transition-transform duration-500"

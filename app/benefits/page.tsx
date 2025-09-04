@@ -343,7 +343,7 @@ export default function BenefitsPage() {
   const [activeSection, setActiveSection] = useState(0);
 
   useEffect(() => {
-    document.title = "Beneficios - Alivio Vital Home Care";
+    document.title = "Beneficios - Lazos De Cuidado Home Care";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Descubre los beneficios del cuidado domiciliario: comodidad, ahorro, atención personalizada, recuperación más rápida y bienestar familiar.');
@@ -1231,7 +1231,7 @@ export default function BenefitsPage() {
                   >
                     Elegir el cuidado domiciliario fue la mejor decisión que pudimos tomar. 
                     Mi madre se recuperó mucho más rápido en casa, rodeada de amor y en 
-                    un ambiente familiar. El equipo de Alivio Vital fue excepcional.
+                    un ambiente familiar. El equipo de Lazos De Cuidado fue excepcional.
                   </motion.blockquote>
                   
                   <motion.div 

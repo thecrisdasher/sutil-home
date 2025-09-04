@@ -70,7 +70,7 @@ const cardVariants: Variants = {
 
 export function ServicesPreview() {
   return (
-    <section className="relative py-16 sm:py-20 md:py-24 overflow-hidden">
+    <section className="relative py-10 sm:py-14 md:py-18 overflow-hidden">
       {/* Enhanced Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
         <motion.div
@@ -101,14 +101,14 @@ export function ServicesPreview() {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
         {/* Enhanced Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16"
         >
           {/* Enhanced Badge */}
           <motion.div

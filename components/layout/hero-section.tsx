@@ -26,7 +26,7 @@ const features = [
 
 export function HeroSection() {
   return (
-    <section className="py-20 gradient-bg">
+    <section className="py-12 sm:py-16 lg:py-20 gradient-bg">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -55,8 +55,8 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div className="container mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}

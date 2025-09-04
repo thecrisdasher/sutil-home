@@ -385,7 +385,7 @@ export default function AboutPage() {
   const [activeSection, setActiveSection] = useState(0);
 
   useEffect(() => {
-    document.title = "Sobre Nosotros - Alivio Vital Home Care";
+    document.title = "Sobre Nosotros - Lazos De Cuidado Home Care";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Conoce nuestra historia, misión y valores. Somos un equipo de profesionales dedicados al cuidado domiciliario con más de 5 años de experiencia.');
@@ -558,7 +558,7 @@ export default function AboutPage() {
                 variants={itemVariants}
                 className="text-xl text-neutral-dark/70 leading-relaxed"
               >
-                En Alivio Vital Home Care, creemos que cada persona merece recibir 
+                En Lazos De Cuidado Home Care, creemos que cada persona merece recibir 
                 cuidado de calidad en la comodidad de su hogar. Nuestra misión es 
                 brindar servicios de salud domiciliarios excepcionales con compasión, 
                 profesionalismo y dedicación.
@@ -617,7 +617,7 @@ export default function AboutPage() {
               <motion.div className="relative rounded-3xl overflow-hidden shadow-2xl group">
                 <Image
                   src="/images/home-care-about-real.png"
-                  alt="Equipo de profesionales de Alivio Vital Home Care"
+                  alt="Equipo de profesionales de Lazos De Cuidado Home Care"
                   width={600}
                   height={500}
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
@@ -1060,7 +1060,7 @@ export default function AboutPage() {
                   whileInView={{ scale: [0.9, 1] }}
                   transition={{ duration: 0.6 }}
                 >
-                  ¿Por qué elegir <span className="text-gradient">Alivio Vital?</span>
+                  ¿Por qué elegir <span className="text-gradient">Lazos De Cuidado?</span>
                 </motion.h2>
                 <motion.p 
                   className="text-lg text-neutral-dark/70"

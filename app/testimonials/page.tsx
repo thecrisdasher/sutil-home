@@ -63,7 +63,7 @@ const testimonials: Testimonial[] = [
     relation: "Hija de paciente",
     location: "Cali",
     rating: 5,
-    text: "Elegir el cuidado domiciliario de Alivio Vital fue la mejor decisión que pudimos tomar para mi madre. Después de su cirugía de cadera, necesitaba atención especializada pero queríamos que estuviera en casa. La enfermera Ana fue increíble, no solo cuidó de mi madre médicamente, sino que también le brindó el apoyo emocional que necesitaba. Mi madre se recuperó mucho más rápido de lo esperado.",
+    text: "Elegir el cuidado domiciliario de Lazos De Cuidado fue la mejor decisión que pudimos tomar para mi madre. Después de su cirugía de cadera, necesitaba atención especializada pero queríamos que estuviera en casa. La enfermera Ana fue increíble, no solo cuidó de mi madre médicamente, sino que también le brindó el apoyo emocional que necesitaba. Mi madre se recuperó mucho más rápido de lo esperado.",
     image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     service: "Cuidado Post-operatorio",
     duration: "3 meses"
@@ -74,7 +74,7 @@ const testimonials: Testimonial[] = [
     relation: "Esposo de paciente",
     location: "Cali",
     rating: 5,
-    text: "Mi esposa tiene diabetes y necesitaba cuidados especializados. El equipo de Alivio Vital no solo manejó perfectamente su medicación y monitoreo, sino que también nos educó a toda la familia sobre cómo apoyarla mejor. La diferencia en su calidad de vida ha sido notable. Ahora tiene más energía y se siente más segura.",
+    text: "Mi esposa tiene diabetes y necesitaba cuidados especializados. El equipo de Lazos De Cuidado no solo manejó perfectamente su medicación y monitoreo, sino que también nos educó a toda la familia sobre cómo apoyarla mejor. La diferencia en su calidad de vida ha sido notable. Ahora tiene más energía y se siente más segura.",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     service: "Manejo de Diabetes",
     duration: "6 meses"
@@ -96,7 +96,7 @@ const testimonials: Testimonial[] = [
     relation: "Paciente",
     location: "Cali",
     rating: 5,
-    text: "Después de mi accidente cerebrovascular, pensé que nunca volvería a ser independiente. El equipo de rehabilitación de Alivio Vital trabajó conmigo todos los días en casa. La fisioterapeuta Laura fue increíble, siempre motivándome y adaptando los ejercicios a mi progreso. Hoy puedo caminar nuevamente y he recuperado gran parte de mi movilidad.",
+    text: "Después de mi accidente cerebrovascular, pensé que nunca volvería a ser independiente. El equipo de rehabilitación de Lazos De Cuidado trabajó conmigo todos los días en casa. La fisioterapeuta Laura fue increíble, siempre motivándome y adaptando los ejercicios a mi progreso. Hoy puedo caminar nuevamente y he recuperado gran parte de mi movilidad.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     service: "Rehabilitación Neurológica",
     duration: "8 meses"
@@ -107,7 +107,7 @@ const testimonials: Testimonial[] = [
     relation: "Esposa de paciente",
     location: "Cali",
     rating: 5,
-    text: "Mi esposo necesitaba cuidados paliativos y queríamos que estuviera cómodo en casa. El equipo de Alivio Vital nos brindó no solo atención médica excepcional, sino también apoyo emocional a toda la familia. Nos ayudaron a crear momentos hermosos y significativos en sus últimos meses. Estaremos eternamente agradecidos por su compasión y profesionalismo.",
+    text: "Mi esposo necesitaba cuidados paliativos y queríamos que estuviera cómodo en casa. El equipo de Lazos De Cuidado nos brindó no solo atención médica excepcional, sino también apoyo emocional a toda la familia. Nos ayudaron a crear momentos hermosos y significativos en sus últimos meses. Estaremos eternamente agradecidos por su compasión y profesionalismo.",
     image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     service: "Cuidados Paliativos",
     duration: "4 meses"
@@ -649,7 +649,7 @@ export default function TestimonialsPage() {
               className="text-xl text-neutral-dark/70 leading-relaxed max-w-4xl mx-auto"
             >
               Conoce las experiencias reales de las familias que han confiado en 
-              Alivio Vital para el cuidado de sus seres queridos.
+              Lazos De Cuidado para el cuidado de sus seres queridos.
             </motion.p>
             
             <motion.div 
@@ -1089,7 +1089,7 @@ export default function TestimonialsPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Escucha directamente de nuestras familias sobre su experiencia 
-              transformadora con Alivio Vital Home Care.
+              transformadora con Lazos De Cuidado Home Care.
             </motion.p>
             
             <motion.div

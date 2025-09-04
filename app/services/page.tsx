@@ -362,7 +362,7 @@ export default function ServicesPage() {
   const [activeSection, setActiveSection] = useState(0);
 
   useEffect(() => {
-    document.title = "Servicios - Alivio Vital Home Care";
+    document.title = "Servicios - Lazos De Cuidado Home Care";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Descubre nuestros servicios de cuidado domiciliario: enfermería, cuidado post-operatorio, rehabilitación, acompañamiento y más. Atención 24/7.');

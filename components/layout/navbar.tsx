@@ -43,8 +43,8 @@ export function Navbar() {
         : "bg-transparent"
         }`}
     >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <nav className="container mx-auto px-2 sm:px-4 lg:px-6">
+        <div className="flex items-center justify-between h-14 lg:h-16">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -53,16 +53,16 @@ export function Navbar() {
             <Link href="/" className="flex items-center space-x-2">
               <Image
                 src="/images/logo-empresa-salud-solo-vividos-web.png"  // 📌 pon tu logo en /public/logo.png
-                alt="Alivio Vital Logo"
-                width={50}
-                height={50}
+                alt="Lazos De Cuidado Logo"
+                width={40}
+                height={40}
                 className="rounded-lg"
               />
               <div className="block">
-                <h1 className="text-lg sm:text-xl md:text-2xl font-extrabold text-blue-serene font-[var(--font-dm-serif)] truncate max-w-[120px] sm:max-w-full">
-                  Alivio Vital
+                <h1 className="text-sm sm:text-lg md:text-xl font-extrabold text-blue-serene font-[var(--font-dm-serif)] truncate max-w-[100px] sm:max-w-[140px] lg:max-w-full">
+                  Lazos De Cuidado
                 </h1>
-                <p className="text-xs sm:text-sm text-neutral-dark -mt-1 font-[var(--font-plus-jakarta)] font-semibold tracking-wide">
+                <p className="text-xs text-neutral-dark -mt-1 font-[var(--font-plus-jakarta)] font-semibold tracking-wide hidden sm:block">
                   Home Care
                 </p>
               </div>
@@ -70,7 +70,7 @@ export function Navbar() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-0.5">
             {navigation.map((item) => {
               const isActive = pathname === item.href;
               return (
@@ -78,7 +78,7 @@ export function Navbar() {
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive
+                    className={`px-2 xl:px-3 py-1.5 rounded-lg text-xs xl:text-sm font-medium transition-all duration-200 ${isActive
                       ? "bg-blue-serene text-white shadow-md"
                       : "text-neutral-dark hover:bg-beige-200 hover:text-blue-serene"
                       }`}

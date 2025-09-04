@@ -416,7 +416,7 @@ export default function ContactPage() {
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
 
   useEffect(() => {
-    document.title = "Contacto - Alivio Vital Home Care";
+    document.title = "Contacto - Lazos De Cuidado Home Care";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Contáctanos para una consulta gratuita. Estamos disponibles 24/7 para brindarte información sobre nuestros servicios de cuidado domiciliario.');

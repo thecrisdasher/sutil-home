@@ -19,7 +19,7 @@ const testimonials = [
     id: 2,
     name: "Carlos Rodríguez",
     role: "Paciente",
-    content: "Después de mi cirugía, el equipo de Alivio Vital me ayudó en mi recuperación. Su atención 24/7 y profesionalismo hicieron toda la diferencia en mi proceso de sanación.",
+    content: "Después de mi cirugía, el equipo de Lazos De Cuidado me ayudó en mi recuperación. Su atención 24/7 y profesionalismo hicieron toda la diferencia en mi proceso de sanación.",
     rating: 5,
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
   },
@@ -77,15 +77,15 @@ export function TestimonialsPreview() {
   };
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <div className="container mx-auto px-2 sm:px-4 lg:px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-8 sm:mb-12 lg:mb-16"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
