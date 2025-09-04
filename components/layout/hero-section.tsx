@@ -228,7 +228,7 @@ export function HeroSection() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
-                className="relative z-10 rounded-3xl overflow-hidden shadow-2xl -mt-20 sm:-mt-40 md:-mt-60 lg:-mt-80"
+                className="relative z-10 rounded-3xl overflow-hidden shadow-2xl mt-4 sm:-mt-20 md:-mt-40 lg:-mt-60 xl:-mt-80"
               >
                 <Image
                   src="/images/cuidados-ancianos.png"
