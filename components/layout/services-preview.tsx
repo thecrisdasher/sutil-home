@@ -7,52 +7,36 @@ import { Button } from "@/components/ui/button";
 
 const services = [
   {
-    icon: Heart,
-    title: "Cuidado Integral",
-    description: "Atención personalizada completa y en la comodidad del hogar.",
+    icon: Stethoscope,
+    title: "Cuidado de Enfermería",
+    description: "Atención médica profesional con enfermeras certificadas.",
     color: "from-blue-serene via-blue-light to-beige-500",
     shadowColor: "shadow-blue-serene/25",
-    highlight: "Integral"
+    highlight: "Enfermería"
+  },
+  {
+    icon: Sparkles,
+    title: "Masaje de drenaje linfático",
+    description: "Masaje suave y rítmico para pacientes con movilidad reducida.",
+    color: "from-beige-400 via-beige-500 to-blue-light",
+    shadowColor: "shadow-beige-500/25",
+    highlight: "linfático"
   },
   {
     icon: Users,
-    title: "Acompañamiento Emocional",
-    description: "Apoyo psicológico y emocional para pacientes y familias.",
-    color: "from-beige-400 via-beige-500 to-blue-light",
-    shadowColor: "shadow-beige-500/25",
-    highlight: "Emocional"
-  },
-  {
-    icon: Stethoscope,
-    title: "Cuidado Postoperatorio",
-    description: "Seguimiento especializado después de procedimientos médicos.",
+    title: "Acompañamiento y Cuidado Personal",
+    description: "Asistencia en actividades diarias con cuidadores capacitados.",
     color: "from-blue-light via-blue-serene to-beige-400",
     shadowColor: "shadow-blue-serene/25",
-    highlight: "Postoperatorio"
+    highlight: "Personal"
   },
   {
     icon: Shield,
-    title: "Enfermería Profesional",
-    description: "Personal altamente capacitado y certificado en cuidados de salud.",
+    title: "Cuidado Postoperatorio",
+    description: "Recuperación segura en casa después de cirugías.",
     color: "from-blue-serene via-blue-light to-beige-400",
     shadowColor: "shadow-blue-serene/25",
-    highlight: "Profesional"
-  },
-  {
-    icon: Clock,
-    title: "Disponibilidad 24/7",
-    description: "Servicio continuo para emergencias y cuidados especiales.",
-    color: "from-beige-500 via-beige-600 to-blue-light",
-    shadowColor: "shadow-beige-500/25",
-    highlight: "24/7"
-  },
-  {
-    icon: Home,
-    title: "Masajes Terapéuticos",
-    description: "Terapias de relajación y rehabilitación en casa.",
-    color: "from-blue-light via-blue-serene to-beige-500",
-    shadowColor: "shadow-blue-serene/25",
-    highlight: "Terapéuticos"
+    highlight: "Postoperatorio"
   }
 ];
 

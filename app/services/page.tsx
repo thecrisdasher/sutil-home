@@ -49,6 +49,8 @@ interface AdditionalService {
   title: string;
   description: string;
   color: string;
+  scope?: string;
+  benefits?: string[];
 }
 
 interface ServiceCardProps {
@@ -61,112 +63,41 @@ const mainServices: MainService[] = [
   {
     icon: Stethoscope,
     title: "Cuidado de Enfermería",
-    description: "Atención médica profesional con enfermeras certificadas para administración de medicamentos, curaciones y monitoreo de signos vitales.",
+    description: "Nuestro cuidado domiciliario integral se enfoca en el bienestar y la comodidad del paciente en su hogar.",
     features: [
-      "Administración de medicamentos",
-      "Control de signos vitales",
-      "Curaciones y vendajes",
-      "Monitoreo de condiciones crónicas"
+      "Cuidados Personales: Asistencia en actividades diarias como higiene, vestirse, alimentación, suministro de medicamentos según fórmula médica, actividades lúdicas y de movilidad, terapias, estimulación cognitiva y ajustada a las necesidades del paciente.",
+      "Acompañamiento Emocional: Compañía cálida para reducir la ansiedad y fomentar el bienestar emocional del paciente y su familia.",
+      "TPink: Traslados a citas médicas y diligencias, garantizando comodidad y puntualidad.",
+      "Acompañamiento y asistencia posoperatoria: Servicio especializado para garantizar una recuperación exitosa tras una cirugía, atendiendo siempre las indicaciones médicas.",
+      "Acompañamiento a pacientes terminales: Cuidado compasivo y respetuoso para pacientes en etapa terminal, enfocado en su comodidad y dignidad."
     ],
     image: "/images/cuidado-enfermero.png",
     color: "from-blue-serene to-blue-light",
     accent: "bg-blue-serene/10"
-  },
-  {
-    icon: Activity,
-    title: "Cuidado Post-Operatorio",
-    description: "Recuperación segura en casa después de cirugías con seguimiento médico especializado y cuidados personalizados.",
-    features: [
-      "Cuidado de heridas quirúrgicas",
-      "Manejo del dolor",
-      "Fisioterapia básica",
-      "Seguimiento médico",
-      "Prevención de complicaciones"
-    ],
-    image: "/images/cuidado-postoperatorio.png",
-    color: "from-beige-400 to-beige-500",
-    accent: "bg-beige-400/10"
-  },
-  {
-    icon: Brain,
-    title: "Rehabilitación y Fisioterapia",
-    description: "Programas de rehabilitación personalizados para recuperar movilidad, fuerza y independencia en la comodidad del hogar.",
-    features: [
-      "Fisioterapia personalizada",
-      "Ejercicios de movilidad",
-      "Terapia ocupacional",
-      "Rehabilitación neurológica",
-      "Fortalecimiento muscular"
-    ],
-    image: "/images/cuidado-fisioterapia.png",
-    color: "from-blue-serene to-beige-400",
-    accent: "bg-gradient-to-r from-blue-serene/10 to-beige-400/10"
-  },
-  {
-    icon: Heart,
-    title: "Acompañamiento y Cuidado Personal",
-    description: "Asistencia en actividades diarias con cuidadores capacitados que brindan apoyo emocional y físico.",
-    features: [
-      "Asistencia en higiene personal",
-      "Ayuda con alimentación",
-      "Acompañamiento médico",
-      "Apoyo emocional",
-      "Actividades recreativas"
-    ],
-    image: "/images/cuidado-personal.png",
-    color: "from-beige-500 to-blue-light",
-    accent: "bg-beige-500/10"
   }
 ];
 
 const additionalServices: AdditionalService[] = [
   {
-    icon: Pill,
-    title: "Gestión de Medicamentos",
-    description: "Control y administración segura de medicamentos con seguimiento médico.",
-    color: "from-blue-serene to-blue-light"
-  },
-  {
-    icon: Thermometer,
-    title: "Monitoreo de Salud",
-    description: "Seguimiento continuo de signos vitales y condiciones de salud.",
+    icon: Sparkles,
+    title: "Masaje de drenaje linfático",
+    description: "Masaje suave y rítmico realizado por fisioterapeutas certificados, diseñado para pacientes con movilidad reducida.",
+    scope: "Sesiones de 45 minutos, personalizadas tras evaluación, ideales para personas encamadas o en recuperación médica.",
+    benefits: [
+      "Mejora circulación",
+      "Reduce hinchazón",
+      "Alivia rigidez",
+      "Previene complicaciones como úlceras por presión"
+    ],
     color: "from-beige-400 to-beige-500"
-  },
-  {
-    icon: Bandage,
-    title: "Cuidado de Heridas",
-    description: "Tratamiento especializado de heridas y curaciones profesionales.",
-    color: "from-blue-light to-beige-400"
-  },
-  {
-    icon: UserCheck,
-    title: "Cuidado de Adultos Mayores",
-    description: "Atención especializada para personas de la tercera edad.",
-    color: "from-beige-500 to-blue-serene"
-  },
-  {
-    icon: Home,
-    title: "Adaptación del Hogar",
-    description: "Asesoría para hacer el hogar más seguro y accesible.",
-    color: "from-blue-serene to-beige-500"
-  },
-  {
-    icon: Phone,
-    title: "Consultas Telefónicas",
-    description: "Disponibilidad 24/7 para consultas y emergencias.",
-    color: "from-beige-400 to-blue-light"
   }
 ];
 
 const benefits = [
-  "Atención personalizada en tu hogar",
-  "Personal certificado y experimentado",
-  "Disponibilidad 24 horas, 7 días a la semana",
-  "Coordinación con médicos tratantes",
-  "Planes de cuidado individualizados",
-  "Apoyo emocional para toda la familia",
-  "Costos más accesibles que hospitalización",
-  "Mayor comodidad y privacidad"
+  "Permite a los pacientes mantener su independencia y rutina en la comodidad de su hogar.",
+  "Ofrece un entorno familiar que mejora el bienestar emocional y físico.",
+  "Previene complicaciones mediante un monitoreo constante y personalizado.",
+  "Para la familia: Tranquilidad, tiempo para descansar o realizar otras tareas, confianza en el cuidado de su ser querido."
 ];
 
 // Floating particles animation
@@ -387,6 +318,30 @@ const ServiceCard = ({ service, index, isMain = false }: ServiceCardProps) => {
           </h3>
           
           <p className="text-neutral-dark/70 flex-grow">{service.description}</p>
+          
+          {('scope' in service && service.scope) && (
+            <div className="text-left text-sm text-neutral-dark/70 space-y-2 pt-4">
+              <h4 className="font-semibold text-neutral-dark flex items-center">
+                <Sparkles className="w-4 h-4 mr-2 text-beige-400" />
+                Alcance:
+              </h4>
+              <p>{service.scope}</p>
+            </div>
+          )}
+
+          {('benefits' in service && service.benefits) && (
+            <div className="text-left text-sm text-neutral-dark/70 space-y-2 pt-2">
+              <h4 className="font-semibold text-neutral-dark flex items-center">
+                <Star className="w-4 h-4 mr-2 text-beige-400" />
+                Beneficios:
+              </h4>
+              <ul className="space-y-1 list-disc list-inside">
+                {service.benefits.map((benefit: string, i: number) => (
+                  <li key={i}>{benefit}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         
         {/* Corner accent */}

@@ -61,7 +61,7 @@ const mainBenefits: MainBenefit[] = [
       "Mantenimiento de rutinas personales",
       "Acceso a pertenencias personales"
     ],
-    image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "/images/homecare-casa-col.png",
     color: "from-blue-serene to-blue-light",
     accent: "bg-blue-serene/10"
   },
@@ -76,7 +76,7 @@ const mainBenefits: MainBenefit[] = [
       "Optimización de recursos familiares",
       "Reducción de gastos de transporte"
     ],
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "/images/ahorro-economico.png",
     color: "from-beige-400 to-beige-500",
     accent: "bg-beige-400/10"
   },
@@ -91,7 +91,7 @@ const mainBenefits: MainBenefit[] = [
       "Adaptación a preferencias personales",
       "Comunicación directa con la familia"
     ],
-    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "/images/final-casa.png",
     color: "from-blue-serene to-beige-400",
     accent: "bg-gradient-to-r from-blue-serene/10 to-beige-400/10"
   },

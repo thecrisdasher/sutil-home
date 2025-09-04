@@ -825,9 +825,8 @@ export default function EnhancedCareersPage() {
               variants={itemVariants}
               className="text-xl md:text-2xl text-neutral-dark/70 leading-relaxed max-w-4xl mx-auto"
             >
-              Forma parte de una organización líder en cuidado domiciliario. 
-              Buscamos profesionales apasionados que quieran hacer la diferencia 
-              en la vida de las personas cada día.
+              Únete al equipo trabaja con nosotros,
+              trabaja cuidando pacientes con enfermedades crónicas, recuperación posoperatoria, acompañando a menores y adultos mayores en su domicilio.
             </motion.p>
             
             <motion.div 
@@ -936,117 +935,7 @@ export default function EnhancedCareersPage() {
         </div>
       </section>
 
-      {/* Enhanced Job Positions */}
-      <section id="posiciones" className="py-24 bg-gradient-to-br from-beige-50 to-white relative overflow-hidden">
-        {/* Enhanced background effects */}
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-blue-serene/4 to-beige-400/4 rounded-full"
-            animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, 120, 0],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-          <motion.div
-            className="absolute bottom-20 left-10 w-64 h-64 bg-gradient-to-br from-beige-500/4 to-blue-light/4 rounded-full"
-            animate={{
-              scale: [1, 0.8, 1],
-              rotate: [0, -120, 0],
-            }}
-            transition={{
-              duration: 18,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-neutral-dark mb-6"
-              whileInView={{ scale: [0.9, 1] }}
-              transition={{ duration: 0.6 }}
-            >
-              Oportunidades <span className="text-gradient">profesionales</span>
-            </motion.h2>
-            <motion.p 
-              className="text-xl text-neutral-dark/70 max-w-3xl mx-auto leading-relaxed"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Descubre posiciones que van más allá del trabajo tradicional. 
-              Únete a un equipo que marca la diferencia en la vida de las personas 
-              y crece profesionalmente en un ambiente de excelencia.
-            </motion.p>
-            
-            {/* Enhanced decorative elements */}
-            <motion.div
-              className="flex justify-center space-x-4 mt-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <motion.div
-                className="w-3 h-3 bg-blue-serene/60 rounded-full"
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.6, 1, 0.6],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              <motion.div
-                className="w-2 h-2 bg-beige-400/80 rounded-full"
-                animate={{
-                  scale: [1, 2, 1],
-                  opacity: [0.8, 1, 0.8],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5
-                }}
-              />
-              <motion.div
-                className="w-4 h-4 bg-blue-light/50 rounded-full"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.5, 1, 0.5],
-                }}
-                transition={{
-                  duration: 2.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-              />
-            </motion.div>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 gap-10">
-            {JOB_POSITIONS.map((position, index) => (
-              <EnhancedJobCard key={position.id} position={position} index={index} />
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Enhanced Values Section */}
       <section className="py-24 bg-white relative overflow-hidden">
