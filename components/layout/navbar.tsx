@@ -59,10 +59,10 @@ export function Navbar() {
                 className="rounded-lg"
               />
               <div className="block">
-                <h1 className="text-sm sm:text-lg md:text-xl font-extrabold text-blue-serene font-[var(--font-dm-serif)] truncate max-w-[100px] sm:max-w-[140px] lg:max-w-full">
+                <h1 className="text-xs sm:text-sm md:text-lg lg:text-xl font-extrabold text-blue-serene font-[var(--font-dm-serif)] leading-tight whitespace-nowrap">
                   Lazos De Cuidado
                 </h1>
-                <p className="text-xs text-neutral-dark -mt-1 font-[var(--font-plus-jakarta)] font-semibold tracking-wide hidden sm:block">
+                <p className="text-[10px] sm:text-xs text-neutral-dark -mt-0.5 font-[var(--font-plus-jakarta)] font-semibold tracking-wide">
                   Home Care
                 </p>
               </div>
