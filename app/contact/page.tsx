@@ -73,9 +73,9 @@ const contactInfo: ContactInfo[] = [
   {
     icon: Mail,
     title: "Email",
-    value: "aliviovitalhc@gmail.com",
+    value: "lazosdecuidado@gmail.com",
     description: "Respuesta en 24 horas",
-    action: "mailto:aliviovitalhc@gmail.com",
+    action: "mailto:lazosdecuidado@gmail.com",
     color: "from-blue-light to-beige-400"
   },
   {
@@ -721,7 +721,7 @@ export default function ContactPage() {
                     <h3 className="text-lg sm:text-xl font-bold text-neutral-dark mb-2 sm:mb-3 group-hover:text-blue-serene transition-colors duration-300">
                       {contact.title}
                     </h3>
-                    <div className="text-base sm:text-lg font-semibold text-blue-serene mb-1 sm:mb-2">{contact.value}</div>
+                   <div className="text-base sm:text-lg font-semibold text-blue-serene mb-1 sm:mb-2 break-words text-center">{contact.value}</div>
                     <div className="text-xs sm:text-sm text-neutral-dark/60 mb-2 sm:mb-4">{contact.description}</div>
                     
                     <motion.a 

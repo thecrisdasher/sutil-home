@@ -46,8 +46,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "aliviovitalhc@gmail.com",
-    href: "mailto:aliviovitalhc@gmail.com",
+    value: "lazosdecuidado@gmail.com",
+    href: "mailto:lazosdecuidado@gmail.com",
   },
   {
     icon: MapPin,
