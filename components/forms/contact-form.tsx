@@ -51,11 +51,12 @@ export function ContactForm({ className }: ContactFormProps) {
     setSubmitStatus('idle');
 
     try {
-      // Integración con Formspree
-      const response = await fetch('https://formspree.io/f/xldwalaw', {
+      // Integración con Formspree - Formulario de Contacto
+      const response = await fetch('https://formspree.io/f/mvgbdqle', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify({
           name: data.name,
