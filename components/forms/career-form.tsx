@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { GETFORM_ENDPOINTS, GETFORM_CONFIG } from "@/lib/getform-config";
 
 // Schema de validación con Zod
 const careerSchema = z.object({
@@ -94,23 +95,29 @@ export function CareerForm({ className }: CareerFormProps) {
       if (coverLetterFile) {
         formData.append('coverLetter', coverLetterFile);
       }
-      // Formspree endpoint específico para formulario de carreras con archivos
-      const res = await fetch('https://formspree.io/f/xldwalaw', {
-        method: 'POST',
+      // Getform endpoint específico para formulario de carreras con archivos
+      const res = await fetch(GETFORM_ENDPOINTS.CAREER, {
+        ...GETFORM_CONFIG,
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
       });
+      
+      console.log('Career form response status:', res.status);
+      console.log('Career form response headers:', res.headers);
+      
       if (res.ok) {
+        const responseData = await res.json();
+        console.log('Career form success response:', responseData);
         setSubmitStatus('success');
         reset();
         setCvFile(null);
         setCoverLetterFile(null);
       } else {
+        const errorData = await res.text();
+        console.error('Career form error response:', errorData);
         setSubmitStatus('error');
       }
     } catch (error) {
+      console.error('Career form error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { GETFORM_ENDPOINTS, JSON_FORM_CONFIG } from "@/lib/getform-config";
 
 // Schema de validación con Zod
 const contactSchema = z.object({
@@ -51,13 +52,9 @@ export function ContactForm({ className }: ContactFormProps) {
     setSubmitStatus('idle');
 
     try {
-      // Integración con Formspree - Formulario de Contacto
-      const response = await fetch('https://formspree.io/f/mvgbdqle', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
+      // Integración con Getform - Formulario de Contacto
+      const response = await fetch(GETFORM_ENDPOINTS.CONTACT, {
+        ...JSON_FORM_CONFIG,
         body: JSON.stringify({
           name: data.name,
           email: data.email,
@@ -69,11 +66,18 @@ export function ContactForm({ className }: ContactFormProps) {
         }),
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
+      
       if (response.ok) {
+        const responseData = await response.json();
+        console.log('Success response:', responseData);
         setSubmitStatus('success');
         reset();
       } else {
-        throw new Error('Error en el envío del formulario');
+        const errorData = await response.text();
+        console.error('Error response:', errorData);
+        throw new Error(`Error en el envío del formulario: ${response.status}`);
       }
     } catch (error) {
       setSubmitStatus('error');
