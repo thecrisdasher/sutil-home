@@ -138,7 +138,7 @@ export function HeroSection() {
                 }}
               >
               </motion.span>
-              {" "}a domicilio en el área metropolitana de Cali{" "}
+              {" "}a domicilio{" "}
             </motion.h1>
 
             {/* Description */}

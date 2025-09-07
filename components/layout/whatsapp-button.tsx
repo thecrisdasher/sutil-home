@@ -35,8 +35,7 @@ export function WhatsAppButton({
         return "Hola, me gustaría información sobre su equipo de profesionales.";
       case "/benefits":
         return "Hola, quiero conocer los beneficios de elegir cuidados domiciliarios.";
-      case "/testimonials":
-        return "Hola, me interesa conocer más sobre sus servicios después de leer los testimonios.";
+
       default:
         return "Hola, me interesa recibir información sobre los servicios de Alivio Vital Home Care.";
     }

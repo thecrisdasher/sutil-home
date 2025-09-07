@@ -15,16 +15,9 @@ const features = [
     text: "Atención personalizada las 24 horas",
     icon: Clock
   },
+  
   {
-    text: "Equipos médicos de última tecnología",
-    icon: Sparkles
-  },
-  {
-    text: "Seguimiento continuo del estado de salud",
-    icon: Heart
-  },
-  {
-    text: "Coordinación con médicos tratantes",
+    text: "Coordinación con enfermero tratantes",
     icon: Users
   },
   {
@@ -218,44 +211,8 @@ export function AboutPreview() {
               })}
             </motion.div>
 
-            {/* Stats with refined animations */}
-            <motion.div
-              variants={containerVariants}
-              className="grid grid-cols-3 gap-6 mb-8"
-            >
-              {stats.map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <motion.div
-                    key={stat.label}
-                    variants={itemVariants}
-                    whileHover={{ 
-                      scale: 1.02,
-                      y: -2,
-                      transition: { duration: 0.2 }
-                    }}
-                    className="text-center group cursor-pointer"
-                  >
-                    <motion.div 
-                      className={`w-14 h-14 bg-gradient-to-br ${stat.color} rounded-xl flex items-center justify-center mx-auto mb-3 shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
-                      whileHover={{ rotate: [0, -5, 5, 0] }}
-                      transition={{ duration: 0.4 }}
-                    >
-                      <Icon className="w-6 h-6 text-white drop-shadow-sm" />
-                    </motion.div>
-                    <div className="text-2xl font-bold bg-gradient-to-r from-neutral-dark to-neutral-dark/80 bg-clip-text text-transparent">
-                      {stat.number}
-                    </div>
-                    <div className="text-sm font-medium text-neutral-dark/80 mb-1">
-                      {stat.label}
-                    </div>
-                    <div className="text-xs text-neutral-dark/60">
-                      {stat.description}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
+            {/* Stats removidos del inicio */}
+            <></>
 
             {/* CTA Button with subtle enhancement */}
             <motion.div

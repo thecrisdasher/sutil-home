@@ -17,8 +17,7 @@ const careerSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
   email: z.string().email("Ingresa un email válido"),
   phone: z.string().min(10, "El teléfono debe tener al menos 10 dígitos"),
-  position: z.string().min(1, "Selecciona una posición"),
-  experience: z.string().min(1, "Selecciona tu nivel de experiencia"),
+  position: z.string().min(2, "Ingresa la posición de tu interés"),
   education: z.string().min(2, "Ingresa tu nivel educativo"),
   availability: z.string().min(1, "Selecciona tu disponibilidad"),
   motivation: z.string().min(20, "La motivación debe tener al menos 20 caracteres"),
@@ -195,51 +194,16 @@ export function CareerForm({ className }: CareerFormProps) {
           {/* Posición */}
           <div className="space-y-2">
             <Label htmlFor="position">Posición de interés *</Label>
-            <Select onValueChange={(value: string) => setValue("position", value)}>
-              <SelectTrigger className={errors.position ? "border-red-500" : ""}>
-                <SelectValue placeholder="Selecciona una posición" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="enfermera">Enfermera/o Registrada/o</SelectItem>
-                <SelectItem value="auxiliar-enfermeria">Auxiliar de Enfermería</SelectItem>
-                <SelectItem value="fisioterapeuta">Fisioterapeuta</SelectItem>
-                <SelectItem value="terapeuta-ocupacional">Terapeuta Ocupacional</SelectItem>
-                <SelectItem value="psicologo">Psicólogo/a Clínico/a</SelectItem>
-                <SelectItem value="cuidador">Cuidador/a Profesional</SelectItem>
-                <SelectItem value="medico">Médico/a</SelectItem>
-                <SelectItem value="nutricionista">Nutricionista</SelectItem>
-                <SelectItem value="administrativo">Personal Administrativo</SelectItem>
-                <SelectItem value="coordinador">Coordinador/a de Servicios</SelectItem>
-                <SelectItem value="otro">Otra posición</SelectItem>
-              </SelectContent>
-            </Select>
+            <Input
+              id="position"
+              {...register("position")}
+              placeholder="Ej: Enfermera/o, Fisioterapeuta, Cuidador/a, etc."
+              className={errors.position ? "border-red-500" : ""}
+            />
             {errors.position && (
               <p className="text-sm text-red-500 flex items-center gap-1">
                 <AlertCircle className="h-4 w-4" />
                 {errors.position.message}
-              </p>
-            )}
-          </div>
-
-          {/* Experiencia */}
-          <div className="space-y-2">
-            <Label htmlFor="experience">Años de experiencia *</Label>
-            <Select onValueChange={(value: string) => setValue("experience", value)}>
-              <SelectTrigger className={errors.experience ? "border-red-500" : ""}>
-                <SelectValue placeholder="Selecciona tu experiencia" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="sin-experiencia">Sin experiencia</SelectItem>
-                <SelectItem value="1-2">1-2 años</SelectItem>
-                <SelectItem value="3-5">3-5 años</SelectItem>
-                <SelectItem value="6-10">6-10 años</SelectItem>
-                <SelectItem value="mas-10">Más de 10 años</SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.experience && (
-              <p className="text-sm text-red-500 flex items-center gap-1">
-                <AlertCircle className="h-4 w-4" />
-                {errors.experience.message}
               </p>
             )}
           </div>

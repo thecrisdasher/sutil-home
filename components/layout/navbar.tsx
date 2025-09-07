@@ -15,7 +15,6 @@ const navigation = [
   { name: "Servicios", href: "/services" },
   { name: "Trabaja con nosotros", href: "/team" },
   { name: "Beneficios", href: "/benefits" },
-  { name: "Testimonios", href: "/testimonials" },
   { name: "Contacto", href: "/contact" },
 ];
 

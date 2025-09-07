@@ -24,6 +24,20 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+// Función para generar mensaje de WhatsApp
+const generateWhatsAppMessage = (packageName: string, features: string[], schedule: string) => {
+  const message = `¡Hola! Me interesa el ${packageName}\n\n📋 Detalles del paquete:\n• Horario: ${schedule}\n\n✅ Servicios incluidos:\n${features.map(feature => `• ${feature}`).join('\n')}\n\n¿Podrían proporcionarme más información y cotización?`
+  return encodeURIComponent(message)
+}
+
+// Función para abrir WhatsApp
+const openWhatsApp = (packageName: string, features: string[], schedule: string) => {
+  const phoneNumber = '+573106123883' // Reemplazar con el número real
+  const message = generateWhatsAppMessage(packageName, features, schedule)
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
+  window.open(whatsappUrl, '_blank')
+}
+
 // Type definitions
 interface Particle {
   id: number;
@@ -1126,6 +1140,427 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Custom Quote Section */}
+      <section className="py-20 bg-gradient-to-br from-beige-50 to-white relative overflow-hidden">
+        {/* Background decorative elements */}
+        <motion.div
+          className="absolute top-0 left-0 w-full h-full opacity-30"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2382b4d4' fill-opacity='0.03'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+          animate={{
+            backgroundPosition: ["0% 0%", "100% 100%"],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+
+        {/* Floating decorative elements */}
+        <motion.div
+          className="absolute top-20 right-20 w-32 h-32 border-2 border-blue-serene/20 rounded-full"
+          animate={{
+            rotate: [0, 360],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        <motion.div
+          className="absolute bottom-20 left-20 w-24 h-24 border-2 border-beige-400/30 rounded-full"
+          animate={{
+            rotate: [360, 0],
+            scale: [1, 0.8, 1],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        {/* Floating dots */}
+        <motion.div
+          className="absolute top-1/3 left-1/4 w-4 h-4 bg-blue-serene/30 rounded-full"
+          animate={{
+            y: [0, -20, 0],
+            opacity: [0.3, 0.8, 0.3],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        <motion.div
+          className="absolute bottom-1/3 right-1/3 w-3 h-3 bg-beige-400/40 rounded-full"
+          animate={{
+            y: [0, 15, 0],
+            opacity: [0.4, 1, 0.4],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+        />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-neutral-dark mb-6"
+              whileInView={{ scale: [0.9, 1] }}
+              transition={{ duration: 0.6 }}
+            >
+              Tenemos más opciones que se adaptan <span className="text-gradient">perfecto a tus necesidades</span>
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-neutral-dark/70 max-w-3xl mx-auto"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Podemos personalizar un paquete para que cumpla tus requisitos específicos. 
+              Cada familia es única y merece un cuidado diseñado especialmente para ella.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+            {/* Paquete Básico */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="bg-white rounded-3xl p-8 shadow-xl border border-blue-serene/10 relative overflow-hidden group"
+            >
+              {/* Background gradient */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-blue-serene/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              />
+              
+              <div className="relative z-10">
+                <motion.div
+                  className="w-16 h-16 bg-gradient-to-br from-blue-serene to-blue-light rounded-2xl flex items-center justify-center mb-6"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Heart className="w-8 h-8 text-white" />
+                </motion.div>
+                
+                <h3 className="text-2xl font-bold text-neutral-dark mb-4">Paquete Estándar</h3>
+                <p className="text-neutral-dark/70 mb-4">8 horas L a V</p>
+                <p className="text-sm text-neutral-dark/60 mb-6">Cuidado esencial para necesidades básicas diarias</p>
+                
+                <ul className="space-y-3 mb-8">
+                  {[
+                    "Cuidados personales básicos",
+                    "Acompañamiento emocional",
+                    "Administración de medicamentos",
+                    "Actividades de movilidad",
+                    "Horario: Lunes a Viernes"
+                  ].map((feature, index) => (
+                    <motion.li
+                      key={index}
+                      className="flex items-center space-x-3"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                    >
+                      <CheckCircle className="w-5 h-5 text-blue-serene flex-shrink-0" />
+                      <span className="text-neutral-dark/80">{feature}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+                
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button 
+                    onClick={() => openWhatsApp(
+                      'Paquete Estándar (8 horas L a V)',
+                      [
+                        'Cuidado básico de enfermería',
+                        'Administración de medicamentos',
+                        'Acompañamiento y supervisión',
+                        'Asistencia en actividades diarias',
+                        'Monitoreo de signos vitales',
+                        'Horario: Lunes a Viernes'
+                      ],
+                      '8 horas, Lunes a Viernes'
+                    )}
+                    className="w-full bg-gradient-to-r from-blue-serene to-blue-light text-white hover:shadow-lg transition-all duration-300"
+                  >
+                    Solicitar Cotización
+                  </Button>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Paquete Completo */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="bg-white rounded-3xl p-8 shadow-xl border-2 border-beige-400 relative overflow-hidden group transform scale-105"
+            >
+              {/* Popular badge */}
+              <motion.div
+                className="absolute -top-4 -right-4 bg-gradient-to-r from-beige-400 to-beige-500 text-white px-6 py-2 rounded-full text-sm font-bold transform rotate-12"
+                animate={{
+                  rotate: [12, 15, 12],
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                Más Popular
+              </motion.div>
+              
+              {/* Background gradient */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-beige-400/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              />
+              
+              <div className="relative z-10">
+                <motion.div
+                  className="w-16 h-16 bg-gradient-to-br from-beige-400 to-beige-500 rounded-2xl flex items-center justify-center mb-6"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Star className="w-8 h-8 text-white" />
+                </motion.div>
+                
+                <h3 className="text-2xl font-bold text-neutral-dark mb-4">Paquete Pro</h3>
+                <p className="text-neutral-dark/70 mb-4">12 hrs L a V</p>
+                <p className="text-sm text-neutral-dark/60 mb-6">Cuidado integral con servicios especializados</p>
+                
+                <ul className="space-y-3 mb-8">
+                  {[
+                    "Todo del paquete estándar",
+                    "Fisioterapia y rehabilitación",
+                    "Traslados médicos (TPink)",
+                    "Cuidado postoperatorio",
+                    "Estimulación cognitiva",
+                    "Masaje de drenaje linfático",
+                    "Horario extendido: 12 horas"
+                  ].map((feature, index) => (
+                    <motion.li
+                      key={index}
+                      className="flex items-center space-x-3"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                    >
+                      <CheckCircle className="w-5 h-5 text-beige-500 flex-shrink-0" />
+                      <span className="text-neutral-dark/80">{feature}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+                
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button 
+                    onClick={() => openWhatsApp(
+                      'Paquete Pro (12 hrs L a V)',
+                      [
+                        'Todo del paquete estándar',
+                        'Fisioterapia y rehabilitación',
+                        'Traslados médicos (TPink)',
+                        'Cuidado postoperatorio',
+                        'Estimulación cognitiva',
+                        'Masaje de drenaje linfático',
+                        'Horario extendido: 12 horas'
+                      ],
+                      '12 horas, Lunes a Viernes'
+                    )}
+                    className="w-full bg-gradient-to-r from-beige-400 to-beige-500 text-white hover:shadow-lg transition-all duration-300"
+                  >
+                    Solicitar Cotización
+                  </Button>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Paquete Personalizado */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="bg-white rounded-3xl p-8 shadow-xl border-2 border-purple-500 relative overflow-hidden group"
+            >
+              {/* Premium badge */}
+              <motion.div
+                className="absolute -top-4 -right-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-bold transform rotate-12"
+                animate={{
+                  rotate: [12, 15, 12],
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                Premium
+              </motion.div>
+              
+              {/* Background gradient */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              />
+              
+              <div className="relative z-10">
+                <motion.div
+                  className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Sparkles className="w-8 h-8 text-white" />
+                </motion.div>
+                
+                <h3 className="text-2xl font-bold text-neutral-dark mb-4">Paquete Premium</h3>
+                <p className="text-neutral-dark/70 mb-4">Servicio 24/7</p>
+                <p className="text-sm text-neutral-dark/60 mb-6">Cuidado completo las 24 horas, los 7 días de la semana</p>
+                
+                <ul className="space-y-3 mb-8">
+                  {[
+                    "Todo del paquete Pro",
+                    "Servicio 24 horas",
+                    "Disponibilidad fines de semana",
+                    "Atención de emergencias",
+                    "Equipo de enfermería especializado",
+                    "Seguimiento médico continuo",
+                    "Coordinación con médicos tratantes"
+                  ].map((feature, index) => (
+                    <motion.li
+                      key={index}
+                      className="flex items-center space-x-3"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                    >
+                      <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0" />
+                      <span className="text-neutral-dark/80">{feature}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+                
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button 
+                    onClick={() => openWhatsApp(
+                      'Paquete Premium (Servicio 24/7)',
+                      [
+                        'Todo del paquete Pro',
+                        'Servicio 24 horas',
+                        'Disponibilidad fines de semana',
+                        'Atención de emergencias',
+                        'Equipo de enfermería especializado',
+                        'Seguimiento médico continuo',
+                        'Coordinación con médicos tratantes'
+                      ],
+                      '24 horas, 7 días a la semana'
+                    )}
+                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:shadow-lg transition-all duration-300"
+                  >
+                    Solicitar Cotización
+                  </Button>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Call to action */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <motion.div
+              className="bg-gradient-to-r from-blue-serene/10 to-beige-400/10 rounded-3xl p-8 border border-blue-serene/20 relative overflow-hidden group"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Shine effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                animate={{ x: [-100, 400] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              />
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl font-bold text-neutral-dark mb-4">
+                  ¿No encuentras lo que buscas?
+                </h3>
+                <p className="text-neutral-dark/70 mb-6 max-w-2xl mx-auto">
+                  Contáctanos y crearemos un plan de cuidado completamente personalizado 
+                  que se ajuste perfectamente a tus necesidades y presupuesto.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link href="/contact">
+                    <motion.div
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Button className="bg-gradient-to-r from-blue-serene to-blue-light text-white px-8 py-3 hover:shadow-lg transition-all duration-300">
+                        <Phone className="w-5 h-5 mr-2" />
+                        Consulta Gratuita
+                      </Button>
+                    </motion.div>
+                  </Link>
+                  
+                  <a 
+                    href="https://wa.me/573106123883?text=Hola,%20me%20interesa%20recibir%20una%20cotización%20personalizada%20para%20servicios%20de%20cuidado%20domiciliario."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Button className="border-2 border-blue-serene text-blue-serene hover:bg-blue-serene hover:text-white px-8 py-3 transition-all duration-300">
+                        WhatsApp
+                      </Button>
+                    </motion.div>
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Enhanced CTA */}
       <section className="py-20 bg-gradient-to-br from-blue-serene to-beige-500 text-white relative overflow-hidden">
         {/* Enhanced background effects */}
@@ -1283,7 +1718,7 @@ export default function ServicesPage() {
               </div>
               <div className="flex items-center space-x-2">
                 <Users className="w-5 h-5" />
-                <span className="text-sm opacity-80">+50 Familias</span>
+                <span className="text-sm opacity-80">Profesionalismo</span>
               </div>
             </motion.div>
           </motion.div>

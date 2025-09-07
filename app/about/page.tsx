@@ -54,7 +54,7 @@ interface Feature {
 const values: Value[] = [
   {
     icon: Heart,
-    title: "Compasión",
+    title: "Profesionalismo",
     description: "Brindamos cuidado con amor y empatía, tratando a cada paciente como familia.",
     color: "from-blue-serene to-blue-light",
     accent: "bg-blue-serene/10"
@@ -112,9 +112,8 @@ const achievements: Achievement[] = [
 const features: Feature[] = [
   { text: "Personal certificado y con experiencia", icon: Award },
   { text: "Planes de cuidado personalizados", icon: Target },
-  { text: "Atención médica especializada", icon: Heart },
+  { text: "Atención profesional", icon: Heart },
   { text: "Apoyo emocional y psicológico", icon: Users },
-  { text: "Coordinación con médicos tratantes", icon: Shield },
   { text: "Servicios de rehabilitación", icon: Zap },
   { text: "Cuidado post-operatorio", icon: CheckCircle },
   { text: "Acompañamiento en actividades diarias", icon: Clock }
@@ -923,82 +922,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Enhanced Achievements */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute inset-0">
-          <motion.div
-            className="absolute top-20 left-10 w-48 h-48 bg-gradient-to-br from-blue-serene/5 to-beige-400/5 rounded-full"
-            animate={{
-              scale: [1, 1.3, 1],
-              rotate: [0, 180, 360],
-            }}
-            transition={{
-              duration: 18,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-          <motion.div
-            className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-beige-500/5 to-blue-light/5 rounded-full"
-            animate={{
-              scale: [1, 0.7, 1],
-              rotate: [0, -180, -360],
-            }}
-            transition={{
-              duration: 14,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <motion.h2 
-              className="text-3xl md:text-4xl font-bold text-neutral-dark mb-6"
-              whileInView={{ scale: [0.9, 1] }}
-              transition={{ duration: 0.6 }}
-            >
-              Nuestros <span className="text-gradient">Logros</span>
-            </motion.h2>
-            <motion.p 
-              className="text-lg text-neutral-dark/70 max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Números que reflejan nuestro compromiso y la confianza que las familias 
-              depositan en nosotros.
-            </motion.p>
-            
-            <motion.div
-              className="w-32 h-1 bg-gradient-to-r from-blue-serene to-beige-400 mx-auto mt-6 rounded-full"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ duration: 1.2, delay: 0.4 }}
-            />
-          </motion.div>
-          
-          <motion.div 
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {achievements.map((achievement, index) => (
-              <AchievementCard key={index} achievement={achievement} index={index} />
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      {/* Sección de logros eliminada */}
 
       {/* Enhanced Features Section */}
       <section className="py-20 bg-gradient-to-br from-blue-light/5 to-beige-50 relative overflow-hidden">
@@ -1443,7 +1367,7 @@ export default function AboutPage() {
               {[
                 { icon: Shield, text: "Certificado" },
                 { icon: Clock, text: "24/7" },
-                { icon: Users, text: "+50 Familias" },
+                { icon: Users, text: "Profesionalismo" },
                 { icon: Heart, text: "Con Amor" }
               ].map((item, index) => {
                 const Icon = item.icon;

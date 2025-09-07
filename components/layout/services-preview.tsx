@@ -15,12 +15,12 @@ const services = [
     highlight: "Enfermería"
   },
   {
-    icon: Sparkles,
-    title: "Masaje de drenaje linfático",
-    description: "Masaje suave y rítmico para pacientes con movilidad reducida.",
-    color: "from-beige-400 via-beige-500 to-blue-light",
-    shadowColor: "shadow-beige-500/25",
-    highlight: "linfático"
+    icon: Shield,
+    title: "Cuidado Postoperatorio",
+    description: "Recuperación segura en casa después de cirugías.",
+    color: "from-blue-serene via-blue-light to-beige-400",
+    shadowColor: "shadow-blue-serene/25",
+    highlight: "Postoperatorio"
   },
   {
     icon: Users,
@@ -31,12 +31,12 @@ const services = [
     highlight: "Personal"
   },
   {
-    icon: Shield,
-    title: "Cuidado Postoperatorio",
-    description: "Recuperación segura en casa después de cirugías.",
-    color: "from-blue-serene via-blue-light to-beige-400",
-    shadowColor: "shadow-blue-serene/25",
-    highlight: "Postoperatorio"
+    icon: Sparkles,
+    title: "Masaje de drenaje linfático",
+    description: "Masaje suave y rítmico para pacientes con movilidad reducida.",
+    color: "from-beige-400 via-beige-500 to-blue-light",
+    shadowColor: "shadow-beige-500/25",
+    highlight: "linfático"
   }
 ];
 

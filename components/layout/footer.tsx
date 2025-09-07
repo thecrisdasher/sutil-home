@@ -14,7 +14,7 @@ const navigation = {
   ],
   secondary: [
     { name: "Beneficios", href: "/benefits" },
-    { name: "Testimonios", href: "/testimonials" },
+  
     { name: "Contacto", href: "/contact" },
   ],
   social: [

@@ -825,7 +825,7 @@ export default function EnhancedCareersPage() {
               variants={itemVariants}
               className="text-xl md:text-2xl text-neutral-dark/70 leading-relaxed max-w-4xl mx-auto"
             >
-              Únete al equipo trabaja con nosotros,
+              Únete al equipo, trabaja con nosotros y obtén una estabilidad laboral,
               trabaja cuidando pacientes con enfermedades crónicas, recuperación posoperatoria, acompañando a menores y adultos mayores en su domicilio.
             </motion.p>
             
@@ -875,375 +875,11 @@ export default function EnhancedCareersPage() {
         </div>
       </section>
 
-      {/* Enhanced Stats Section */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        {/* Background pattern */}
-        <motion.div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237fb3d3' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%"],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <motion.h2 
-              className="text-3xl md:text-4xl font-bold text-neutral-dark mb-6"
-              whileInView={{ scale: [0.9, 1] }}
-              transition={{ duration: 0.6 }}
-            >
-              Nuestros <span className="text-gradient">números</span>
-            </motion.h2>
-            <motion.p 
-              className="text-lg text-neutral-dark/70 max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Cifras que reflejan nuestro compromiso con la excelencia 
-              y el crecimiento profesional de nuestro equipo.
-            </motion.p>
-            
-            {/* Decorative line */}
-            <motion.div
-              className="w-32 h-1.5 bg-gradient-to-r from-blue-serene to-beige-400 mx-auto mt-6 rounded-full"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ duration: 1.2, delay: 0.4 }}
-            />
-          </motion.div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {ENHANCED_STATS.map((stat, index) => (
-              <EnhancedStatCard key={`stat-${index}`} stat={stat} index={index} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Sección de estadísticas eliminada */}
 
 
 
-      {/* Enhanced Values Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        {/* Enhanced background pattern */}
-        <div className="absolute inset-0 opacity-3">
-          <div className="absolute top-20 left-20 w-40 h-40 border-2 border-blue-serene rounded-full"></div>
-          <div className="absolute top-60 right-32 w-32 h-32 border-2 border-beige-400 rounded-full"></div>
-          <div className="absolute bottom-32 left-1/3 w-24 h-24 border-2 border-blue-light rounded-full"></div>
-          <div className="absolute bottom-20 right-20 w-28 h-28 border-2 border-beige-500 rounded-full"></div>
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-neutral-dark mb-6"
-              whileInView={{ scale: [0.9, 1] }}
-              transition={{ duration: 0.6 }}
-            >
-              Por qué elegir <span className="text-gradient">trabajar con nosotros</span>
-            </motion.h2>
-            <motion.p 
-              className="text-xl text-neutral-dark/70 max-w-3xl mx-auto leading-relaxed"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Descubre los valores y beneficios que hacen de Lazos De Cuidado 
-              el lugar ideal para desarrollar tu carrera en el cuidado de la salud.
-            </motion.p>
-            
-            {/* Enhanced decorative line */}
-            <motion.div
-              className="w-40 h-2 bg-gradient-to-r from-blue-serene via-beige-400 to-blue-light mx-auto mt-8 rounded-full"
-              initial={{ scaleX: 0, opacity: 0 }}
-              whileInView={{ scaleX: 1, opacity: 1 }}
-              transition={{ duration: 1.5, delay: 0.4 }}
-            />
-          </motion.div>
-          
-          <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {ENHANCED_VALUES.map((value, index) => (
-              <EnhancedValueCard key={`value-${index}`} value={value} index={index} />
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Enhanced Certifications & Training */}
-      <section className="py-24 bg-gradient-to-br from-blue-light/5 to-beige-50 relative overflow-hidden">
-        {/* Enhanced background elements */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            background: [
-              "radial-gradient(circle at 30% 40%, rgba(127, 179, 213, 0.05) 0%, transparent 50%)",
-              "radial-gradient(circle at 70% 60%, rgba(229, 213, 183, 0.05) 0%, transparent 50%)",
-              "radial-gradient(circle at 30% 40%, rgba(127, 179, 213, 0.05) 0%, transparent 50%)",
-            ]
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, type: "spring", stiffness: 50 }}
-              viewport={{ once: true }}
-              className="space-y-10"
-            >
-              <div>
-                <motion.h2 
-                  className="text-4xl md:text-5xl font-bold text-neutral-dark mb-6"
-                  whileInView={{ scale: [0.9, 1] }}
-                  transition={{ duration: 0.6 }}
-                >
-                  Certificaciones y{" "}
-                  <motion.span 
-                    className="text-gradient relative inline-block"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    capacitación
-                    <motion.div
-                      className="absolute -bottom-2 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-serene to-beige-400 rounded-full"
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      transition={{ duration: 1.5, delay: 0.5 }}
-                    />
-                  </motion.span>
-                  {" "}continua
-                </motion.h2>
-                <motion.p 
-                  className="text-xl text-neutral-dark/70 leading-relaxed"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                  Nuestro equipo mantiene las más altas credenciales profesionales 
-                  y se capacita constantemente para brindar el mejor cuidado posible.
-                </motion.p>
-              </div>
-              
-              <div className="space-y-8">
-                {[
-                  {
-                    icon: GraduationCap,
-                    title: "Certificaciones Internacionales",
-                    description: "Todos nuestros profesionales cuentan con certificaciones vigentes y reconocidas internacionalmente en sus áreas de especialización.",
-                    color: "from-blue-serene to-blue-light"
-                  },
-                  {
-                    icon: Award,
-                    title: "Educación Continua Avanzada",
-                    description: "Participamos en programas de educación continua de las mejores instituciones para mantenernos a la vanguardia.",
-                    color: "from-beige-500 to-beige-400"
-                  },
-                  {
-                    icon: Stethoscope,
-                    title: "Experiencia Comprobada",
-                    description: "Nuestro equipo cuenta con años de experiencia especializada en cuidado domiciliario y atención médica de alta calidad.",
-                    color: "from-blue-light to-beige-400"
-                  }
-                ].map((item, itemIndex) => {
-                  const ItemIcon = item.icon;
-                  return (
-                    <motion.div
-                      key={itemIndex}
-                      initial={{ opacity: 0, x: -50, scale: 0.9 }}
-                      whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                      transition={{ 
-                        duration: 0.8, 
-                        delay: 0.3 + itemIndex * 0.2,
-                        type: "spring",
-                        stiffness: 100
-                      }}
-                      whileHover={{ x: 10, scale: 1.02 }}
-                      className="flex items-start space-x-6 p-6 bg-gradient-to-r from-white to-beige-50/30 rounded-2xl border border-beige-200/50 shadow-sm hover:shadow-lg transition-all duration-400 group relative overflow-hidden"
-                    >
-                      <motion.div
-                        className={`w-16 h-16 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg relative overflow-hidden`}
-                        whileHover={{ 
-                          scale: 1.15, 
-                          rotate: 12,
-                          boxShadow: "0 15px 30px rgba(0,0,0,0.15)"
-                        }}
-                        transition={{ duration: 0.4 }}
-                      >
-                        <ItemIcon className="w-8 h-8 text-white relative z-10" />
-                        <motion.div
-                          className="absolute inset-0 bg-white/20"
-                          animate={{ 
-                            scale: [1, 1.5, 1],
-                            opacity: [0, 0.5, 0]
-                          }}
-                          transition={{ 
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                            delay: itemIndex * 0.5
-                          }}
-                        />
-                      </motion.div>
-                      
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold text-neutral-dark mb-3 group-hover:text-blue-serene transition-colors duration-300">
-                          {item.title}
-                        </h3>
-                        <p className="text-neutral-dark/70 leading-relaxed">
-                          {item.description}
-                        </p>
-                      </div>
-                      
-                      {/* Hover background effect */}
-                      <motion.div
-                        className={`absolute inset-0 bg-gradient-to-r ${item.color} opacity-0 group-hover:opacity-5 rounded-2xl`}
-                        transition={{ duration: 0.3 }}
-                      />
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 100, scale: 0.8 }}
-              whileInView={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 1, delay: 0.4, type: "spring", stiffness: 50 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <motion.div 
-                className="relative rounded-3xl overflow-hidden shadow-2xl group"
-                whileHover={{ 
-                  scale: 1.03, 
-                  rotateY: -5,
-                  transition: { duration: 0.6 }
-                }}
-              >
-                <Image
-                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Equipo de profesionales en capacitación"
-                  width={700}
-                  height={600}
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
-                  priority={false}
-                  loading="lazy"
-                />
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-t from-blue-serene/30 via-transparent to-transparent group-hover:from-blue-serene/40 transition-all duration-300"
-                />
-                
-                {/* Enhanced overlay content */}
-                <motion.div
-                  className="absolute inset-0 flex items-end p-8"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <div className="text-white">
-                    <h4 className="text-2xl font-bold mb-3">Capacitación Continua</h4>
-                    <div className="flex items-center space-x-4">
-                      <div className="flex items-center space-x-2">
-                        <Star className="w-5 h-5 fill-current" />
-                        <span>Certificación Internacional</span>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-              
-              {/* Enhanced decorative elements */}
-              <motion.div 
-                className="absolute -top-8 -right-8 w-40 h-40 bg-gradient-to-br from-beige-400 to-beige-500 rounded-3xl rotate-12 opacity-80"
-                animate={{
-                  rotate: [12, 28, 12],
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              
-              <motion.div 
-                className="absolute -bottom-12 -left-12 w-32 h-32 bg-gradient-to-br from-blue-light to-blue-serene rounded-3xl -rotate-12 opacity-80"
-                animate={{
-                  rotate: [-12, -28, -12],
-                  scale: [1, 0.9, 1],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1.5
-                }}
-              />
-              
-              {/* Enhanced floating accents */}
-              <motion.div
-                className="absolute top-1/4 left-8 w-6 h-6 bg-beige-400/60 rounded-xl"
-                animate={{
-                  y: [0, -20, 0],
-                  rotate: [0, 45, 0],
-                  opacity: [0.6, 1, 0.6],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              
-              <motion.div
-                className="absolute bottom-1/3 right-12 w-4 h-4 bg-blue-serene/80 rounded-full"
-                animate={{
-                  scale: [1, 1.8, 1],
-                  opacity: [0.8, 1, 0.8],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* Secciones de valores y certificaciones eliminadas */}
 
       {/* Enhanced Application Form Section */}
       <section id="aplicar" className="py-24 bg-gradient-to-br from-beige-50 via-white to-blue-light/5 relative overflow-hidden">
@@ -1305,13 +941,13 @@ export default function EnhancedCareersPage() {
               whileInView={{ scale: [0.9, 1] }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Comienza tu{" "}
+              Comienza con{" "}
               <motion.span 
                 className="text-gradient relative inline-block"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                carrera
+                nosotros
                 <motion.div
                   className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-blue-serene via-beige-400 to-blue-light rounded-full"
                   initial={{ scaleX: 0 }}
@@ -1571,7 +1207,7 @@ export default function EnhancedCareersPage() {
               {[
                 { icon: Shield, text: "Empresa Certificada", delay: 0 },
                 { icon: Clock, text: "Respuesta 24-48h", delay: 0.2 },
-                { icon: Users, text: "+50 Familias Atendidas", delay: 0.4 },
+                { icon: Users, text: "Profesionalismo", delay: 0.4 },
                 { icon: Award, text: "Reconocimiento Local", delay: 0.6 }
               ].map((item, itemIndex) => {
                 const ItemIcon = item.icon;

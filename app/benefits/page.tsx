@@ -66,21 +66,6 @@ const mainBenefits: MainBenefit[] = [
     accent: "bg-blue-serene/10"
   },
   {
-    icon: DollarSign,
-    title: "Ahorro Económico",
-    description: "El cuidado domiciliario es significativamente más económico que la hospitalización prolongada o residencias especializadas.",
-    features: [
-      "Costos menores que hospitalización",
-      "Sin gastos de alojamiento adicional",
-      "Planes de pago flexibles",
-      "Optimización de recursos familiares",
-      "Reducción de gastos de transporte"
-    ],
-    image: "/images/ahorro-economico.png",
-    color: "from-beige-400 to-beige-500",
-    accent: "bg-beige-400/10"
-  },
-  {
     icon: Heart,
     title: "Atención Personalizada",
     description: "Cuidado uno a uno adaptado específicamente a las necesidades individuales de cada paciente y familia.",
@@ -106,7 +91,7 @@ const mainBenefits: MainBenefit[] = [
       "Nutrición personalizada",
       "Apoyo emocional constante"
     ],
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "/images/recuperacion-masrapida.png",
     color: "from-beige-500 to-blue-light",
     accent: "bg-beige-500/10"
   }
@@ -146,50 +131,14 @@ const additionalBenefits: AdditionalBenefit[] = [
   {
     icon: Award,
     title: "Excelencia Profesional",
-    description: "Equipo multidisciplinario de profesionales especializados.",
+    description: "Equipo multidisciplinario de profesionales certificados.",
     color: "from-beige-400 to-blue-light"
   }
 ];
 
-const comparisons = [
-  {
-    category: "Costo",
-    homecare: "60-70% menos costoso",
-    hospital: "Muy alto",
-    nursing: "Alto"
-  },
-  {
-    category: "Comodidad",
-    homecare: "Máxima comodidad",
-    hospital: "Limitada",
-    nursing: "Moderada"
-  },
-  {
-    category: "Privacidad",
-    homecare: "Total privacidad",
-    hospital: "Mínima",
-    nursing: "Limitada"
-  },
-  {
-    category: "Atención",
-    homecare: "Personalizada 1:1",
-    hospital: "Compartida",
-    nursing: "Grupal"
-  },
-  {
-    category: "Familia",
-    homecare: "Siempre presente",
-    hospital: "Horarios limitados",
-    nursing: "Visitas restringidas"
-  }
-];
 
-const testimonialStats = [
-  { number: "95%", label: "Prefiere cuidado en casa" },
-  { number: "40%", label: "Recuperación más rápida" },
-  { number: "60%", label: "Ahorro en costos" },
-  { number: "98%", label: "Satisfacción familiar" }
-];
+
+
 
 // Floating particles animation
 const FloatingParticles = () => {
@@ -550,54 +499,7 @@ export default function BenefitsPage() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 bg-white relative overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-10 left-10 w-32 h-32 border-2 border-blue-serene rounded-full"></div>
-          <div className="absolute bottom-20 right-20 w-24 h-24 border-2 border-beige-400 rounded-full"></div>
-        </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {testimonialStats.map((stat, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -5,
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
-                }}
-                className="text-center p-6 bg-gradient-to-br from-beige-50 to-white rounded-2xl border border-beige-200 relative overflow-hidden group"
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-blue-serene/5 to-beige-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                />
-                <div className="text-3xl md:text-4xl font-bold text-gradient mb-2 relative z-10">
-                  {stat.number}
-                </div>
-                <div className="text-neutral-dark/70 font-medium relative z-10">
-                  {stat.label}
-                </div>
-                
-                {/* Shine effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                  animate={{ x: [-100, 300] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       {/* Main Benefits */}
       <section className="py-20 bg-gradient-to-br from-beige-50 to-white relative overflow-hidden">
@@ -956,324 +858,9 @@ export default function BenefitsPage() {
         </div>
       </section>
 
-      {/* Comparison Table */}
-      <section className="py-20 bg-gradient-to-br from-blue-light/5 to-beige-50 relative overflow-hidden">
-        {/* Background elements */}
-        <motion.div
-          className="absolute top-0 left-0 w-full h-full opacity-30"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2382b4d4' fill-opacity='0.05'%3E%3Cpath d='M20 20c0-8.837-7.163-16-16-16s-16 7.163-16 16 7.163 16 16 16 16-7.163 16-16'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%"],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <motion.h2 
-              className="text-3xl md:text-4xl font-bold text-neutral-dark mb-6"
-              whileInView={{ scale: [0.9, 1] }}
-              transition={{ duration: 0.6 }}
-            >
-              Comparación de <span className="text-gradient">opciones de cuidado</span>
-            </motion.h2>
-            <motion.p 
-              className="text-lg text-neutral-dark/70 max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Ve cómo el cuidado domiciliario se compara con otras opciones 
-              de atención médica.
-            </motion.p>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 50, rotateX: 10 }}
-            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-            transition={{ duration: 1, delay: 0.2, type: "spring", stiffness: 100 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02, y: -5 }}
-            className="bg-white rounded-3xl shadow-xl overflow-hidden relative group"
-          >
-            {/* Gradient overlay */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-br from-blue-serene/5 to-beige-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            />
-            
-            <div className="overflow-x-auto relative z-10">
-              <table className="w-full">
-                <thead className="bg-gradient-to-r from-blue-serene to-beige-500 text-white relative overflow-hidden">
-                  {/* Eliminado overlay inválido dentro de thead para evitar desajuste de hidratación */}
-                  <tr className="relative z-10">
-                    <th className="px-6 py-6 text-left font-bold text-lg">Aspecto</th>
-                    <th className="px-6 py-6 text-center font-bold text-lg">Cuidado en Casa</th>
-                    <th className="px-6 py-6 text-center font-bold text-lg">Hospital</th>
-                    <th className="px-6 py-6 text-center font-bold text-lg">Residencia</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {comparisons.map((comparison, index) => (
-                     <tr
-                       key={index}
-                       className={`${index % 2 === 0 ? 'bg-beige-50/50' : 'bg-white'} transition-colors duration-200 hover:bg-blue-serene/5`}
-                     >
-                       <td className="px-6 py-5 font-semibold text-neutral-dark relative">
-                         <div
-                           className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-serene to-beige-400 rounded-r-full"
-                         />
-                         {comparison.category}
-                       </td>
-                       <td className="px-6 py-5 text-center">
-                         <span 
-                           className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-100 to-green-50 text-green-800 rounded-full text-sm font-bold shadow-sm"
-                         >
-                           {comparison.homecare}
-                         </span>
-                       </td>
-                       <td className="px-6 py-5 text-center">
-                         <span 
-                           className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-100 to-red-50 text-red-800 rounded-full text-sm font-bold shadow-sm"
-                         >
-                           {comparison.hospital}
-                         </span>
-                       </td>
-                       <td className="px-6 py-5 text-center">
-                         <span 
-                           className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-100 to-yellow-50 text-yellow-800 rounded-full text-sm font-bold shadow-sm"
-                         >
-                           {comparison.nursing}
-                         </span>
-                       </td>
-                     </tr>
-                   ))}
-                 </tbody>
-              </table>
-            </div>
-            
-            {/* Shine effect */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-              animate={{ x: [-100, 1200] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-            />
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Testimonial Section */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-40 h-40 border-2 border-blue-serene rounded-full"></div>
-          <div className="absolute bottom-20 right-20 w-32 h-32 border-2 border-beige-400 rounded-full"></div>
-          <div className="absolute top-1/2 left-1/4 w-6 h-6 bg-blue-serene/20 rounded-full"></div>
-          <div className="absolute top-1/3 right-1/3 w-4 h-4 bg-beige-400/20 rounded-full"></div>
-        </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, type: "spring", stiffness: 50 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <motion.div 
-                className="relative rounded-3xl overflow-hidden shadow-2xl group"
-                whileHover={{ scale: 1.02, rotateY: 5 }}
-                transition={{ duration: 0.6 }}
-              >
-                <Image
-                  src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Familia feliz con cuidado domiciliario"
-                  width={600}
-                  height={500}
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-t from-blue-serene/20 via-transparent to-transparent"
-                  whileHover={{ opacity: 0.8 }}
-                  transition={{ duration: 0.3 }}
-                />
-                
-                {/* Overlay stats */}
-                <motion.div
-                  className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  initial={{ scale: 0 }}
-                  whileHover={{ scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.2 }}
-                >
-                  <div className="text-white text-center">
-                    <motion.div
-                      className="text-4xl font-bold mb-2"
-                      animate={{ 
-                        scale: [1, 1.1, 1],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                      }}
-                    >
-                      98%
-                    </motion.div>
-                    <div className="text-lg">Satisfacción</div>
-                  </div>
-                </motion.div>
-              </motion.div>
-              
-              {/* Enhanced floating decorations */}
-              <motion.div 
-                className="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-beige-400 to-beige-500 rounded-3xl rotate-12 opacity-80"
-                animate={{
-                  rotate: [12, 25, 12],
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              
-              <motion.div 
-                className="absolute -bottom-10 -left-10 w-24 h-24 bg-gradient-to-br from-blue-light to-blue-serene rounded-2xl -rotate-12 opacity-80"
-                animate={{
-                  rotate: [-12, -25, -12],
-                  scale: [1, 0.9, 1],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-              />
-              
-              {/* Pulsing dots */}
-              <motion.div
-                className="absolute top-1/3 left-6 w-3 h-3 bg-beige-400/80 rounded-full"
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.8, 1, 0.8],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              
-              <motion.div
-                className="absolute bottom-1/3 right-8 w-2 h-2 bg-blue-serene/80 rounded-full"
-                animate={{
-                  scale: [1, 2, 1],
-                  opacity: [0.6, 1, 0.6],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5
-                }}
-              />
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.3, type: "spring", stiffness: 50 }}
-              viewport={{ once: true }}
-              className="space-y-10"
-            >
-              <div>
-                <motion.h2 
-                  className="text-3xl md:text-4xl font-bold text-neutral-dark mb-6"
-                  whileInView={{ scale: [0.9, 1] }}
-                  transition={{ duration: 0.6 }}
-                >
-                  Lo que dicen nuestras <span className="text-gradient">familias</span>
-                </motion.h2>
-                
-                <motion.div
-                  className="bg-gradient-to-br from-beige-50 to-white p-8 rounded-2xl border border-beige-200 shadow-lg relative overflow-hidden group"
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {/* Quote decoration */}
-                  <motion.div
-                    className="absolute top-4 left-4 text-6xl text-blue-serene/20 font-serif leading-none"
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                  >
-                    "
-                  </motion.div>
-                  
-                  <motion.blockquote 
-                    className="text-xl text-neutral-dark/80 italic leading-relaxed relative z-10"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                  >
-                    Elegir el cuidado domiciliario fue la mejor decisión que pudimos tomar. 
-                    Mi madre se recuperó mucho más rápido en casa, rodeada de amor y en 
-                    un ambiente familiar. El equipo de Lazos De Cuidado fue excepcional.
-                  </motion.blockquote>
-                  
-                  <motion.div 
-                    className="mt-6 relative z-10"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                  >
-                    <div className="font-bold text-neutral-dark">María González</div>
-                    <div className="text-neutral-dark/60">Hija de paciente</div>
-                  </motion.div>
-                  
-                  {/* Background gradient animation */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-blue-serene/5 to-beige-400/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  />
-                </motion.div>
-              </div>
-              
-              <motion.div 
-                className="flex items-center space-x-2"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
-                {[...Array(5)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.8 + i * 0.1 }}
-                    whileHover={{ scale: 1.2, rotate: 360 }}
-                  >
-                    <Star className="w-6 h-6 text-yellow-400 fill-current" />
-                  </motion.div>
-                ))}
-                <span className="ml-2 text-neutral-dark/70 font-medium">5.0 de 5 estrellas</span>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* Enhanced CTA */}
       <section className="py-20 bg-gradient-to-br from-blue-serene to-beige-500 text-white relative overflow-hidden">
@@ -1377,7 +964,7 @@ export default function BenefitsPage() {
                   className="relative group"
                 >
                   <Button className="bg-white text-blue-serene hover:bg-white/90 px-10 py-4 text-lg font-semibold relative overflow-hidden">
-                    <span className="relative z-10">Consulta Gratuita</span>
+                    <span className="relative z-10">Cotiza Ahora</span>
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-beige-100 to-blue-50"
                       initial={{ x: "-100%" }}
@@ -1444,7 +1031,7 @@ export default function BenefitsPage() {
                 transition={{ duration: 0.2 }}
               >
                 <Users className="w-5 h-5" />
-                <span className="text-sm opacity-80">+50 Familias</span>
+                <span className="text-sm opacity-80">Profesionalismo</span>
               </motion.div>
             </motion.div>
           </motion.div>
