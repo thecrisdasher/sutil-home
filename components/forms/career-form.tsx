@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { GETFORM_ENDPOINTS, GETFORM_FILE_CONFIG } from "@/lib/getform-config";
+import { FORMSPREE_ENDPOINTS, FORMSPREE_CONFIG } from "@/lib/formspree-config";
 
 // Schema de validación con Zod
 const careerSchema = z.object({
@@ -98,12 +98,12 @@ export function CareerForm({ className }: CareerFormProps) {
       // Agregar subject personalizado
       formData.append('_subject', `Nueva aplicación de carrera de ${data.name} - ${data.position}`);
       
-      console.log('Enviando formulario de carrera a:', GETFORM_ENDPOINTS.CAREER);
+      console.log('Enviando formulario de carrera a:', FORMSPREE_ENDPOINTS.CAREER);
       console.log('Archivos adjuntos:', { cv: cvFile?.name, coverLetter: coverLetterFile?.name });
       
-      // Getform endpoint específico para formulario de carreras con archivos
-      const res = await fetch(GETFORM_ENDPOINTS.CAREER, {
-        ...GETFORM_FILE_CONFIG,
+      // Formspree endpoint específico para formulario de carreras con archivos
+      const res = await fetch(FORMSPREE_ENDPOINTS.CAREER, {
+        ...FORMSPREE_CONFIG,
         body: formData,
       });
       

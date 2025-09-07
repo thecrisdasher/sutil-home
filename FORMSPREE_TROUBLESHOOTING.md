@@ -1,4 +1,4 @@
-# Guía de Solución de Problemas - Getform
+# Guía de Solución de Problemas - Formspree
 
 ## Problemas Comunes y Soluciones
 
@@ -6,13 +6,13 @@
 
 #### Verificaciones necesarias:
 
-1. **Verificar endpoints en Getform:**
-   - Formulario de contacto: `bzygqwoa`
-   - Formulario de carreras: `bzygqwoa` (temporal - mismo endpoint)
+1. **Verificar endpoints en Formspree:**
+   - Formulario de contacto: `mvgbdqle`
+   - Formulario de carreras: `xbjezqko`
 
-2. **Verificar configuración en Getform.io:**
-   - Acceder a https://getform.io/forms
-   - Verificar que el formulario esté activo
+2. **Verificar configuración en Formspree.io:**
+   - Acceder a https://formspree.io/forms
+   - Verificar que ambos formularios estén activos
    - Confirmar que el email de destino esté configurado
    - Verificar que no haya restricciones de dominio
 
@@ -27,20 +27,19 @@
 ### 2. Problemas con archivos PDF
 
 #### Para el formulario de carreras:
-- Verificar que el endpoint `bzygqwoa` esté configurado para aceptar archivos
+- Verificar que el endpoint `xbjezqko` esté configurado para aceptar archivos
 - Límite de tamaño: 5MB por archivo
 - Tipos permitidos: PDF, DOC, DOCX
-- **Nota:** Actualmente ambos formularios usan el mismo endpoint. Se recomienda crear un endpoint separado para carreras.
 
 ### 3. Configuración de CORS
 
 Si hay errores de CORS:
-1. Verificar que el dominio esté permitido en Getform
+1. Verificar que el dominio esté permitido en Formspree
 2. Para desarrollo local, agregar `localhost:3000`, `localhost:3001`, `localhost:3002`
 
 ### 4. Verificar configuración de email
 
-1. **En Getform:**
+1. **En Formspree:**
    - Verificar que el email de destino esté confirmado
    - Revisar la carpeta de spam
    - Verificar configuración de notificaciones
@@ -65,28 +64,22 @@ Si hay errores de CORS:
    - 400: Error en los datos enviados
    - 403: Problema de permisos/CORS
    - 422: Error de validación
-   - 500: Error del servidor de Getform
+   - 500: Error del servidor de Formspree
 
 ### 6. Contacto con soporte
 
 Si los problemas persisten:
 1. Documentar los logs de la consola
-2. Verificar la configuración en Getform.io
-3. Contactar soporte de Getform con los detalles específicos
+2. Verificar la configuración en Formspree.io
+3. Contactar soporte de Formspree con los detalles específicos
 
 ## Endpoints Actuales
 
-- **Contacto:** https://getform.io/f/bzygqwoa
-- **Carreras:** https://getform.io/f/bzygqwoa (temporal - mismo endpoint)
+- **Contacto:** https://formspree.io/f/mvgbdqle
+- **Carreras:** https://formspree.io/f/xbjezqko
 
 ## Archivos Modificados
 
 - `components/forms/contact-form.tsx`
 - `components/forms/career-form.tsx`
-- `lib/getform-config.ts`
-
-## Recomendaciones
-
-1. **Crear endpoint separado para carreras:** Se recomienda crear un nuevo formulario en Getform específicamente para el formulario de carreras que maneje archivos.
-2. **Configurar notificaciones:** Asegurarse de que las notificaciones por email estén habilitadas en Getform.
-3. **Probar ambos formularios:** Verificar que tanto el formulario de contacto como el de carreras funcionen correctamente con el nuevo proveedor.
+- `lib/formspree-config.ts`

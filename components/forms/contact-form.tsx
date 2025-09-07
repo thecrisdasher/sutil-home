@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { GETFORM_ENDPOINTS, GETFORM_CONFIG } from "@/lib/getform-config";
+import { FORMSPREE_ENDPOINTS, JSON_FORM_CONFIG } from "@/lib/formspree-config";
 
 // Schema de validación con Zod
 const contactSchema = z.object({
@@ -52,23 +52,23 @@ export function ContactForm({ className }: ContactFormProps) {
     setSubmitStatus('idle');
 
     try {
-      // Crear FormData para Getform
-      const formData = new FormData();
-      formData.append('name', data.name);
-      formData.append('email', data.email);
-      formData.append('phone', data.phone);
-      formData.append('service', data.service);
-      formData.append('message', data.message);
-      formData.append('urgency', data.urgency);
-      formData.append('_subject', `Nuevo contacto de ${data.name} - ${data.service}`);
+      const formData = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        service: data.service,
+        message: data.message,
+        urgency: data.urgency,
+        _subject: `Nuevo contacto de ${data.name} - ${data.service}`,
+      };
 
-      console.log('Enviando formulario a:', GETFORM_ENDPOINTS.CONTACT);
-      console.log('Datos del formulario:', Object.fromEntries(formData));
+      console.log('Enviando formulario a:', FORMSPREE_ENDPOINTS.CONTACT);
+      console.log('Datos del formulario:', formData);
 
-      // Integración con Getform - Formulario de Contacto
-      const response = await fetch(GETFORM_ENDPOINTS.CONTACT, {
-        ...GETFORM_CONFIG,
-        body: formData,
+      // Integración con Formspree - Formulario de Contacto
+      const response = await fetch(FORMSPREE_ENDPOINTS.CONTACT, {
+        ...JSON_FORM_CONFIG,
+        body: JSON.stringify(formData),
       });
 
       console.log('Response status:', response.status);
