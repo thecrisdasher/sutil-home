@@ -29,7 +29,7 @@ const features = [
 const stats = [
   {
     icon: Users,
-    number: "50+",
+    number: "Profesionales",
     label: "Familias Atendidas",
     color: "from-blue-serene via-blue-light to-beige-500",
     description: "Confiaron en nosotros"

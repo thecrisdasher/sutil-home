@@ -95,7 +95,7 @@ export function CareerForm({ className }: CareerFormProps) {
         formData.append('coverLetter', coverLetterFile);
       }
       // Cambia TU_FORM_ID por el ID real de tu formulario Formspree
-      const res = await fetch('https://formspree.io/f/TU_FORM_ID', {
+      const res = await fetch('https://formspree.io/f/xldwalaw', {
         method: 'POST',
         body: formData,
         headers: {

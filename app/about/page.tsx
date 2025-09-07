@@ -76,7 +76,7 @@ const values: Value[] = [
   {
     icon: Users,
     title: "Trabajo en Equipo",
-    description: "Colaboramos estrechamente con familias y médicos para el mejor cuidado integral.",
+    description: "Colaboramos estrechamente con familias y enfermeras para el mejor cuidado integral.",
     color: "from-beige-500 to-blue-light",
     accent: "bg-beige-500/10"
   }

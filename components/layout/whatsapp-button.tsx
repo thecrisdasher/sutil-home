@@ -28,7 +28,7 @@ export function WhatsAppButton({
       case "/services":
         return "Hola, me gustaría conocer más detalles sobre sus servicios de enfermería domiciliaria.";
       case "/contact":
-        return "Hola, necesito una consulta gratuita para evaluar mis necesidades de cuidado.";
+        return "Hola, necesito una validación gratuita para evaluar mis necesidades de cuidado.";
       case "/about":
         return "Hola, me interesa conocer más sobre su equipo y experiencia en cuidados domiciliarios.";
       case "/team":

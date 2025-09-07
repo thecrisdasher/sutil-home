@@ -109,7 +109,7 @@ export function CTASection() {
               <Link href="/contact" className="flex-1">
                 <Button className="btn-primary w-full group">
                   <Phone className="w-5 h-5 mr-2" />
-                  Solicitar consulta gratuita
+                  Solicitar validación gratuita
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
@@ -136,18 +136,7 @@ export function CTASection() {
               viewport={{ once: true }}
               className="flex items-center space-x-6 pt-4 border-t border-beige-200"
             >
-              <div className="text-center">
-                <p className="text-2xl font-bold text-blue-serene">50+</p>
-                <p className="text-sm text-neutral-dark/60">Familias atendidas</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-beige-500">98%</p>
-                <p className="text-sm text-neutral-dark/60">Satisfacción</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-blue-serene">5+</p>
-                <p className="text-sm text-neutral-dark/60">Años experiencia</p>
-              </div>
+            
             </motion.div>
           </motion.div>
 

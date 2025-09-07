@@ -51,14 +51,29 @@ export function ContactForm({ className }: ContactFormProps) {
     setSubmitStatus('idle');
 
     try {
-      // Simular envío del formulario
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Aquí iría la lógica real de envío
-      console.log('Datos del formulario:', data);
-      
-      setSubmitStatus('success');
-      reset();
+      // Integración con Formspree
+      const response = await fetch('https://formspree.io/f/xldwalaw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          service: data.service,
+          message: data.message,
+          urgency: data.urgency,
+          _subject: `Nuevo contacto de ${data.name} - ${data.service}`,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        reset();
+      } else {
+        throw new Error('Error en el envío del formulario');
+      }
     } catch (error) {
       setSubmitStatus('error');
       console.error('Error al enviar formulario:', error);
@@ -234,7 +249,7 @@ export function ContactForm({ className }: ContactFormProps) {
           ) : (
             <>
               <Send className="h-5 w-5 mr-2" />
-              Enviar consulta gratuita
+              Enviar validación gratuita
             </>
           )}
         </Button>

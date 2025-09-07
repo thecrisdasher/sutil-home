@@ -419,7 +419,7 @@ export default function ContactPage() {
     document.title = "Contacto - Lazos De Cuidado Home Care";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Contáctanos para una consulta gratuita. Estamos disponibles 24/7 para brindarte información sobre nuestros servicios de cuidado domiciliario.');
+      metaDescription.setAttribute('content', 'Contáctanos para una validación gratuita. Estamos disponibles 24/7 para brindarte información sobre nuestros servicios de cuidado domiciliario.');
     }
 
     // Intersection observer for active section
@@ -578,7 +578,7 @@ export default function ContactPage() {
               variants={itemVariants}
               className="text-xl text-neutral-dark/70 leading-relaxed max-w-3xl mx-auto"
             >
-              Contáctanos para una consulta gratuita y descubre cómo podemos 
+              Contáctanos para una validación gratuita y descubre cómo podemos 
               mejorar la calidad de vida de tu ser querido con nuestro cuidado domiciliario profesional.
             </motion.p>
             
@@ -794,7 +794,7 @@ export default function ContactPage() {
                   whileInView={{ scale: [0.9, 1] }}
                   transition={{ duration: 0.6 }}
                 >
-                  Solicita tu <span className="text-gradient">consulta gratuita</span>
+                  Solicita tu <span className="text-gradient">validación gratuita</span>
                 </motion.h2>
                 <motion.p 
                   className="text-lg text-neutral-dark/70"

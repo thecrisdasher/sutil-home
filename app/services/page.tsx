@@ -1456,7 +1456,7 @@ export default function ServicesPage() {
                     "Atención de emergencias",
                     "Equipo de enfermería especializado",
                     "Seguimiento médico continuo",
-                    "Coordinación con médicos tratantes"
+                    "Coordinación con enfermeras tratantes"
                   ].map((feature, index) => (
                     <motion.li
                       key={index}
@@ -1485,7 +1485,7 @@ export default function ServicesPage() {
                         'Atención de emergencias',
                         'Equipo de enfermería especializado',
                         'Seguimiento médico continuo',
-                        'Coordinación con médicos tratantes'
+                        'Coordinación con enfermeras tratantes'
                       ],
                       '24 horas, 7 días a la semana'
                     )}
@@ -1535,7 +1535,7 @@ export default function ServicesPage() {
                     >
                       <Button className="bg-gradient-to-r from-blue-serene to-blue-light text-white px-8 py-3 hover:shadow-lg transition-all duration-300">
                         <Phone className="w-5 h-5 mr-2" />
-                        Consulta Gratuita
+                        Cotiza Ahora
                       </Button>
                     </motion.div>
                   </Link>
@@ -1642,7 +1642,7 @@ export default function ServicesPage() {
               whileInView={{ opacity: 0.9 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Contáctanos para una consulta gratuita y descubre cómo podemos 
+              Contáctanos para una validación gratuita y descubre cómo podemos 
               ayudarte a ti y a tu familia.
             </motion.p>
             
