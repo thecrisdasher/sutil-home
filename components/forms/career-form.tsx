@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { GETFORM_ENDPOINTS, GETFORM_CONFIG } from "@/lib/getform-config";
+import { GETFORM_ENDPOINTS, GETFORM_FILE_CONFIG } from "@/lib/getform-config";
 
 // Schema de validación con Zod
 const careerSchema = z.object({
@@ -95,25 +95,31 @@ export function CareerForm({ className }: CareerFormProps) {
       if (coverLetterFile) {
         formData.append('coverLetter', coverLetterFile);
       }
+      // Agregar subject personalizado
+      formData.append('_subject', `Nueva aplicación de carrera de ${data.name} - ${data.position}`);
+      
+      console.log('Enviando formulario de carrera a:', GETFORM_ENDPOINTS.CAREER);
+      console.log('Archivos adjuntos:', { cv: cvFile?.name, coverLetter: coverLetterFile?.name });
+      
       // Getform endpoint específico para formulario de carreras con archivos
       const res = await fetch(GETFORM_ENDPOINTS.CAREER, {
-        ...GETFORM_CONFIG,
+        ...GETFORM_FILE_CONFIG,
         body: formData,
       });
       
       console.log('Career form response status:', res.status);
-      console.log('Career form response headers:', res.headers);
+      console.log('Career form response ok:', res.ok);
       
       if (res.ok) {
-        const responseData = await res.json();
-        console.log('Career form success response:', responseData);
+        console.log('Formulario de carrera enviado exitosamente');
         setSubmitStatus('success');
         reset();
         setCvFile(null);
         setCoverLetterFile(null);
       } else {
-        const errorData = await res.text();
-        console.error('Career form error response:', errorData);
+        const errorText = await res.text();
+        console.error('Career form error response:', errorText);
+        console.error('Response status:', res.status);
         setSubmitStatus('error');
       }
     } catch (error) {

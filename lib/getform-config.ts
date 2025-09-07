@@ -1,25 +1,20 @@
 // Configuración de endpoints de Getform
 export const GETFORM_ENDPOINTS = {
   // Formulario de contacto general
-  CONTACT: 'https://getform.io/f/bzygqwoa',
+  CONTACT: 'https://formspree.io/f/mvgbdqle',
   
   // Formulario de carreras con archivos (necesitarás crear otro endpoint en Getform)
-  CAREER: 'https://getform.io/f/bzygqwoa', // Temporal - usar el mismo endpoint por ahora
+  CAREER: 'https://formspree.io/f/xldwalaw', // Temporal - usar el mismo endpoint por ahora
 } as const;
 
-// Configuración común para las peticiones
+// Configuración común para las peticiones con FormData
 export const GETFORM_CONFIG = {
-  headers: {
-    'Accept': 'application/json',
-  },
   method: 'POST',
+  // No incluir Content-Type para que el navegador lo configure automáticamente con FormData
 } as const;
 
-// Configuración específica para formularios JSON
-export const JSON_FORM_CONFIG = {
+// Configuración específica para formularios con archivos
+export const GETFORM_FILE_CONFIG = {
   ...GETFORM_CONFIG,
-  headers: {
-    ...GETFORM_CONFIG.headers,
-    'Content-Type': 'application/json',
-  },
+  // FormData maneja automáticamente multipart/form-data
 } as const;

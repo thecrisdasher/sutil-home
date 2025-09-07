@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { GETFORM_ENDPOINTS, JSON_FORM_CONFIG } from "@/lib/getform-config";
+import { GETFORM_ENDPOINTS, GETFORM_CONFIG } from "@/lib/getform-config";
 
 // Schema de validación con Zod
 const contactSchema = z.object({
@@ -52,31 +52,36 @@ export function ContactForm({ className }: ContactFormProps) {
     setSubmitStatus('idle');
 
     try {
+      // Crear FormData para Getform
+      const formData = new FormData();
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('phone', data.phone);
+      formData.append('service', data.service);
+      formData.append('message', data.message);
+      formData.append('urgency', data.urgency);
+      formData.append('_subject', `Nuevo contacto de ${data.name} - ${data.service}`);
+
+      console.log('Enviando formulario a:', GETFORM_ENDPOINTS.CONTACT);
+      console.log('Datos del formulario:', Object.fromEntries(formData));
+
       // Integración con Getform - Formulario de Contacto
       const response = await fetch(GETFORM_ENDPOINTS.CONTACT, {
-        ...JSON_FORM_CONFIG,
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          service: data.service,
-          message: data.message,
-          urgency: data.urgency,
-          _subject: `Nuevo contacto de ${data.name} - ${data.service}`,
-        }),
+        ...GETFORM_CONFIG,
+        body: formData,
       });
 
       console.log('Response status:', response.status);
-      console.log('Response headers:', response.headers);
+      console.log('Response ok:', response.ok);
       
       if (response.ok) {
-        const responseData = await response.json();
-        console.log('Success response:', responseData);
+        console.log('Formulario enviado exitosamente');
         setSubmitStatus('success');
         reset();
       } else {
-        const errorData = await response.text();
-        console.error('Error response:', errorData);
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        console.error('Response status:', response.status);
         throw new Error(`Error en el envío del formulario: ${response.status}`);
       }
     } catch (error) {
