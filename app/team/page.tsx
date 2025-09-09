@@ -825,8 +825,7 @@ export default function EnhancedCareersPage() {
               variants={itemVariants}
               className="text-xl md:text-2xl text-neutral-dark/70 leading-relaxed max-w-4xl mx-auto"
             >
-              Únete al equipo, trabaja con nosotros y obtén una estabilidad laboral,
-              trabaja cuidando pacientes con enfermedades crónicas, recuperación posoperatoria, acompañando a menores y adultos mayores en su domicilio.
+             Únete al equipo y obtén una estabilidad laboral, trabaja en nuestro home care.
             </motion.p>
             
             <motion.div 
@@ -1235,34 +1234,7 @@ export default function EnhancedCareersPage() {
             </motion.div>
 
             {/* Call-to-action emphasis */}
-            <motion.div
-              className="mt-16 p-8 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 1 }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <h3 className="text-2xl font-bold mb-4">¿Tienes preguntas sobre el proceso?</h3>
-              <p className="text-lg opacity-90 mb-6">
-                Nuestro equipo de recursos humanos está disponible para resolver 
-                todas tus dudas sobre posiciones, beneficios y oportunidades de crecimiento.
-              </p>
-              
-              <div className="flex flex-wrap justify-center gap-6 text-sm">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  <span>Llamadas directas</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  <span>Email personalizado</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  <span>Respuesta rápida</span>
-                </div>
-              </div>
-            </motion.div>
+            
           </motion.div>
         </div>
       </section>

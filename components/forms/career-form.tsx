@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { FORMSPREE_ENDPOINTS, FORMSPREE_CONFIG } from "@/lib/formspree-config";
+// Removido: import { FORMSPREE_ENDPOINTS, FORMSPREE_CONFIG } from "@/lib/formspree-config";
 
 // Schema de validación con Zod
 const careerSchema = z.object({
@@ -88,22 +88,27 @@ export function CareerForm({ className }: CareerFormProps) {
     setSubmitStatus('idle');
     try {
       const formData = new FormData();
+      
+      // Agregar todos los campos del formulario
       Object.entries(data).forEach(([key, value]) => {
         formData.append(key, value);
       });
+      
+      // Agregar tipo de formulario para detección automática
+      formData.append('formType', 'career');
+      
+      // Agregar archivos
       formData.append('cv', cvFile);
       if (coverLetterFile) {
         formData.append('coverLetter', coverLetterFile);
       }
-      // Agregar subject personalizado
-      formData.append('_subject', `Nueva aplicación de carrera de ${data.name} - ${data.position}`);
       
-      console.log('Enviando formulario de carrera a:', FORMSPREE_ENDPOINTS.CAREER);
+      console.log('Enviando formulario de carrera a API local');
       console.log('Archivos adjuntos:', { cv: cvFile?.name, coverLetter: coverLetterFile?.name });
       
-      // Formspree endpoint específico para formulario de carreras con archivos
-      const res = await fetch(FORMSPREE_ENDPOINTS.CAREER, {
-        ...FORMSPREE_CONFIG,
+      // Envío a la API local de Next.js
+      const res = await fetch('/api/forms', {
+        method: 'POST',
         body: formData,
       });
       
@@ -111,14 +116,15 @@ export function CareerForm({ className }: CareerFormProps) {
       console.log('Career form response ok:', res.ok);
       
       if (res.ok) {
-        console.log('Formulario de carrera enviado exitosamente');
+        const result = await res.json();
+        console.log('Formulario de carrera enviado exitosamente:', result);
         setSubmitStatus('success');
         reset();
         setCvFile(null);
         setCoverLetterFile(null);
       } else {
-        const errorText = await res.text();
-        console.error('Career form error response:', errorText);
+        const errorData = await res.json().catch(() => ({ error: 'Error desconocido' }));
+        console.error('Career form error response:', errorData);
         console.error('Response status:', res.status);
         setSubmitStatus('error');
       }

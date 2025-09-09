@@ -94,9 +94,9 @@ const mainServices: MainService[] = [
 const additionalServices: AdditionalService[] = [
   {
     icon: Sparkles,
-    title: "Masaje de drenaje linfático",
-    description: "Masaje suave y rítmico realizado por fisioterapeutas certificados, diseñado para pacientes con movilidad reducida.",
-    scope: "Sesiones de 45 minutos, personalizadas tras evaluación, ideales para personas encamadas o en recuperación médica.",
+    title: "Masajes",
+    description: "Masajes especializados realizados por fisioterapeutas certificados: Geriátricos, Terapéuticos y Drenaje linfático, diseñados para pacientes con movilidad reducida.",
+    scope: "Sesiones de 45 minutos personalizadas. Masajes geriátricos para adultos mayores, terapéuticos para rehabilitación y drenaje linfático para reducir inflamación.",
     benefits: [
       "Mejora circulación",
       "Reduce hinchazón",
@@ -538,8 +538,7 @@ export default function ServicesPage() {
               variants={itemVariants}
               className="text-xl text-neutral-dark/70 leading-relaxed max-w-3xl mx-auto"
             >
-              Ofrecemos una amplia gama de servicios de salud domiciliarios diseñados 
-              para satisfacer las necesidades únicas de cada paciente y familia.
+              Ofrecemos un servicio de apoyo en el cuidado integral del paciente en la comodidad de su hogar permitiendo recibir atención en un entorno familiar y comódo.
             </motion.p>
             
             <motion.div 
@@ -618,7 +617,7 @@ export default function ServicesPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               Nuestros servicios especializados están diseñados para brindar 
-              el mejor cuidado médico en la comodidad de tu hogar.
+              el mejor cuidado en la comodidad de tu hogar.
             </motion.p>
             
             {/* Decorative line */}
@@ -1234,8 +1233,7 @@ export default function ServicesPage() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Podemos personalizar un paquete para que cumpla tus requisitos específicos. 
-              Cada familia es única y merece un cuidado diseñado especialmente para ella.
+              Cada familia es unica y merece un cuidado diseñado especialmente para ello, personaliza el paquete que cumpla con tus requisitos específicos.
             </motion.p>
           </motion.div>
 
@@ -1264,16 +1262,14 @@ export default function ServicesPage() {
                 </motion.div>
                 
                 <h3 className="text-2xl font-bold text-neutral-dark mb-4">Paquete Estándar</h3>
-                <p className="text-neutral-dark/70 mb-4">8 horas L a V</p>
-                <p className="text-sm text-neutral-dark/60 mb-6">Cuidado esencial para necesidades básicas diarias</p>
+                <p className="text-neutral-dark/70 mb-4">Lunes a Viernes 8 horas</p>
+                <p className="text-sm text-neutral-dark/60 mb-6">Cuidado profesional de enfermería</p>
                 
                 <ul className="space-y-3 mb-8">
                   {[
-                    "Cuidados personales básicos",
-                    "Acompañamiento emocional",
-                    "Administración de medicamentos",
-                    "Actividades de movilidad",
-                    "Horario: Lunes a Viernes"
+                    "Cuidado profesional de enfermería",
+                    "Lunes a Viernes",
+                    "8 horas diarias"
                   ].map((feature, index) => (
                     <motion.li
                       key={index}
@@ -1353,18 +1349,14 @@ export default function ServicesPage() {
                 </motion.div>
                 
                 <h3 className="text-2xl font-bold text-neutral-dark mb-4">Paquete Pro</h3>
-                <p className="text-neutral-dark/70 mb-4">12 hrs L a V</p>
-                <p className="text-sm text-neutral-dark/60 mb-6">Cuidado integral con servicios especializados</p>
+                <p className="text-neutral-dark/70 mb-4">Lunes a Viernes 12 horas</p>
+                <p className="text-sm text-neutral-dark/60 mb-6">Cuidado profesional de enfermería</p>
                 
                 <ul className="space-y-3 mb-8">
                   {[
-                    "Todo del paquete estándar",
-                    "Fisioterapia y rehabilitación",
-                    "Traslados médicos (TPink)",
-                    "Cuidado postoperatorio",
-                    "Estimulación cognitiva",
-                    "Masaje de drenaje linfático",
-                    "Horario extendido: 12 horas"
+                    "Cuidado profesional de enfermería",
+                    "Lunes a Viernes",
+                    "12 horas diarias"
                   ].map((feature, index) => (
                     <motion.li
                       key={index}
@@ -1412,11 +1404,11 @@ export default function ServicesPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-white rounded-3xl p-8 shadow-xl border-2 border-purple-500 relative overflow-hidden group"
+              className="bg-white rounded-3xl p-8 shadow-xl border-2 border-rose-300 relative overflow-hidden group"
             >
               {/* Premium badge */}
               <motion.div
-                className="absolute -top-4 -right-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-bold transform rotate-12"
+                className="absolute -top-4 -right-4 bg-gradient-to-r from-rose-300 to-rose-400 text-white px-6 py-2 rounded-full text-sm font-bold transform rotate-12"
                 animate={{
                   rotate: [12, 15, 12],
                   scale: [1, 1.05, 1],
@@ -1432,12 +1424,12 @@ export default function ServicesPage() {
               
               {/* Background gradient */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                className="absolute inset-0 bg-gradient-to-br from-rose-300/5 to-rose-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               />
               
               <div className="relative z-10">
                 <motion.div
-                  className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6"
+                  className="w-16 h-16 bg-gradient-to-br from-rose-300 to-rose-400 rounded-2xl flex items-center justify-center mb-6"
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.6 }}
                 >
@@ -1445,18 +1437,14 @@ export default function ServicesPage() {
                 </motion.div>
                 
                 <h3 className="text-2xl font-bold text-neutral-dark mb-4">Paquete Premium</h3>
-                <p className="text-neutral-dark/70 mb-4">Servicio 24/7</p>
-                <p className="text-sm text-neutral-dark/60 mb-6">Cuidado completo las 24 horas, los 7 días de la semana</p>
+                <p className="text-neutral-dark/70 mb-4">Lunes a Domingo 24 horas</p>
+                <p className="text-sm text-neutral-dark/60 mb-6">Cuidado profesional de enfermería</p>
                 
                 <ul className="space-y-3 mb-8">
                   {[
-                    "Todo del paquete Pro",
-                    "Servicio 24 horas",
-                    "Disponibilidad fines de semana",
-                    "Atención de emergencias",
-                    "Equipo de enfermería especializado",
-                    "Seguimiento médico continuo",
-                    "Coordinación con enfermeras tratantes"
+                    "Cuidado profesional de enfermería",
+                    "Lunes a Domingo",
+                    "24 horas diarias"
                   ].map((feature, index) => (
                     <motion.li
                       key={index}
@@ -1465,7 +1453,7 @@ export default function ServicesPage() {
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                     >
-                      <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-rose-400 flex-shrink-0" />
                       <span className="text-neutral-dark/80">{feature}</span>
                     </motion.li>
                   ))}
@@ -1484,12 +1472,12 @@ export default function ServicesPage() {
                         'Disponibilidad fines de semana',
                         'Atención de emergencias',
                         'Equipo de enfermería especializado',
-                        'Seguimiento médico continuo',
+                        'Seguimiento continuo',
                         'Coordinación con enfermeras tratantes'
                       ],
                       '24 horas, 7 días a la semana'
                     )}
-                    className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:shadow-lg transition-all duration-300"
+                    className="w-full bg-gradient-to-r from-rose-300 to-rose-400 text-white hover:shadow-lg transition-all duration-300"
                   >
                     Solicitar Cotización
                   </Button>

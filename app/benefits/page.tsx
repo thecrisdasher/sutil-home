@@ -56,7 +56,7 @@ const mainBenefits: MainBenefit[] = [
     description: "Recibe atención médica profesional en la comodidad y privacidad de tu propio hogar, rodeado de tus seres queridos.",
     features: [
       "Ambiente familiar y conocido",
-      "Mayor privacidad y dignidad",
+      "Mayor privacidad y comodidad",
       "Reducción del estrés y ansiedad",
       "Mantenimiento de rutinas personales",
       "Acceso a pertenencias personales"

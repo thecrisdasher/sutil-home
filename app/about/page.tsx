@@ -55,14 +55,14 @@ const values: Value[] = [
   {
     icon: Heart,
     title: "Profesionalismo",
-    description: "Brindamos cuidado con amor y empatía, tratando a cada paciente como familia.",
+    description: "Brindamos cuidado con amor y empatía con profesionales de alta experiencia.",
     color: "from-blue-serene to-blue-light",
     accent: "bg-blue-serene/10"
   },
   {
     icon: Shield,
     title: "Confianza",
-    description: "Construimos relaciones sólidas basadas en la transparencia y profesionalismo.",
+    description: "comentamos la confianza con comunicación clara, integridad absoluta y compromiso constante.",
     color: "from-beige-400 to-beige-500",
     accent: "bg-beige-400/10"
   },
@@ -557,10 +557,7 @@ export default function AboutPage() {
                 variants={itemVariants}
                 className="text-xl text-neutral-dark/70 leading-relaxed"
               >
-                En Lazos De Cuidado Home Care, creemos que cada persona merece recibir 
-                cuidado de calidad en la comodidad de su hogar. Nuestra misión es 
-                brindar servicios de salud domiciliarios excepcionales con compasión, 
-                profesionalismo y dedicación.
+               En Lazos De Cuidado Home Care, entendemos que cada persona merece recibir un servicio de cuidado en la comodidad y calidez de su hogar. Nuestro equipo de profesionales esta dedicado a brindar un cuidado excepcional con el mas alto nivel y profesionalismo.
               </motion.p>
               
               <motion.div 
@@ -729,13 +726,13 @@ export default function AboutPage() {
               {
                 icon: Target,
                 title: "Nuestra Misión",
-                content: "Proporcionar servicios de cuidado domiciliario de la más alta calidad, centrados en la dignidad, comodidad y bienestar de nuestros pacientes. Nos comprometemos a ser el puente entre la atención médica profesional y el calor del hogar.",
+                content: "Brindar servicios de atención domiciliaria de alta calidad con personal capacitado, enfocados en el cuidado, respeto y cariño hacia el paciente.",
                 color: "from-blue-serene to-blue-light"
               },
               {
                 icon: Eye,
                 title: "Nuestra Visión",
-                content: "Ser reconocidos como líderes en cuidado domiciliario, transformando la experiencia de atención médica en el hogar y estableciendo nuevos estándares de excelencia en el cuidado personalizado y compasivo.",
+                content: "Ser la empresa líder en servicios de home care, reconocida por su excelencia, profesionalismo y calidez humana.",
                 color: "from-beige-500 to-beige-400"
               }
             ].map((item, index) => {

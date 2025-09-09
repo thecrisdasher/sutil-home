@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 const features = [
   {
     icon: Heart,
-    title: "Cuidado con Empatía",
+    title: "Empatía",
     description: "Atención personalizada y humana"
   },
   {
@@ -19,8 +19,8 @@ const features = [
   },
   {
     icon: Users,
-    title: "Respeto",
-    description: "Dignidad en cada servicio"
+    title: "Confianza",
+    description: "Con respaldo experto"
   }
 ];
 
@@ -150,7 +150,7 @@ export function HeroSection() {
             >
               Brindamos servicios de salud domiciliaria de la más alta calidad, 
               con un equipo de profesionales comprometidos con el bienestar 
-              y la dignidad de nuestros pacientes.
+              de nuestros pacientes.
             </motion.p>
 
             {/* Feature highlights */}

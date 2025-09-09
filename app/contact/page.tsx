@@ -10,6 +10,7 @@ import {
   MessageCircle, 
   Send,
   CheckCircle,
+  X,
   Heart,
   Shield,
   Users,
@@ -80,8 +81,8 @@ const contactInfo: ContactInfo[] = [
   },
   {
     icon: MapPin,
-    title: "Oficina Principal",
-    value: "Ciudad de Cali",
+    title: "Servicio en el área metropolitana de Cali",
+    value: "Valle",
     description: "Cobertura Local",
     action: "#ubicacion",
     color: "from-beige-500 to-blue-serene"
@@ -214,27 +215,56 @@ const ContactForm = () => {
     email: '',
     phone: '',
     service: '',
-    message: ''
+    message: '',
+    urgency: 'medium'
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('idle');
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-    }, 3000);
+    try {
+      // Preparar datos como JSON
+      const dataToSend = {
+        ...formData,
+        formType: 'contact'
+      };
+      
+      console.log('Enviando formulario de contacto a API local');
+      
+      // Envío a la API local de Next.js
+      const res = await fetch('/api/forms', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSend),
+      });
+      
+      console.log('Contact form response status:', res.status);
+      console.log('Contact form response ok:', res.ok);
+      
+      if (res.ok) {
+        const result = await res.json();
+        console.log('Formulario de contacto enviado exitosamente:', result);
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', service: '', message: '', urgency: 'medium' });
+      } else {
+        const errorData = await res.json().catch(() => ({ error: 'Error desconocido' }));
+        console.error('Contact form error response:', errorData);
+        console.error('Response status:', res.status);
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Contact form error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -244,7 +274,7 @@ const ContactForm = () => {
     });
   };
 
-  if (isSubmitted) {
+  if (submitStatus === 'success') {
     return (
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
@@ -263,6 +293,41 @@ const ContactForm = () => {
           <h3 className="text-2xl font-bold text-neutral-dark mb-2">¡Mensaje Enviado!</h3>
           <p className="text-neutral-dark/70">Nos comunicaremos contigo en menos de 2 horas.</p>
         </div>
+        <button
+          onClick={() => setSubmitStatus('idle')}
+          className="mt-4 px-6 py-2 bg-blue-serene text-white rounded-lg hover:bg-blue-serene/90 transition-colors"
+        >
+          Enviar otro mensaje
+        </button>
+      </motion.div>
+    );
+  }
+
+  if (submitStatus === 'error') {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="text-center py-12 space-y-6"
+      >
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+          className="w-20 h-20 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto"
+        >
+          <X className="w-10 h-10 text-white" />
+        </motion.div>
+        <div>
+          <h3 className="text-2xl font-bold text-neutral-dark mb-2">Error al enviar</h3>
+          <p className="text-neutral-dark/70">Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.</p>
+        </div>
+        <button
+          onClick={() => setSubmitStatus('idle')}
+          className="mt-4 px-6 py-2 bg-blue-serene text-white rounded-lg hover:bg-blue-serene/90 transition-colors"
+        >
+          Intentar de nuevo
+        </button>
       </motion.div>
     );
   }
@@ -361,6 +426,27 @@ const ContactForm = () => {
         className="space-y-2"
       >
         <label className="block text-sm font-medium text-neutral-dark">
+          Nivel de Urgencia
+        </label>
+        <select
+          name="urgency"
+          value={formData.urgency}
+          onChange={handleChange}
+          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-beige-200 focus:border-blue-serene focus:ring-4 focus:ring-blue-serene/10 transition-all duration-300"
+        >
+          <option value="low">Baja - Consulta general</option>
+          <option value="medium">Media - Necesita atención pronto</option>
+          <option value="high">Alta - Es urgente</option>
+        </select>
+      </motion.div>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        className="space-y-2"
+      >
+        <label className="block text-sm font-medium text-neutral-dark">
           Mensaje
         </label>
         <textarea
@@ -378,7 +464,7 @@ const ContactForm = () => {
         disabled={isSubmitting}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
         whileHover={{ scale: 1.02, y: -2 }}
         whileTap={{ scale: 0.98 }}
         className="w-full bg-gradient-to-r from-blue-serene to-beige-400 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold hover:shadow-lg transition-all duration-300 disabled:opacity-50 relative overflow-hidden group"
@@ -578,8 +664,7 @@ export default function ContactPage() {
               variants={itemVariants}
               className="text-xl text-neutral-dark/70 leading-relaxed max-w-3xl mx-auto"
             >
-              Contáctanos para una validación gratuita y descubre cómo podemos 
-              mejorar la calidad de vida de tu ser querido con nuestro cuidado domiciliario profesional.
+              Contáctanos para asesorarte, permítenos optimizar la calidad de vida de tus seres queridos mediante un servicio home care de alto estándar.
             </motion.p>
             
             <motion.div 
@@ -794,7 +879,7 @@ export default function ContactPage() {
                   whileInView={{ scale: [0.9, 1] }}
                   transition={{ duration: 0.6 }}
                 >
-                  Solicita tu <span className="text-gradient">validación gratuita</span>
+                  Solicita <span className="text-gradient">información</span>
                 </motion.h2>
                 <motion.p 
                   className="text-lg text-neutral-dark/70"
@@ -867,49 +952,6 @@ export default function ContactPage() {
                   );
                 })}
               </div>
-              
-              <motion.div 
-                className="bg-gradient-to-r from-blue-serene/10 to-beige-400/10 p-8 rounded-3xl border border-blue-serene/20 relative overflow-hidden"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                whileHover={{ scale: 1.02 }}
-              >
-                <div className="flex items-center space-x-4 mb-4">
-                  <motion.div
-                    animate={{ 
-                      rotate: [0, 360],
-                      scale: [1, 1.1, 1]
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    <Star className="w-8 h-8 text-yellow-400 fill-current" />
-                  </motion.div>
-                  <span className="font-bold text-neutral-dark text-xl">Garantía de Satisfacción</span>
-                </div>
-                <p className="text-neutral-dark/70 leading-relaxed">
-                  Si no estás completamente satisfecho con nuestro servicio en los primeros 
-                  7 días, te devolvemos el 100% de tu dinero.
-                </p>
-                
-                {/* Background decoration */}
-                <motion.div
-                  className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-yellow-400/20 to-beige-400/20 rounded-full"
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.5, 0.8, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-              </motion.div>
             </motion.div>
             
             <motion.div
@@ -956,465 +998,8 @@ export default function ContactPage() {
       </section>
 
       {/* Enhanced Emergency Section */}
-      <section className="py-20 bg-gradient-to-br from-red-50 to-orange-50 relative overflow-hidden">
-        {/* Background elements */}
-        <motion.div
-          className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-br from-red-500/5 to-orange-500/5 rounded-full"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-        
-        <motion.div
-          className="absolute bottom-10 left-10 w-48 h-48 bg-gradient-to-br from-orange-500/5 to-red-500/5 rounded-full"
-          animate={{
-            scale: [1, 0.8, 1],
-            rotate: [0, -90, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <motion.div 
-              className="inline-flex items-center px-6 py-3 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Phone className="w-4 h-4 mr-2" />
-              Emergencias 24/7
-            </motion.div>
-            <motion.h2 
-              className="text-3xl md:text-4xl font-bold text-neutral-dark mb-6"
-              whileInView={{ scale: [0.9, 1] }}
-              transition={{ duration: 0.6 }}
-            >
-              ¿Necesitas atención <span className="text-red-600">inmediata</span>?
-            </motion.h2>
-            <motion.p 
-              className="text-lg text-neutral-dark/70 max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Nuestro equipo de emergencias está disponible las 24 horas para 
-              situaciones que requieren atención médica inmediata en el hogar.
-            </motion.p>
-          </motion.div>
-          
-          <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {emergencySteps.map((step, index) => {
-              const Icon = step.icon;
-              const [isHovered, setIsHovered] = useState(false);
-              
-              return (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  onHoverStart={() => setIsHovered(true)}
-                  onHoverEnd={() => setIsHovered(false)}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="text-center space-y-6 group"
-                >
-                  <div className="relative mx-auto w-fit">
-                    <motion.div 
-                      className={`w-20 h-20 bg-gradient-to-br ${step.color} rounded-3xl flex items-center justify-center mx-auto shadow-lg relative overflow-hidden`}
-                      whileHover={{ 
-                        scale: 1.1, 
-                        rotate: 5,
-                        boxShadow: "0 20px 40px rgba(220, 38, 127, 0.2)"
-                      }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <Icon className="w-10 h-10 text-white relative z-10" />
-                      <motion.div
-                        className="absolute inset-0 bg-white/20"
-                        animate={isHovered ? { 
-                          scale: [1, 1.5, 1],
-                          opacity: [0, 0.5, 0]
-                        } : {}}
-                        transition={{ 
-                          duration: 2,
-                          repeat: isHovered ? Infinity : 0,
-                          ease: "easeInOut"
-                        }}
-                      />
-                    </motion.div>
-                    
-                    <motion.div 
-                      className="absolute -top-2 -right-2 w-10 h-10 bg-white rounded-full flex items-center justify-center text-sm font-bold text-red-600 border-2 border-red-500 shadow-lg"
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      {step.step}
-                    </motion.div>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-xl font-bold text-neutral-dark mb-3 group-hover:text-red-600 transition-colors duration-300">
-                      {step.title}
-                    </h3>
-                    <p className="text-neutral-dark/70 leading-relaxed">{step.description}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <div className="bg-white rounded-3xl shadow-2xl p-10 max-w-2xl mx-auto relative overflow-hidden">
-              {/* Background decoration */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-full"
-                animate={{
-                  rotate: [0, 360],
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              />
-              
-              <div className="relative z-10">
-                <motion.h3 
-                  className="text-xl sm:text-2xl font-bold text-neutral-dark mb-4 sm:mb-6"
-                  whileInView={{ scale: [0.9, 1] }}
-                  transition={{ duration: 0.6 }}
-                >
-                  Línea de Emergencias 24/7
-                </motion.h3>
-                
-                <motion.div 
-                  className="text-2xl sm:text-3xl md:text-4xl font-bold text-red-600 mb-4 sm:mb-6"
-                  animate={{
-                    scale: [1, 1.05, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
-                  +57 310 6123883
-                </motion.div>
-                
-                <p className="text-neutral-dark/70 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
-                  Para situaciones que requieren atención médica inmediata. 
-                  Nuestro equipo de emergencias responde en menos de 30 minutos.
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <motion.a 
-                    href="tel:+573106123883"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="relative overflow-hidden group"
-                  >
-                    <button className="bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold relative z-10 shadow-lg">
-                      <Phone className="w-5 h-5 mr-2 inline" />
-                      Llamar Emergencia
-                    </button>
-                    <motion.div
-                      className="absolute inset-0 bg-red-700"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "0%" }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </motion.a>
-                  
-                  <motion.a 
-                    href="https://wa.me/+573106123883?text=EMERGENCIA:%20Necesito%20atención%20médica%20inmediata%20en%20domicilio."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="relative overflow-hidden group"
-                  >
-                    <button className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold relative z-10 shadow-lg">
-                      <MessageCircle className="w-5 h-5 mr-2 inline" />
-                      WhatsApp Emergencia
-                    </button>
-                    <motion.div
-                      className="absolute inset-0 bg-red-600"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "0%" }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </motion.a>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Enhanced FAQ Section */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <motion.div
-            className="absolute top-20 left-10 w-40 h-40 border-2 border-blue-serene rounded-full"
-            animate={{
-              rotate: [0, 360],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-          <motion.div
-            className="absolute bottom-20 right-10 w-32 h-32 border-2 border-beige-400 rounded-full"
-            animate={{
-              rotate: [360, 0],
-              scale: [1, 0.9, 1],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <motion.h2 
-              className="text-3xl md:text-4xl font-bold text-neutral-dark mb-6"
-              whileInView={{ scale: [0.9, 1] }}
-              transition={{ duration: 0.6 }}
-            >
-              Preguntas <span className="text-gradient">frecuentes</span>
-            </motion.h2>
-            <motion.p 
-              className="text-lg text-neutral-dark/70 max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Resolvemos las dudas más comunes sobre nuestros servicios 
-              de cuidado domiciliario.
-            </motion.p>
-            
-            {/* Decorative line */}
-            <motion.div
-              className="w-24 h-1 bg-gradient-to-r from-blue-serene to-beige-400 mx-auto mt-6 rounded-full"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.4 }}
-            />
-          </motion.div>
-          
-          <div className="max-w-4xl mx-auto space-y-6">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.01, y: -2 }}
-                className="bg-gradient-to-br from-beige-50 to-white p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl md:rounded-3xl border border-beige-200 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden group"
-                onClick={() => setExpandedFAQ(expandedFAQ === index ? null : index)}
-              >
-                {/* Background decoration */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-serene/5 to-beige-400/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                />
-                
-                <div className="relative z-10">
-                  <motion.div 
-                    className="flex items-start justify-between mb-4"
-                    whileHover={{ x: 5 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <h3 className="text-base sm:text-lg font-bold text-neutral-dark pr-4 group-hover:text-blue-serene transition-colors duration-300">
-                      {faq.question}
-                    </h3>
-                    <motion.div
-                      animate={{ rotate: expandedFAQ === index ? 45 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-gradient-to-br from-blue-serene to-beige-400 rounded-full flex items-center justify-center flex-shrink-0"
-                    >
-                      <motion.div
-                        className="w-4 h-0.5 bg-white rounded-full"
-                        animate={{ 
-                          rotate: expandedFAQ === index ? 90 : 0,
-                          scale: expandedFAQ === index ? 0.8 : 1
-                        }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      <motion.div
-                        className="w-0.5 h-4 bg-white rounded-full absolute"
-                        animate={{ 
-                          opacity: expandedFAQ === index ? 0 : 1,
-                          scale: expandedFAQ === index ? 0 : 1
-                        }}
-                        transition={{ duration: 0.2 }}
-                      />
-                    </motion.div>
-                  </motion.div>
-                  
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: expandedFAQ === index ? "auto" : 0,
-                      opacity: expandedFAQ === index ? 1 : 0
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <motion.p 
-                      className="text-neutral-dark/70 leading-relaxed"
-                      initial={{ y: -20 }}
-                      animate={{ y: expandedFAQ === index ? 0 : -20 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {faq.answer}
-                    </motion.p>
-                  </motion.div>
-                </div>
-                
-                {/* Shine effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
-                  animate={expandedFAQ === index ? { x: [-100, 400] } : {}}
-                  transition={{ duration: 1 }}
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Enhanced Service Areas */}
-      <section className="py-20 bg-gradient-to-br from-beige-50 to-white relative overflow-hidden">
-        {/* Animated background */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            background: [
-              "radial-gradient(circle at 20% 50%, rgba(229, 213, 183, 0.1) 0%, transparent 50%)",
-              "radial-gradient(circle at 80% 50%, rgba(229, 213, 183, 0.1) 0%, transparent 50%)",
-              "radial-gradient(circle at 20% 50%, rgba(229, 213, 183, 0.1) 0%, transparent 50%)",
-            ]
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <motion.h2 
-              className="text-3xl md:text-4xl font-bold text-neutral-dark mb-6"
-              whileInView={{ scale: [0.9, 1] }}
-              transition={{ duration: 0.6 }}
-            >
-              Áreas de <span className="text-gradient">cobertura</span>
-            </motion.h2>
-            <motion.p 
-              className="text-lg text-neutral-dark/70 max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Brindamos nuestros servicios en los principales barrios de Cali. 
-              ¿No ves tu barrio? Contáctanos para confirmar disponibilidad.
-            </motion.p>
-          </motion.div>
-          
-          <motion.div 
-            className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {serviceAreas.map((city, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -5,
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.1)"
-                }}
-                className="bg-white p-6 rounded-2xl border border-beige-200 text-center hover:shadow-xl transition-all duration-500 group cursor-pointer relative overflow-hidden"
-              >
-                {/* Background gradient animation */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-blue-serene/5 to-beige-400/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                />
-                
-                <div className="relative z-10">
-                  <motion.div
-                    whileHover={{ scale: 1.2, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <MapPin className="w-8 h-8 text-blue-serene mx-auto mb-3" />
-                  </motion.div>
-                  
-                  <div className="font-semibold text-neutral-dark group-hover:text-blue-serene transition-colors duration-300">
-                    {city}
-                  </div>
-                </div>
-                
-                {/* Shine effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.8 }}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       {/* Enhanced Final CTA */}
       <section className="py-20 bg-gradient-to-br from-blue-serene to-beige-500 text-white relative overflow-hidden">

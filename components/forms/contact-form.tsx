@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { FORMSPREE_ENDPOINTS, JSON_FORM_CONFIG } from "@/lib/formspree-config";
+// Removido: import { FORMSPREE_ENDPOINTS, JSON_FORM_CONFIG } from "@/lib/formspree-config";
 
 // Schema de validación con Zod
 const contactSchema = z.object({
@@ -48,26 +48,26 @@ export function ContactForm({ className }: ContactFormProps) {
   });
 
   const onSubmit = async (data: ContactFormData) => {
+    console.log('=== CONTACT FORM SUBMIT INICIADO ===');
+    console.log('Datos recibidos en onSubmit:', data);
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
       const formData = {
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        service: data.service,
-        message: data.message,
-        urgency: data.urgency,
-        _subject: `Nuevo contacto de ${data.name} - ${data.service}`,
+        ...data,
+        formType: 'contact' as const,
       };
 
-      console.log('Enviando formulario a:', FORMSPREE_ENDPOINTS.CONTACT);
+      console.log('Enviando formulario de contacto a API local');
       console.log('Datos del formulario:', formData);
 
-      // Integración con Formspree - Formulario de Contacto
-      const response = await fetch(FORMSPREE_ENDPOINTS.CONTACT, {
-        ...JSON_FORM_CONFIG,
+      // Envío a la API local de Next.js
+      const response = await fetch('/api/forms', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(formData),
       });
 
@@ -75,14 +75,15 @@ export function ContactForm({ className }: ContactFormProps) {
       console.log('Response ok:', response.ok);
       
       if (response.ok) {
-        console.log('Formulario enviado exitosamente');
+        const result = await response.json();
+        console.log('Formulario enviado exitosamente:', result);
         setSubmitStatus('success');
         reset();
       } else {
-        const errorText = await response.text();
-        console.error('Error response:', errorText);
+        const errorData = await response.json().catch(() => ({ error: 'Error desconocido' }));
+        console.error('Error response:', errorData);
         console.error('Response status:', response.status);
-        throw new Error(`Error en el envío del formulario: ${response.status}`);
+        throw new Error(errorData.error || `Error en el envío del formulario: ${response.status}`);
       }
     } catch (error) {
       setSubmitStatus('error');
@@ -101,7 +102,15 @@ export function ContactForm({ className }: ContactFormProps) {
       transition={{ duration: 0.6 }}
       className={`${className} px-4 sm:px-6 md:px-0`}
     >
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
+      <form onSubmit={handleSubmit((data) => {
+        console.log('=== HANDLESUBMIT EJECUTADO ===');
+        console.log('Datos válidos:', data);
+        console.log('Errores actuales:', errors);
+        onSubmit(data);
+      }, (errors) => {
+        console.log('=== ERRORES DE VALIDACIÓN ===');
+        console.log('Errores:', errors);
+      })} className="space-y-4 sm:space-y-6">
         {/* Nombre */}
         <div className="space-y-2">
           <Label htmlFor="name">Nombre completo *</Label>
@@ -158,7 +167,8 @@ export function ContactForm({ className }: ContactFormProps) {
         {/* Servicio */}
         <div className="space-y-2">
           <Label htmlFor="service">Servicio requerido *</Label>
-          <Select onValueChange={(value: string) => setValue("service", value)}>
+          <input type="hidden" {...register("service")} />
+          <Select onValueChange={(value: string) => setValue("service", value, { shouldValidate: true })}>
             <SelectTrigger className={errors.service ? "border-red-500" : ""}>
               <SelectValue placeholder="Selecciona un servicio" />
             </SelectTrigger>
@@ -187,9 +197,10 @@ export function ContactForm({ className }: ContactFormProps) {
         {/* Urgencia */}
         <div className="space-y-2">
           <Label htmlFor="urgency">Nivel de urgencia</Label>
+          <input type="hidden" {...register("urgency")} />
           <Select 
             defaultValue="medium" 
-            onValueChange={(value: string) => setValue("urgency", value as "low" | "medium" | "high")}
+            onValueChange={(value: string) => setValue("urgency", value as "low" | "medium" | "high", { shouldValidate: true })}
           >
             <SelectTrigger>
               <SelectValue />
@@ -249,6 +260,7 @@ export function ContactForm({ className }: ContactFormProps) {
           disabled={isSubmitting}
           className="w-full h-10 sm:h-12 text-base sm:text-lg"
           size="lg"
+          onClick={() => console.log('=== BOTÓN SUBMIT CLICKEADO ===')}
         >
           {isSubmitting ? (
             <motion.div

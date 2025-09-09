@@ -17,7 +17,7 @@ const features = [
   },
   
   {
-    text: "Coordinación con enfermero tratantes",
+    text: "Coordinación constante con la familia",
     icon: Users
   },
   {
@@ -153,11 +153,7 @@ export function AboutPreview() {
                   className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-blue-serene to-transparent rounded-full opacity-60"
                 />
               </span>{" "}
-              y{" "}
               <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-blue-serene via-blue-light to-beige-500 bg-clip-text text-transparent">
-                  dignidad
-                </span>
                 <motion.div
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}

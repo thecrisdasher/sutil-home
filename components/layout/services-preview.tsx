@@ -9,7 +9,7 @@ const services = [
   {
     icon: Stethoscope,
     title: "Cuidado de Enfermería",
-    description: "Atención médica profesional con enfermeras certificadas.",
+    description: "Atención profesional con enfermeras certificadas.",
     color: "from-blue-serene via-blue-light to-beige-500",
     shadowColor: "shadow-blue-serene/25",
     highlight: "Enfermería"
