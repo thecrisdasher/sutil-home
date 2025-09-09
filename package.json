@@ -9,7 +9,8 @@
     "build:with-images": "npm run optimize:images && next build",
     "optimize:images": "node scripts/optimize-images.js",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
     "next": "^14.0.0",
@@ -21,6 +22,7 @@
     "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.0.0",
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
