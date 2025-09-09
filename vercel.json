@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build",
+  "functions": {
+    "app/**/*.tsx": {
+      "maxDuration": 30
+    }
+  },
+  "images": {
+    "domains": ["images.unsplash.com"],
+    "formats": ["image/webp", "image/avif"]
+  }
+}
