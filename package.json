@@ -1,5 +1,5 @@
 {
-  "name": "alivio-vital-home-care",
+  "name": "lazos-de-cuidado-home-care",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -26,13 +26,16 @@
     "lucide-react": "^0.263.1",
     "clsx": "^2.0.0",
     "tailwind-merge": "^2.0.0",
-    "class-variance-authority": "^0.7.0"
+    "class-variance-authority": "^0.7.0",
+    "sonner": "^1.4.41",
+    "nodemailer": "^6.9.7"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.0.0",
     "@types/node": "^20.8.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "@types/nodemailer": "^6.4.14",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.51.0",
     "eslint-config-next": "^14.0.0",
