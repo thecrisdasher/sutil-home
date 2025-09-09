@@ -111,7 +111,7 @@ const faqs: FAQ[] = [
   },
   {
     question: "¿Qué incluye la consulta inicial?",
-    answer: "La consulta incluye evaluación médica del paciente, análisis de necesidades familiares, explicación detallada de servicios, plan de cuidado personalizado y cotización sin compromiso."
+    answer: "La consulta incluye evaluación del paciente, análisis de necesidades familiares, explicación detallada de servicios, plan de cuidado personalizado y cotización sin compromiso."
   },
   {
     question: "¿Tienen cobertura las 24 horas?",

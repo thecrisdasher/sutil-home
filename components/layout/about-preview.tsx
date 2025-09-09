@@ -169,7 +169,7 @@ export function AboutPreview() {
               className="text-lg text-neutral-dark/80 mb-8 leading-relaxed"
             >
               En Lazos De Cuidado Home Care, entendemos que cada persona merece recibir 
-              atención médica de calidad en la comodidad y calidez de su hogar. 
+              atención de calidad en la comodidad y calidez de su hogar. 
               Nuestro equipo de profesionales está dedicado a brindar cuidados 
               excepcionales con el más alto nivel de compasión y respeto.
             </motion.p>

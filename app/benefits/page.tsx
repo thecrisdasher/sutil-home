@@ -53,7 +53,7 @@ const mainBenefits: MainBenefit[] = [
   {
     icon: Home,
     title: "Comodidad del Hogar",
-    description: "Recibe atención médica profesional en la comodidad y privacidad de tu propio hogar, rodeado de tus seres queridos.",
+    description: "Recibe atención profesional en la comodidad y privacidad de tu propio hogar, rodeado de tus seres queridos.",
     features: [
       "Ambiente familiar y conocido",
       "Mayor privacidad y comodidad",
