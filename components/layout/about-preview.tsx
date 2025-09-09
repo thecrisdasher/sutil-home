@@ -171,7 +171,7 @@ export function AboutPreview() {
               En Lazos De Cuidado Home Care, entendemos que cada persona merece recibir 
               atención de calidad en la comodidad y calidez de su hogar. 
               Nuestro equipo de profesionales está dedicado a brindar cuidados 
-              excepcionales con el más alto nivel de compasión y respeto.
+              excepcionales con el más alto nivel de profesionalismo y respeto.
             </motion.p>
 
             {/* Features List with subtle improvements */}
