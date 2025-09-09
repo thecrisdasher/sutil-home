@@ -12,7 +12,7 @@ import {
   Brain,
   Pill,
   Thermometer,
-  Bandage,
+  Badge,
   UserCheck,
   Home,
   Phone,
