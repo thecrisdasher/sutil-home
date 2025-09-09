@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import Link from "next/link";
 import { ArrowRight, Heart, Shield, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -228,15 +228,17 @@ export function HeroSection() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
-                className="relative z-10 rounded-3xl overflow-hidden shadow-2xl mt-4 sm:-mt-20 md:-mt-40 lg:-mt-60 xl:-mt-80"
+                className="relative z-10 rounded-3xl overflow-hidden shadow-2xl mt-4 sm:-mt-20 md:-mt-40 lg:-mt-60 xl:-mt-64"
               >
-                <Image
+                <OptimizedImage
                   src="/images/cuidados-ancianos.png"
                   alt="Enfermera cuidando a paciente mayor con cariño y profesionalismo"
                   width={600}
                   height={700}
                   className="w-full h-auto object-cover"
                   priority
+                  placeholder="blur"
+                  quality={90}
                 />
               </motion.div>
 

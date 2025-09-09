@@ -3,7 +3,9 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
+import ServiceWorkerRegistration from '@/components/ui/service-worker-registration';
 import { DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Suspense } from 'react';
 
 const dmSerif = DM_Serif_Display({ 
   subsets: ["latin"],
@@ -114,20 +116,29 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <meta name="theme-color" content="#3B82F6" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Lazos De Cuidado" />
       </head>
-      <body className="min-h-screen bg-beige-100 antialiased">
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-        </div>
-        <WhatsAppButton />
+      <body className="min-h-screen bg-beige-100 antialiased gpu-accelerated">
+        <ServiceWorkerRegistration>
+          <div className="flex flex-col min-h-screen">
+            <Suspense fallback={null}>
+              <Navbar />
+            </Suspense>
+            <main className="flex-1">
+              {children}
+            </main>
+            <Suspense fallback={null}>
+              <Footer />
+            </Suspense>
+          </div>
+          <WhatsAppButton />
+        </ServiceWorkerRegistration>
       </body>
     </html>
   );
