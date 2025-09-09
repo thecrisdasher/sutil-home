@@ -53,9 +53,18 @@
   * {
     @apply border-border;
   }
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
   body {
     @apply bg-beige-100 text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+  }
+  #__next {
+    height: 100%;
   }
 }
 

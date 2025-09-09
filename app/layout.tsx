@@ -124,9 +124,9 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Lazos De Cuidado" />
       </head>
-      <body className="min-h-screen bg-beige-100 antialiased gpu-accelerated">
+      <body className="h-full bg-beige-100 antialiased gpu-accelerated">
         <ServiceWorkerRegistration>
-          <div className="flex flex-col min-h-screen">
+          <div className="flex flex-col h-full">
             <Suspense fallback={null}>
               <Navbar />
             </Suspense>

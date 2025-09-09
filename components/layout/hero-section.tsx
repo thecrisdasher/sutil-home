@@ -100,6 +100,7 @@ export function HeroSection() {
                   y: -5,
                   textShadow: "0 0 20px rgba(59, 130, 246, 0.3)"
                 }}
+                animate={{ scale: 1, y: 0, textShadow: "none" }}
                 transition={{ 
                   type: "spring", 
                   stiffness: 300, 
@@ -116,6 +117,7 @@ export function HeroSection() {
                   y: -5,
                   textShadow: "0 0 20px rgba(59, 130, 246, 0.3)"
                 }}
+                animate={{ scale: 1, y: 0, textShadow: "none" }}
                 transition={{ 
                   type: "spring", 
                   stiffness: 300, 
@@ -131,6 +133,7 @@ export function HeroSection() {
                   y: -5,
                   textShadow: "0 0 20px rgba(59, 130, 246, 0.3)"
                 }}
+                animate={{ scale: 1, y: 0, textShadow: "none" }}
                 transition={{ 
                   type: "spring", 
                   stiffness: 300, 
@@ -166,7 +169,7 @@ export function HeroSection() {
                   <motion.div
                     key={feature.title}
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
                     whileHover={{ 
                       scale: 1.05,
@@ -178,6 +181,7 @@ export function HeroSection() {
                     <motion.div 
                       className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-serene to-beige-500 rounded-lg flex items-center justify-center"
                       whileHover={{ rotate: 360 }}
+                      animate={{ rotate: 0 }}
                       transition={{ duration: 0.6 }}
                     >
                       <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
@@ -227,6 +231,7 @@ export function HeroSection() {
               {/* Main image container */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
+                animate={{ scale: 1 }}
                 transition={{ duration: 0.3 }}
                 className="relative z-10 rounded-3xl overflow-hidden shadow-2xl mt-4 sm:-mt-20 md:-mt-40 lg:-mt-60 xl:-mt-64"
               >

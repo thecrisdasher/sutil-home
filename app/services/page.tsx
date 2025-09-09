@@ -235,7 +235,7 @@ const ServiceCard = ({ service, index, isMain = false }: ServiceCardProps) => {
                 <Icon className="w-8 h-8 text-white relative z-10" />
                 <motion.div
                   className="absolute inset-0 bg-white/20"
-                  animate={isHovered ? { scale: [1, 2], opacity: [0, 0.5, 0] } : {}}
+                  animate={isHovered ? { scale: [1, 2], opacity: [0, 0.5, 0] } : { scale: 1, opacity: 0 }}
                   transition={{ duration: 0.6 }}
                 />
               </motion.div>
@@ -321,10 +321,10 @@ const ServiceCard = ({ service, index, isMain = false }: ServiceCardProps) => {
           >
             <Icon className="w-8 h-8 text-white relative z-10" />
             <motion.div
-              className="absolute inset-0 bg-white/20"
-              animate={isHovered ? { scale: [1, 2], opacity: [0, 0.5, 0] } : {}}
-              transition={{ duration: 0.6 }}
-            />
+                  className="absolute inset-0 bg-white/20"
+                  animate={isHovered ? { scale: [1, 2], opacity: [0, 0.5, 0] } : { scale: 1, opacity: 0 }}
+                  transition={{ duration: 0.6 }}
+                />
           </motion.div>
           
           <h3 className="text-xl font-bold text-neutral-dark group-hover:text-blue-serene transition-colors duration-300">

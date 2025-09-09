@@ -252,7 +252,7 @@ const EnhancedStatCard: React.FC<EnhancedStatCardProps> = ({ stat, index }) => {
           <Icon className="w-10 h-10 text-white relative z-10" />
           <motion.div
             className="absolute inset-0 bg-white/20"
-            animate={isHovered ? { scale: [1, 2], opacity: [0, 0.5, 0] } : {}}
+            animate={isHovered ? { scale: [1, 2], opacity: [0, 0.5, 0] } : { scale: 1, opacity: 0 }}
             transition={{ duration: 0.6 }}
           />
         </motion.div>
