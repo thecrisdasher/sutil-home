@@ -12,7 +12,7 @@ interface WhatsAppFloatButtonProps {
 
 export default function WhatsAppFloatButton({
   phoneNumber = '+573106123883',
-  message = '¡Hola! 👋 ¿Necesitas ayuda? Estoy aquí para asistirte con información sobre nuestros servicios de cuidado domiciliario.',
+  message = '¡Hola! Necesito mas información sobre el servicio.',
   className = ''
 }: WhatsAppFloatButtonProps) {
   const [isVisible, setIsVisible] = useState(false)
