@@ -18,12 +18,12 @@ const navigation = {
   social: [
     {
       name: "Facebook",
-      href: "#",
+      href: "https://www.facebook.com/lazosdecuidado/",
       icon: Facebook,
     },
     {
       name: "Instagram",
-      href: "#",
+      href: "https://www.instagram.com/lazosdecuidado/",
       icon: Instagram,
     },
     {
