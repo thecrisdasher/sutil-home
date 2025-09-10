@@ -19,7 +19,7 @@ const careerSchema = z.object({
   phone: z.string().min(10),
   position: z.string().min(2),
   education: z.string().min(2),
-  availability: z.string().min(1),
+  availability: z.string().min(10).max(200),
   motivation: z.string().min(20),
   references: z.string().optional(),
   formType: z.literal('career').optional(),

@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image"; 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -14,7 +13,6 @@ const navigation = {
   ],
   secondary: [
     { name: "Beneficios", href: "/benefits" },
-  
     { name: "Contacto", href: "/contact" },
   ],
   social: [
@@ -52,7 +50,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Ubicación",
-    value: "Cal, Colombia",
+    value: "CALLE 30 # 1B-100 Of. 61 Jamundí, Valle Del Cauca",
     href: "#",
   },
 ];
@@ -75,7 +73,7 @@ export function Footer() {
               <div className="flex items-center space-x-2 mb-4 sm:mb-6">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-transparent from-beige-500 to-blue-light rounded-xl flex items-center justify-center">
                   <Image
-                    src="/images/logo-empresa-salud-solo-vividos-web.png"   // 👈 reemplaza con la ruta de tu logo (ej: /images/logo.png)
+                    src="/images/logo-empresa-salud-solo-vividos-web.png"
                     alt="Lazos De Cuidado Logo"
                     width={40}
                     height={40}
@@ -153,7 +151,7 @@ export function Footer() {
               </ul>
             </motion.div>
 
-            {/* Contact Info */}
+            {/* Contact Info - SECCIÓN MODIFICADA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -168,14 +166,14 @@ export function Footer() {
                     <li key={item.label}>
                       <a
                         href={item.href}
-                        className="flex items-center space-x-3 text-gray-300 hover:text-beige-300 transition-colors duration-200 group"
+                        className="flex items-start space-x-3 text-gray-300 hover:text-beige-300 transition-colors duration-200 group"
                       >
-                        <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-beige-500 transition-colors duration-300">
+                        <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-beige-500 transition-colors duration-300 flex-shrink-0 mt-0.5">
                           <Icon className="w-4 h-4" />
                         </div>
-                        <div>
+                        <div className="flex-1 min-w-0">
                           <p className="text-sm text-gray-400">{item.label}</p>
-                          <p className="font-medium">{item.value}</p>
+                          <p className="font-medium leading-tight">{item.value}</p>
                         </div>
                       </a>
                     </li>

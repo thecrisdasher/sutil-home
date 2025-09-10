@@ -81,8 +81,8 @@ const contactInfo: ContactInfo[] = [
   },
   {
     icon: MapPin,
-    title: "Servicio en el área metropolitana de Cali",
-    value: "Valle",
+    title: "Oficina",
+    value: "CALLE 30 # 1B-100 Of. 61",
     description: "Cobertura Local",
     action: "#ubicacion",
     color: "from-beige-500 to-blue-serene"

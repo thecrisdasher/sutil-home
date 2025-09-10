@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+// Removido: import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 // Removido: import { FORMSPREE_ENDPOINTS, FORMSPREE_CONFIG } from "@/lib/formspree-config";
 
 // Schema de validación con Zod
@@ -20,7 +20,7 @@ const careerSchema = z.object({
   phone: z.string().min(10, "El teléfono debe tener al menos 10 dígitos"),
   position: z.string().min(2, "Ingresa la posición de tu interés"),
   education: z.string().min(2, "Ingresa tu nivel educativo"),
-  availability: z.string().min(1, "Selecciona tu disponibilidad"),
+  availability: z.string().min(10, "La disponibilidad debe tener al menos 10 caracteres").max(200, "La disponibilidad no puede exceder 200 caracteres"),
   motivation: z.string().min(20, "La motivación debe tener al menos 20 caracteres"),
   references: z.string().optional(),
 });
@@ -247,19 +247,12 @@ export function CareerForm({ className }: CareerFormProps) {
           {/* Disponibilidad */}
           <div className="space-y-2">
             <Label htmlFor="availability">Disponibilidad *</Label>
-            <Select onValueChange={(value: string) => setValue("availability", value)}>
-              <SelectTrigger className={errors.availability ? "border-red-500" : ""}>
-                <SelectValue placeholder="Selecciona tu disponibilidad" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="tiempo-completo">Tiempo completo</SelectItem>
-                <SelectItem value="medio-tiempo">Medio tiempo</SelectItem>
-                <SelectItem value="turnos">Por turnos</SelectItem>
-                <SelectItem value="fines-semana">Fines de semana</SelectItem>
-                <SelectItem value="nocturno">Turno nocturno</SelectItem>
-                <SelectItem value="flexible">Horario flexible</SelectItem>
-              </SelectContent>
-            </Select>
+            <Input
+              id="availability"
+              {...register("availability")}
+              placeholder="Ej: Tiempo completo, medio tiempo, turnos rotativos, fines de semana, etc."
+              className={errors.availability ? "border-red-500" : ""}
+            />
             {errors.availability && (
               <p className="text-sm text-red-500 flex items-center gap-1">
                 <AlertCircle className="h-4 w-4" />

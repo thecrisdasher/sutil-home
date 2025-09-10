@@ -207,7 +207,6 @@ const ServiceCard = ({ service, index, isMain = false }: ServiceCardProps) => {
 
   if (isMain) {
     const mainService = service as MainService;
-    const additionalService = service as AdditionalService;
     return (
       <motion.div
         variants={cardVariants}
@@ -812,7 +811,7 @@ export default function ServicesPage() {
                     </div>
                     
                     {/* Enhanced decorative elements */}
-                    <motion.div 
+                    <motion.div
                       className={`absolute -top-6 ${isEven ? '-right-6' : '-left-6'} w-32 h-32 bg-gradient-to-br ${service.color} rounded-3xl rotate-12 opacity-80`}
                       animate={{
                         rotate: [12, 20, 12],
@@ -1233,7 +1232,7 @@ export default function ServicesPage() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Cada familia es unica y merece un cuidado diseñado especialmente para ello, personaliza el paquete que cumpla con tus requisitos específicos.
+              Cada familia es unica y merece un cuidado diseñado especialmente para ello, personaliza el paquete que cumpla con tus requisitos específicos.
             </motion.p>
           </motion.div>
 
@@ -1397,18 +1396,18 @@ export default function ServicesPage() {
               </div>
             </motion.div>
 
-            {/* Paquete Personalizado */}
+            {/* Paquete Premium - COLORES MORADOS ACTUALIZADOS */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-white rounded-3xl p-8 shadow-xl border-2 border-rose-300 relative overflow-hidden group"
+              className="bg-white rounded-3xl p-8 shadow-xl border-2 border-purple-500 relative overflow-hidden group"
             >
               {/* Premium badge */}
               <motion.div
-                className="absolute -top-4 -right-4 bg-gradient-to-r from-rose-300 to-rose-400 text-white px-6 py-2 rounded-full text-sm font-bold transform rotate-12"
+                className="absolute -top-4 -right-4 bg-gradient-to-r from-purple-400 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-bold transform rotate-12"
                 animate={{
                   rotate: [12, 15, 12],
                   scale: [1, 1.05, 1],
@@ -1424,12 +1423,12 @@ export default function ServicesPage() {
               
               {/* Background gradient */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-rose-300/5 to-rose-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               />
               
               <div className="relative z-10">
                 <motion.div
-                  className="w-16 h-16 bg-gradient-to-br from-rose-300 to-rose-400 rounded-2xl flex items-center justify-center mb-6"
+                  className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center mb-6"
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.6 }}
                 >
@@ -1453,7 +1452,7 @@ export default function ServicesPage() {
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                     >
-                      <CheckCircle className="w-5 h-5 text-rose-400 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-purple-600 flex-shrink-0" />
                       <span className="text-neutral-dark/80">{feature}</span>
                     </motion.li>
                   ))}
@@ -1477,7 +1476,7 @@ export default function ServicesPage() {
                       ],
                       '24 horas, 7 días a la semana'
                     )}
-                    className="w-full bg-gradient-to-r from-rose-300 to-rose-400 text-white hover:shadow-lg transition-all duration-300"
+                    className="w-full bg-gradient-to-r from-purple-400 to-purple-600 text-white hover:shadow-lg transition-all duration-300"
                   >
                     Solicitar Cotización
                   </Button>
@@ -1506,44 +1505,7 @@ export default function ServicesPage() {
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
               />
               
-              <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-neutral-dark mb-4">
-                  ¿No encuentras lo que buscas?
-                </h3>
-                <p className="text-neutral-dark/70 mb-6 max-w-2xl mx-auto">
-                  Contáctanos y crearemos un plan de cuidado completamente personalizado 
-                  que se ajuste perfectamente a tus necesidades y presupuesto.
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/contact">
-                    <motion.div
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Button className="bg-gradient-to-r from-blue-serene to-blue-light text-white px-8 py-3 hover:shadow-lg transition-all duration-300">
-                        <Phone className="w-5 h-5 mr-2" />
-                        Cotiza Ahora
-                      </Button>
-                    </motion.div>
-                  </Link>
-                  
-                  <a 
-                    href="https://wa.me/573106123883?text=Hola,%20me%20interesa%20recibir%20una%20cotización%20personalizada%20para%20servicios%20de%20cuidado%20domiciliario."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Button className="border-2 border-blue-serene text-blue-serene hover:bg-blue-serene hover:text-white px-8 py-3 transition-all duration-300">
-                        WhatsApp
-                      </Button>
-                    </motion.div>
-                  </a>
-                </div>
-              </div>
+            
             </motion.div>
           </motion.div>
         </div>

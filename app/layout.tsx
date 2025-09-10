@@ -46,7 +46,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#3B82F6" />
       </head>
-      <body className="h-full bg-beige-100 antialiased gpu-accelerated">
+      <body className="h-full bg-beige-100 antialiased">
         <ServiceWorkerRegistration>
           <div className="flex flex-col min-h-screen">
             <Suspense fallback={null}>
@@ -59,11 +59,10 @@ export default function RootLayout({
           </div>
         </ServiceWorkerRegistration>
 
-        {/* 👇 Botón flotante renderizado via Portal */}
-        
+
       </body>
       <WhatsAppFloatButton />
     </html>
-    
+
   );
 }

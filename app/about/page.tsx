@@ -62,7 +62,7 @@ const values: Value[] = [
   {
     icon: Shield,
     title: "Confianza",
-    description: "comentamos la confianza con comunicación clara, integridad absoluta y compromiso constante.",
+    description: "Fomentamos la confianza con comunicación clara, integridad absoluta y compromiso constante.",
     color: "from-beige-400 to-beige-500",
     accent: "bg-beige-400/10"
   },
@@ -726,7 +726,7 @@ export default function AboutPage() {
               {
                 icon: Target,
                 title: "Nuestra Misión",
-                content: "Brindar servicios de atención domiciliaria de alta calidad con personal capacitado, enfocados en el cuidado, respeto y cariño hacia el paciente.",
+                content: "Brindar servicios de atención domiciliaria de alta calidad con personal capacitado, enfocados en el cuidado, respeto y empatía hacia el paciente.",
                 color: "from-blue-serene to-blue-light"
               },
               {

@@ -32,8 +32,8 @@ const services = [
   },
   {
     icon: Sparkles,
-    title: "Masaje de drenaje linfático",
-    description: "Masaje suave y rítmico para pacientes con movilidad reducida.",
+    title: "Masajes",
+    description: "Masajes especializados realizados por fisioterapeutas certificados: Geriátricos, Terapéuticos y Drenaje linfático.",
     color: "from-beige-400 via-beige-500 to-blue-light",
     shadowColor: "shadow-beige-500/25",
     highlight: "linfático"
