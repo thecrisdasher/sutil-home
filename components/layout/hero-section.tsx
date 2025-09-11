@@ -151,7 +151,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-base sm:text-lg text-neutral-dark/80 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0"
             >
-              Brindamos servicios de salud domiciliaria de la más alta calidad, 
+              Brindamos servicios de cuidado domiciliario de la más alta calidad, 
               con un equipo de profesionales comprometidos con el bienestar 
               de nuestros pacientes.
             </motion.p>
