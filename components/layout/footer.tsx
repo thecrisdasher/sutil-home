@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Heart, Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
+import { PrivacyPolicy } from "../ui/privacy-policy";
 
 const navigation = {
   main: [
@@ -207,9 +208,7 @@ export function Footer() {
               </a>
             </p>
             <div className="flex justify-center md:justify-end space-x-6 text-sm">
-              <Link href="#" className="text-gray-400 hover:text-beige-300 transition-colors duration-200">
-                Política de Privacidad
-              </Link>
+              <PrivacyPolicy />
               <Link href="#" className="text-gray-400 hover:text-beige-300 transition-colors duration-200">
                 Términos de Servicio
               </Link>
