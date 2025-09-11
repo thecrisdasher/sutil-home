@@ -66,19 +66,19 @@ export function HeroSection() {
           >
             {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              initial={{ opacity: 0, y: 15, willChange: 'transform, opacity' }}
+              animate={{ opacity: 1, y: 0, willChange: 'auto' }}
+              transition={{ duration: 0.4, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
               whileHover={{ 
-                scale: 1.05,
-                y: -2,
-                boxShadow: "0 20px 40px rgba(59, 130, 246, 0.15)"
+                scale: 1.03,
+                y: -1,
+                transition: { duration: 0.15 }
               }}
-              className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-blue-serene mb-6 shadow-lg cursor-pointer transition-all duration-300"
+              className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-blue-serene mb-6 shadow-lg cursor-pointer transition-all duration-200"
             >
               <motion.div
-                whileHover={{ rotate: [0, -10, 10, 0] }}
-                transition={{ duration: 0.5 }}
+                whileHover={{ rotate: [0, -8, 8, 0] }}
+                transition={{ duration: 0.3 }}
               >
                 <Heart className="w-4 h-4 mr-2" />
               </motion.div>
@@ -87,17 +87,17 @@ export function HeroSection() {
 
             {/* Main heading */}
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              initial={{ opacity: 0, y: 20, willChange: 'transform, opacity' }}
+              animate={{ opacity: 1, y: 0, willChange: 'auto' }}
+              transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-dark mb-4 sm:mb-6 leading-tight"
             >
               Servicio especializado de{" "}
               <motion.span 
                 className="text-gradient cursor-pointer inline-block"
                 whileHover={{ 
-                  scale: 1.1,
-                  y: -5,
+                  scale: 1.05,
+                  y: -2,
                   textShadow: "0 0 20px rgba(59, 130, 246, 0.3)"
                 }}
                 animate={{ scale: 1, y: 0, textShadow: "none" }}
@@ -146,9 +146,9 @@ export function HeroSection() {
 
             {/* Description */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              initial={{ opacity: 0, y: 15, willChange: 'transform, opacity' }}
+              animate={{ opacity: 1, y: 0, willChange: 'auto' }}
+              transition={{ duration: 0.4, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="text-base sm:text-lg text-neutral-dark/80 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0"
             >
               Brindamos servicios de cuidado domiciliario de la más alta calidad, 
@@ -158,9 +158,9 @@ export function HeroSection() {
 
             {/* Feature highlights */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              initial={{ opacity: 0, y: 15, willChange: 'transform, opacity' }}
+              animate={{ opacity: 1, y: 0, willChange: 'auto' }}
+              transition={{ duration: 0.4, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8"
             >
               {features.map((feature, index) => {
@@ -168,13 +168,13 @@ export function HeroSection() {
                 return (
                   <motion.div
                     key={feature.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+                    initial={{ opacity: 0, y: 15, willChange: 'transform, opacity' }}
+                    animate={{ opacity: 1, y: 0, scale: 1, willChange: 'auto' }}
+                    transition={{ duration: 0.3, delay: 0.5 + index * 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
                     whileHover={{ 
-                      scale: 1.05,
-                      y: -3,
-                      boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)"
+                      scale: 1.02,
+                      y: -1,
+                      transition: { duration: 0.15 }
                     }}
                     className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-white/60 backdrop-blur-sm rounded-xl cursor-pointer transition-all duration-300"
                   >
@@ -222,17 +222,15 @@ export function HeroSection() {
 
           {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            initial={{ opacity: 0, x: 30, willChange: 'transform, opacity' }}
+            animate={{ opacity: 1, x: 0, willChange: 'auto' }}
+            transition={{ duration: 0.5, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="relative"
           >
             <div className="relative">
               {/* Main image container */}
               <motion.div
-                whileHover={{ scale: 1.02 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.3 }}
+                whileHover={{ scale: 1.01, transition: { duration: 0.2 } }}
                 className="relative z-10 rounded-3xl overflow-hidden shadow-2xl mt-4 sm:-mt-20 md:-mt-40 lg:-mt-60 xl:-mt-64"
               >
                 <OptimizedImage
@@ -249,10 +247,10 @@ export function HeroSection() {
 
               {/* Floating card */}
               <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1 }}
-                whileHover={{ y: -5 }}
+                initial={{ opacity: 0, y: 15, scale: 0.9, willChange: 'transform, opacity' }}
+                animate={{ opacity: 1, y: 0, scale: 1, willChange: 'auto' }}
+                transition={{ duration: 0.4, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+                whileHover={{ y: -2, transition: { duration: 0.15 } }}
                 className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 bg-white rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-xl max-w-[180px] sm:max-w-xs"
               >
                 <div className="flex items-center space-x-4">
@@ -271,10 +269,10 @@ export function HeroSection() {
               {/* Background decoration */}
               <motion.div
                 animate={{
-                  rotate: [0, 5, -5, 0],
+                  rotate: [0, 3, -3, 0],
                 }}
                 transition={{
-                  duration: 6,
+                  duration: 8,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}

@@ -17,10 +17,10 @@ export function CTASection() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, x: -30, willChange: 'transform, opacity' }}
+            whileInView={{ opacity: 1, x: 0, willChange: 'auto' }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, amount: 0.3, margin: '-50px' }}
             className="space-y-8"
           >
             <motion.div
@@ -35,10 +35,10 @@ export function CTASection() {
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 15, willChange: 'transform, opacity' }}
+              whileInView={{ opacity: 1, y: 0, willChange: 'auto' }}
+              transition={{ duration: 0.4, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              viewport={{ once: true, amount: 0.3 }}
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark leading-tight"
             >
               ¿Listo para recibir el 
@@ -48,10 +48,10 @@ export function CTASection() {
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 15, willChange: 'transform, opacity' }}
+              whileInView={{ opacity: 1, y: 0, willChange: 'auto' }}
+              transition={{ duration: 0.4, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              viewport={{ once: true, amount: 0.3 }}
               className="text-lg text-neutral-dark/70 leading-relaxed"
             >
               Nuestro equipo de profesionales está disponible las 24 horas para 
@@ -100,10 +100,10 @@ export function CTASection() {
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 15, willChange: 'transform, opacity' }}
+              whileInView={{ opacity: 1, y: 0, willChange: 'auto' }}
+              transition={{ duration: 0.4, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+              viewport={{ once: true, amount: 0.3 }}
               className="flex flex-col sm:flex-row gap-4"
             >
               <Link href="/contact" className="flex-1">
@@ -142,10 +142,10 @@ export function CTASection() {
 
           {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, x: 30, willChange: 'transform, opacity' }}
+            whileInView={{ opacity: 1, x: 0, willChange: 'auto' }}
+            transition={{ duration: 0.4, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, amount: 0.3 }}
             className="relative"
           >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">

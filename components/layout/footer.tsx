@@ -65,10 +65,10 @@ export function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {/* Brand Section */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 30, willChange: 'transform, opacity' }}
+              whileInView={{ opacity: 1, y: 0, willChange: 'auto' }}
+              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              viewport={{ once: true, amount: 0.3, margin: '-50px' }}
               className="lg:col-span-1"
             >
               <div className="flex items-center space-x-2 mb-4 sm:mb-6">
@@ -96,9 +96,9 @@ export function Footer() {
                     <motion.a
                       key={item.name}
                       href={item.href}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-8 h-8 sm:w-10 sm:h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-beige-500 transition-colors duration-300"
+                      whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
+                      whileTap={{ scale: 0.95, transition: { duration: 0.1 } }}
+                      className="w-8 h-8 sm:w-10 sm:h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-beige-500 transition-colors duration-150"
                     >
                       <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                     </motion.a>
@@ -109,10 +109,10 @@ export function Footer() {
 
             {/* Navigation Links */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 20, willChange: 'transform, opacity' }}
+              whileInView={{ opacity: 1, y: 0, willChange: 'auto' }}
+              transition={{ duration: 0.3, delay: 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <h4 className="text-lg font-semibold mb-6">Navegación</h4>
               <ul className="space-y-3">
@@ -131,10 +131,10 @@ export function Footer() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 20, willChange: 'transform, opacity' }}
+              whileInView={{ opacity: 1, y: 0, willChange: 'auto' }}
+              transition={{ duration: 0.3, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <h4 className="text-lg font-semibold mb-6">Más Información</h4>
               <ul className="space-y-3">
@@ -154,10 +154,10 @@ export function Footer() {
 
             {/* Contact Info - SECCIÓN MODIFICADA */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 20, willChange: 'transform, opacity' }}
+              whileInView={{ opacity: 1, y: 0, willChange: 'auto' }}
+              transition={{ duration: 0.3, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <h4 className="text-lg font-semibold mb-6">Contacto</h4>
               <ul className="space-y-4">
@@ -187,10 +187,10 @@ export function Footer() {
 
         {/* Bottom Footer */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 20, willChange: 'transform, opacity' }}
+          whileInView={{ opacity: 1, y: 0, willChange: 'auto' }}
+          transition={{ duration: 0.4, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+          viewport={{ once: true, amount: 0.3 }}
           className="border-t border-white/10 py-8"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-4">

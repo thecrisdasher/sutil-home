@@ -58,10 +58,8 @@ export default function RootLayout({
             </Suspense>
           </div>
         </ServiceWorkerRegistration>
-
-
+        <WhatsAppFloatButton />
       </body>
-      <WhatsAppFloatButton />
     </html>
 
   );

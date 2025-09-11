@@ -51,24 +51,26 @@ const stats = [
 ];
 
 const containerVariants: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, willChange: 'opacity' },
   visible: {
     opacity: 1,
+    willChange: 'auto',
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
+      staggerChildren: 0.05,
+      delayChildren: 0.1
     }
   }
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 15, willChange: 'transform, opacity' },
   visible: {
     opacity: 1,
     y: 0,
+    willChange: 'auto',
     transition: {
-      duration: 0.6,
-      ease: [0.6, -0.05, 0.01, 0.99]
+      duration: 0.4,
+      ease: [0.25, 0.46, 0.45, 0.94]
     }
   }
 };
@@ -139,6 +141,7 @@ export function AboutPreview() {
             {/* Enhanced title with subtle effects */}
             <motion.h2 
               variants={itemVariants}
+              style={{ willChange: 'transform, opacity' }}
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-dark mb-6 leading-tight"
             >
               Comprometidos con tu{" "}
@@ -166,6 +169,7 @@ export function AboutPreview() {
             {/* Description */}
             <motion.p 
               variants={itemVariants}
+              style={{ willChange: 'transform, opacity' }}
               className="text-lg text-neutral-dark/80 mb-8 leading-relaxed"
             >
               En Lazos De Cuidado Home Care, entendemos que cada persona merece recibir 
@@ -186,9 +190,9 @@ export function AboutPreview() {
                     key={feature.text}
                     variants={itemVariants}
                     whileHover={{ 
-                      scale: 1.01,
-                      x: 4,
-                      transition: { duration: 0.2 }
+                      scale: 1.005,
+                      x: 2,
+                      transition: { duration: 0.15 }
                     }}
                     className="group flex items-start space-x-3 p-3 rounded-xl bg-white/40 backdrop-blur-sm border border-blue-serene/8 hover:border-blue-serene/20 hover:shadow-sm transition-all duration-300"
                   >
@@ -213,8 +217,8 @@ export function AboutPreview() {
             {/* CTA Button with subtle enhancement */}
             <motion.div
               variants={itemVariants}
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
+              whileHover={{ scale: 1.005, transition: { duration: 0.15 } }}
+              whileTap={{ scale: 0.995, transition: { duration: 0.1 } }}
             >
               <Link href="/about">
                 <Button className="group relative px-6 py-3 bg-gradient-to-r from-blue-serene to-blue-light hover:from-blue-600 hover:to-blue-serene text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">

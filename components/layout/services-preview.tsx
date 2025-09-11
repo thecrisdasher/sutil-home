@@ -104,10 +104,10 @@ export function ServicesPreview() {
       <div className="container mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
         {/* Enhanced Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 30, willChange: 'transform, opacity' }}
+          whileInView={{ opacity: 1, y: 0, willChange: 'auto' }}
+          transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+          viewport={{ once: true, amount: 0.3, margin: '-50px' }}
           className="text-center mb-12 sm:mb-16"
         >
           {/* Enhanced Badge */}
@@ -151,10 +151,10 @@ export function ServicesPreview() {
 
           {/* Simplified Title */}
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20, willChange: 'transform, opacity' }}
+            whileInView={{ opacity: 1, y: 0, willChange: 'auto' }}
+            transition={{ duration: 0.3, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, amount: 0.3 }}
             className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight"
           >
             <span className="text-neutral-dark">Servicios que </span>
@@ -181,10 +181,10 @@ export function ServicesPreview() {
 
           {/* Enhanced Description */}
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 15, willChange: 'transform, opacity' }}
+            whileInView={{ opacity: 1, y: 0, willChange: 'auto' }}
+            transition={{ duration: 0.3, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+            viewport={{ once: true, amount: 0.3 }}
             className="text-base sm:text-lg md:text-xl text-neutral-dark/80 max-w-3xl mx-auto leading-relaxed px-2"
           >
             Ofrecemos una amplia gama de servicios de salud domiciliaria diseñados 
@@ -211,11 +211,11 @@ export function ServicesPreview() {
                 key={service.title}
                 variants={cardVariants}
                 whileHover={{ 
-                  y: -4,
-                  scale: 1.01,
-                  transition: { duration: 0.2 }
+                  y: -2,
+                  scale: 1.005,
+                  transition: { duration: 0.15 }
                 }}
-                className="group relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-100 overflow-hidden"
+                className="group relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-200 border border-slate-100 overflow-hidden"
               >
                 {/* Card Background Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-slate-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -237,12 +237,12 @@ export function ServicesPreview() {
                 
                 {/* Enhanced Icon */}
                 <motion.div 
-                  className={`relative w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${service.color} rounded-2xl sm:rounded-3xl flex items-center justify-center mb-6 sm:mb-8 ${service.shadowColor} shadow-lg group-hover:shadow-xl transition-all duration-300`}
+                  className={`relative w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${service.color} rounded-2xl sm:rounded-3xl flex items-center justify-center mb-6 sm:mb-8 ${service.shadowColor} shadow-lg group-hover:shadow-xl transition-all duration-200`}
                   whileHover={{ 
-                    rotate: 5,
-                    scale: 1.05
+                    rotate: 3,
+                    scale: 1.03,
+                    transition: { duration: 0.15 }
                   }}
-                  transition={{ duration: 0.2 }}
                 >
                   <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-white drop-shadow-lg" />
                   

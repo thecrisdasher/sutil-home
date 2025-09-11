@@ -3,19 +3,21 @@
 import { useReducedMotion } from 'framer-motion';
 import { useMemo } from 'react';
 
-// Variantes optimizadas para animaciones comunes
+// Variantes optimizadas para animaciones comunes con will-change
 export const optimizedVariants = {
   // Fade in optimizado
   fadeIn: {
     hidden: { 
       opacity: 0,
+      willChange: 'opacity',
       transition: { duration: 0 }
     },
     visible: { 
       opacity: 1,
+      willChange: 'auto',
       transition: { 
-        duration: 0.3,
-        ease: 'easeOut'
+        duration: 0.25, // Reducido de 0.3 a 0.25
+        ease: [0.25, 0.46, 0.45, 0.94] // Curva más eficiente
       }
     }
   },
@@ -24,15 +26,17 @@ export const optimizedVariants = {
   slideUp: {
     hidden: { 
       opacity: 0,
-      y: 20,
+      y: 15, // Reducido de 20 a 15
+      willChange: 'transform, opacity',
       transition: { duration: 0 }
     },
     visible: { 
       opacity: 1,
       y: 0,
+      willChange: 'auto',
       transition: { 
-        duration: 0.4,
-        ease: [0.25, 0.46, 0.45, 0.94] // easeOutQuart
+        duration: 0.3, // Reducido de 0.4 a 0.3
+        ease: [0.25, 0.46, 0.45, 0.94] // easeOutQuart optimizado
       }
     }
   },
@@ -41,27 +45,30 @@ export const optimizedVariants = {
   scale: {
     hidden: { 
       opacity: 0,
-      scale: 0.95,
+      scale: 0.97, // Menos cambio de escala para mejor rendimiento
+      willChange: 'transform, opacity',
       transition: { duration: 0 }
     },
     visible: { 
       opacity: 1,
       scale: 1,
+      willChange: 'auto',
       transition: { 
-        duration: 0.3,
-        ease: 'easeOut'
+        duration: 0.25, // Reducido de 0.3 a 0.25
+        ease: [0.25, 0.46, 0.45, 0.94]
       }
     }
   },
   
-  // Stagger container
+  // Stagger container optimizado
   stagger: {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1
+        staggerChildren: 0.08, // Reducido de 0.1 a 0.08
+        delayChildren: 0.05, // Reducido de 0.1 a 0.05
+        ease: 'easeOut'
       }
     }
   }
@@ -109,7 +116,7 @@ export function useOptimizedMotion() {
 }
 
 // Hook para viewport animations optimizadas
-export function useViewportAnimation(threshold = 0.1, once = true) {
+export function useViewportAnimation(threshold = 0.05, once = true) {
   const { motionProps, shouldReduceMotion } = useOptimizedMotion();
   
   const viewportProps = useMemo(() => {
@@ -121,7 +128,8 @@ export function useViewportAnimation(threshold = 0.1, once = true) {
       viewport: { 
         once,
         amount: threshold,
-        margin: '0px 0px -100px 0px' // Trigger antes de que sea visible
+        margin: '0px 0px -50px 0px', // Optimizado: trigger más cerca
+        root: null // Usar viewport por defecto para mejor rendimiento
       },
       whileInView: 'visible',
       initial: 'hidden'
@@ -136,15 +144,16 @@ export function useViewportAnimation(threshold = 0.1, once = true) {
 
 // Transiciones optimizadas comunes
 export const optimizedTransitions = {
-  fast: { duration: 0.2, ease: 'easeOut' },
-  medium: { duration: 0.3, ease: 'easeOut' },
-  slow: { duration: 0.5, ease: 'easeOut' },
-  spring: { type: 'spring', stiffness: 300, damping: 30 },
-  bounce: { type: 'spring', stiffness: 400, damping: 10 }
+  fast: { duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }, // Más rápido y suave
+  medium: { duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }, // Optimizado
+  slow: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }, // Reducido de 0.5
+  spring: { type: 'spring', stiffness: 400, damping: 25, mass: 0.8 }, // Más responsivo
+  bounce: { type: 'spring', stiffness: 500, damping: 15, mass: 0.6 }, // Optimizado
+  microInteraction: { duration: 0.1, ease: 'easeOut' } // Nueva transición ultra rápida
 };
 
 // Hook para hover animations optimizadas
-export function useHoverAnimation() {
+export function useHoverAnimation(scaleAmount = 1.02) {
   const { shouldReduceMotion } = useOptimizedMotion();
   
   return useMemo(() => {
@@ -154,13 +163,51 @@ export function useHoverAnimation() {
     
     return {
       whileHover: { 
-        scale: 1.02,
-        transition: optimizedTransitions.fast
+        scale: scaleAmount,
+        willChange: 'transform',
+        transition: optimizedTransitions.microInteraction
       },
       whileTap: { 
         scale: 0.98,
-        transition: optimizedTransitions.fast
+        willChange: 'transform',
+        transition: optimizedTransitions.microInteraction
+      },
+      onHoverStart: () => {
+        // Preparar para animación
+      },
+      onHoverEnd: () => {
+        // Limpiar will-change después de la animación
       }
     };
-  }, [shouldReduceMotion]);
+  }, [shouldReduceMotion, scaleAmount]);
+}
+
+// Hook especializado para animaciones de entrada con mejor rendimiento
+export function useEntranceAnimation(variant: keyof typeof optimizedVariants = 'fadeIn', delay = 0) {
+  const { shouldReduceMotion, getVariant } = useOptimizedMotion();
+  
+  return useMemo(() => {
+    if (shouldReduceMotion) {
+      return {
+        initial: false,
+        animate: false
+      };
+    }
+    
+    const variants = getVariant(variant);
+    const visibleVariant = variants.visible;
+    const baseTransition = typeof visibleVariant === 'object' && 'transition' in visibleVariant 
+      ? visibleVariant.transition 
+      : { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] };
+    
+    return {
+      initial: 'hidden',
+      animate: 'visible',
+      variants,
+      transition: {
+        ...baseTransition,
+        delay
+      }
+    };
+  }, [shouldReduceMotion, variant, delay, getVariant]);
 }
