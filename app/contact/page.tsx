@@ -19,7 +19,8 @@ import {
   Headphones,
   Sparkles,
   UserCheck,
-  Activity
+  Activity,
+  AlertCircle
 } from "lucide-react";
 
 // Type definitions
@@ -994,6 +995,275 @@ export default function ContactPage() {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* PQRS Section */}
+      <section className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Background decorative elements */}
+        <motion.div
+          className="absolute top-10 right-10 w-32 h-32 border border-blue-serene/20 rounded-full"
+          animate={{
+            rotate: [0, 360],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        
+        <motion.div
+          className="absolute bottom-10 left-10 w-24 h-24 border border-beige-400/30 rounded-full"
+          animate={{
+            rotate: [360, 0],
+            scale: [1, 0.9, 1],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        
+        {/* Floating particles */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-blue-serene/20 rounded-full"
+            style={{
+              top: `${20 + (i * 15)}%`,
+              left: `${10 + (i * 12)}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.2, 0.8, 0.2],
+            }}
+            transition={{
+              duration: 3 + (i * 0.5),
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.3
+            }}
+          />
+        ))}
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            {/* Header */}
+            <motion.div
+              className="mb-12"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <motion.h2 
+                className="text-3xl md:text-4xl font-bold text-neutral-dark mb-4"
+                whileInView={{ scale: [0.95, 1] }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <span className="relative">
+                  PQRS
+                  <motion.div
+                    className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-serene to-beige-400 rounded-full"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    transition={{ duration: 1, delay: 0.8 }}
+                  />
+                </span>
+              </motion.h2>
+              
+              <motion.p 
+                className="text-lg text-neutral-dark/70 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                Peticiones, Quejas, Reclamos y Sugerencias
+              </motion.p>
+            </motion.div>
+
+            {/* Content Card */}
+            <motion.div
+              className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 relative overflow-hidden group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              whileHover={{ y: -5, scale: 1.02 }}
+            >
+              {/* Card background effects */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-blue-serene/5 to-beige-400/5 rounded-3xl"
+                animate={{
+                  opacity: [0.5, 0.8, 0.5],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              
+              <motion.div
+                className="absolute top-4 right-4 w-16 h-16 border-2 border-blue-serene/10 rounded-full"
+                animate={{
+                  rotate: [0, 360],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+
+              <div className="relative z-10">
+                <motion.div
+                  className="flex justify-center mb-6"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.5, type: "spring", stiffness: 200 }}
+                >
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-serene to-beige-400 rounded-full flex items-center justify-center shadow-lg">
+                    <motion.div
+                      animate={{
+                        rotate: [0, 360],
+                      }}
+                      transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                    >
+                      <MessageCircle className="w-8 h-8 text-white" />
+                    </motion.div>
+                  </div>
+                </motion.div>
+
+                <motion.h3 
+                  className="text-2xl md:text-3xl font-bold text-neutral-dark mb-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                >
+                  Tu opinión nos importa
+                </motion.h3>
+                
+                <motion.p 
+                  className="text-neutral-dark/70 mb-8 leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                >
+                  Comparte con nosotros tus peticiones, quejas, reclamos o sugerencias. 
+                  Tu retroalimentación nos ayuda a mejorar continuamente nuestros servicios 
+                  y brindar la mejor atención posible.
+                </motion.p>
+
+                {/* Features grid */}
+                <motion.div
+                  className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                >
+                  {[
+                    { icon: Send, text: "Peticiones", color: "from-blue-400 to-blue-500" },
+                    { icon: MessageCircle, text: "Quejas", color: "from-orange-400 to-orange-500" },
+                    { icon: AlertCircle, text: "Reclamos", color: "from-red-400 to-red-500" },
+                    { icon: Sparkles, text: "Sugerencias", color: "from-green-400 to-green-500" }
+                  ].map((item, index) => {
+                    const Icon = item.icon;
+                    return (
+                      <motion.div
+                        key={index}
+                        className="text-center p-4 rounded-2xl bg-gray-50 hover:bg-white transition-all duration-300 group cursor-default"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.9 + (index * 0.1) }}
+                        whileHover={{ scale: 1.05, y: -2 }}
+                      >
+                        <motion.div
+                          className={`w-12 h-12 bg-gradient-to-br ${item.color} rounded-full flex items-center justify-center mx-auto mb-2 shadow-lg`}
+                          whileHover={{ rotate: [0, -10, 10, 0] }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          <Icon className="w-6 h-6 text-white" />
+                        </motion.div>
+                        <p className="text-sm font-medium text-neutral-dark group-hover:text-blue-serene transition-colors">
+                          {item.text}
+                        </p>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+
+                {/* CTA Button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1 }}
+                >
+                  <motion.a
+                    href="https://forms.gle/1wuwuJni7rjSuu3F8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ 
+                      scale: 1.05, 
+                      y: -3,
+                      boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)"
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-block"
+                  >
+                    <div className="bg-gradient-to-r from-blue-serene to-beige-400 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg relative overflow-hidden group">
+                      <span className="relative z-10 flex items-center justify-center">
+                        <Send className="w-5 h-5 mr-3" />
+                        Enviar PQRS
+                        <motion.div
+                          className="ml-2"
+                          animate={{
+                            x: [0, 5, 0],
+                          }}
+                          transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                        >
+                          →
+                        </motion.div>
+                      </span>
+                      
+                      {/* Button hover effect */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-beige-400 to-blue-serene rounded-2xl"
+                        initial={{ x: "-100%" }}
+                        whileHover={{ x: "0%" }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </div>
+                  </motion.a>
+                </motion.div>
+
+                {/* Additional info */}
+                <motion.p 
+                  className="text-sm text-neutral-dark/60 mt-6"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 1.2 }}
+                >
+                  Responderemos a tu solicitud en un plazo máximo de 48 horas
+                </motion.p>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
