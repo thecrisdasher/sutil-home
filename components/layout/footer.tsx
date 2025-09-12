@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Heart, Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
 import { PrivacyPolicy } from "../ui/privacy-policy";
+import { TermsOfService } from "../ui/terms-of-service";
 
 const navigation = {
   main: [
@@ -209,9 +210,7 @@ export function Footer() {
             </p>
             <div className="flex justify-center md:justify-end space-x-6 text-sm">
               <PrivacyPolicy />
-              <Link href="#" className="text-gray-400 hover:text-beige-300 transition-colors duration-200">
-                Términos de Servicio
-              </Link>
+              <TermsOfService />
             </div>
           </div>
         </motion.div>

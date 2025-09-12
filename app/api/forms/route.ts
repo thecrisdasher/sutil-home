@@ -7,9 +7,9 @@ const contactSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
   phone: z.string().min(10),
-  service: z.string().min(1),
+  service: z.string().min(1).max(100),
   message: z.string().min(5),
-  urgency: z.enum(['low', 'medium', 'high']),
+  urgency: z.enum(['low', 'medium', 'high']).optional(),
   formType: z.literal('contact').optional(),
 });
 
@@ -44,7 +44,7 @@ function detectFormType(data: any): 'contact' | 'career' | null {
   }
   
   // Detectar por campos únicos del formulario de contacto
-  if (data.service && data.urgency && data.message && !data.position) {
+  if (data.service && data.message && !data.position) {
     return 'contact';
   }
   
@@ -82,7 +82,7 @@ async function processContactForm(data: any, transporter: nodemailer.Transporter
       <div style="background-color: #fef3c7; padding: 20px; border-radius: 8px; margin: 20px 0;">
         <h3 style="color: #92400e; margin-top: 0;">Detalles del Servicio</h3>
         <p><strong>Servicio Solicitado:</strong> ${validatedData.service}</p>
-        <p><strong>Nivel de Urgencia:</strong> ${urgencyLabels[validatedData.urgency]}</p>
+        ${validatedData.urgency ? `<p><strong>Nivel de Urgencia:</strong> ${urgencyLabels[validatedData.urgency]}</p>` : ''}
       </div>
       
       <div style="background-color: #ecfdf5; padding: 20px; border-radius: 8px; margin: 20px 0;">

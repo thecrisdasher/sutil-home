@@ -84,7 +84,7 @@ const contactInfo: ContactInfo[] = [
     icon: MapPin,
     title: "Oficina",
     value: "CALLE 30 # 1B-100 Of. 61",
-    description: "Cobertura Local",
+    description: "Jamundí - Valle Del Cauca",
     action: "#ubicacion",
     color: "from-beige-500 to-blue-serene"
   }
@@ -216,8 +216,7 @@ const ContactForm = () => {
     email: '',
     phone: '',
     service: '',
-    message: '',
-    urgency: 'medium'
+    message: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -253,7 +252,7 @@ const ContactForm = () => {
         const result = await res.json();
         console.log('Formulario de contacto enviado exitosamente:', result);
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', service: '', message: '', urgency: 'medium' });
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
       } else {
         const errorData = await res.json().catch(() => ({ error: 'Error desconocido' }));
         console.error('Contact form error response:', errorData);
@@ -405,46 +404,21 @@ const ContactForm = () => {
         <label className="block text-sm font-medium text-neutral-dark">
           Servicio de Interés
         </label>
-        <select
+        <input
+          type="text"
           name="service"
           value={formData.service}
           onChange={handleChange}
+          maxLength={100}
           className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-beige-200 focus:border-blue-serene focus:ring-4 focus:ring-blue-serene/10 transition-all duration-300"
-        >
-          <option value="">Selecciona un servicio</option>
-          <option value="enfermeria">Cuidado de Enfermería</option>
-          <option value="postoperatorio">Cuidado Post-Operatorio</option>
-          <option value="rehabilitacion">Rehabilitación y Fisioterapia</option>
-          <option value="acompanamiento">Acompañamiento y Cuidado Personal</option>
-          <option value="otro">Otro servicio</option>
-        </select>
+          placeholder="Ej: Cuidado de enfermería, rehabilitación, acompañamiento..."
+        />
       </motion.div>
       
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="space-y-2"
-      >
-        <label className="block text-sm font-medium text-neutral-dark">
-          Nivel de Urgencia
-        </label>
-        <select
-          name="urgency"
-          value={formData.urgency}
-          onChange={handleChange}
-          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl border border-beige-200 focus:border-blue-serene focus:ring-4 focus:ring-blue-serene/10 transition-all duration-300"
-        >
-          <option value="low">Baja - Consulta general</option>
-          <option value="medium">Media - Necesita atención pronto</option>
-          <option value="high">Alta - Es urgente</option>
-        </select>
-      </motion.div>
-      
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
         className="space-y-2"
       >
         <label className="block text-sm font-medium text-neutral-dark">
@@ -465,7 +439,7 @@ const ContactForm = () => {
         disabled={isSubmitting}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
         whileHover={{ scale: 1.02, y: -2 }}
         whileTap={{ scale: 0.98 }}
         className="w-full bg-gradient-to-r from-blue-serene to-beige-400 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-sm sm:text-base font-semibold hover:shadow-lg transition-all duration-300 disabled:opacity-50 relative overflow-hidden group"
