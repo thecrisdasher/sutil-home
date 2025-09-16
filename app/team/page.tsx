@@ -825,7 +825,7 @@ export default function EnhancedCareersPage() {
               variants={itemVariants}
               className="text-xl md:text-2xl text-neutral-dark/70 leading-relaxed max-w-4xl mx-auto"
             >
-             Únete al equipo y obtén una estabilidad laboral, trabaja en nuestro home care.
+             Somos una empresa que busca cumplir con la normativa y mantener relaciones laborales, equilibradas, seguras y transparentes. Únete al equipo y obtén una estabilidad laboral, trabaja en nuestro home care.
             </motion.p>
             
             <motion.div 
