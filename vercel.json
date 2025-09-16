@@ -9,5 +9,13 @@
     "domains": ["images.unsplash.com"],
     "formats": ["image/webp", "image/avif"],
     "sizes": [16, 32, 48, 64, 96, 128, 256, 384, 640, 750, 828, 1080, 1200, 1920, 2048, 3840]
-  }
+  },
+   "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://pago-pendiente.vercel.app",
+      "permanent": false
+    }
+  ]
+  
 }
